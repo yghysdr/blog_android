@@ -21,5 +21,25 @@ ext {
             "recyclerview-v7": "com.android.support:recyclerview-v7:${supportLibrary}"
     ]
     dependencies = [
+            //解除64K限制
+            'multidex'            : 'com.android.support:multidex:1.+',
+            //rx系列
+            'rxjava'              : 'io.reactivex:rxjava:1.1.0',
+            'rxandroid'           : 'io.reactivex:rxandroid:1.0.1',
+            //网络请求
+            'retrofit'            : 'com.squareup.retrofit2:retrofit:2.0.2',
+            //RxJava与retrofit适配器
+            'adapter-rxjava'      : 'com.squareup.retrofit2:adapter-rxjava:2.0.2',
+            //网络请求日志拦截
+            'logging-interceptor' : 'com.squareup.okhttp3:logging-interceptor:3.1.2',
+            //转换器，请求结果转换成Model
+            'converter-gson'      : 'com.squareup.retrofit2:converter-gson:2.0.2',
+            //日志
+            'klog'                : 'com.github.zhaokaiqiang.klog:library:1.5.0',
+            //控件绑定
+            'butterknife'         : 'com.jakewharton:butterknife:8.4.0',
+            'butterknife-compiler': 'com.jakewharton:butterknife-compiler:8.4.0',
+            //图片加载
+            'glide'               : 'com.github.bumptech.glide:glide:3.7.0'
     ]
 }

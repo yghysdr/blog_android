@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--联系人recyclerview-->
+<resources>
+
+    <!--必须是declare-styleable-->
+    <declare-styleable name="toolbar_attr">
+        <attr name="appName" format="string" />
+        <attr name="closeActivity" format="boolean" />
+        <attr name="titleLeft" format="string" />
+    </declare-styleable>
+
+
+</resources>
