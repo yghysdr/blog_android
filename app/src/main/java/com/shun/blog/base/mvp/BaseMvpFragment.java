@@ -9,7 +9,7 @@ import com.shun.blog.utils.TUtil;
 
 
 /**
- * Created by HX on 2016/9/20.
+ * Created by yghysdr on 2016/9/20.
  * Mvp中基本View的Fragment的基类
  * 所有的Fragment继承BaseMvpFragment，并实现定义一个接口实现自己特有等方法
  */

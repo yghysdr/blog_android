@@ -37,7 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         init();
     }
 
-    private void init() {
+    protected void init() {
     }
 
     /**

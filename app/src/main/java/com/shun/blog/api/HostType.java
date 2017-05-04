@@ -1,7 +1,7 @@
 package com.shun.blog.api;
 
 /**
- * Created by HX on 2016/10/13.
+ * Created by yghysdr on 2016/10/13.
  * 存放主机host。
  */
 
@@ -11,8 +11,8 @@ public class HostType {
     /**
      * 天气host
      */
-    public static final String HOST_WEATHER = "http://www.weather.com.cn/";
-    public static final int TYPE_WEATHER = 1;
+    public static final String HOST_BLOG = "http://192.168.11.148:3000/api/";
+    public static final int BLOG = 1;
 
     /**
      * 豆瓣host
@@ -26,23 +26,14 @@ public class HostType {
 
     public static String getHost(int type) {
         switch (type) {
+            case BLOG:
+                return HOST_BLOG;
             case TYPE_WAN_DOU_JIA:
                 return HOST_WAN_DOU_JIA;
             case TYPE_DOU_BAN:
                 return HOST_DOU_BAN;
             default:
-                return HOST_WEATHER;
+                return HOST_BLOG;
         }
     }
-
-    public static int getType(String url) {
-        if (url.contains(HOST_WAN_DOU_JIA)) {
-            return TYPE_WAN_DOU_JIA;
-        } else if (url.contains(HOST_DOU_BAN)) {
-            return TYPE_COUNT;
-        } else {
-            return TYPE_WEATHER;
-        }
-    }
-
 }

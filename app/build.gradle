@@ -27,11 +27,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
     compile rootProject.ext.supportDependencies["appcompat-v7"]
     compile rootProject.ext.supportDependencies["recyclerview-v7"]
     compile rootProject.ext.supportDependencies["cardview-v7"]
     compile rootProject.ext.supportDependencies["support-v4"]
+    compile rootProject.ext.supportDependencies["design"]
     compile rootProject.ext.dependencies["multidex"]
     compile rootProject.ext.dependencies["rxjava"]
     compile rootProject.ext.dependencies["rxandroid"]
@@ -44,4 +44,5 @@ dependencies {
     apt rootProject.ext.dependencies["butterknife-compiler"]
     compile rootProject.ext.dependencies["glide"]
 
+    testCompile 'junit:junit:4.12'
 }

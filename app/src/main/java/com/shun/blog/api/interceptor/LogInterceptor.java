@@ -14,19 +14,24 @@ import okhttp3.Response;
  */
 public class LogInterceptor implements Interceptor {//拦截者； 插入器
 
-
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
+        KLog.d("http_request",
+                String.format("%s %s %n headers: %n %s body:%n %s",
+                        request.method(),
+                        request.url(),
+                        request.headers(),
+                        request.body())
 
-        long t1 = System.nanoTime();
-        KLog.d("request_url", String.format("Sending request %s on %s%n%s",
-                request.url(), chain.connection(), request.headers()));
+        );
         //chain.proceed(request) 是每个拦截器的关键部分的实现
         Response response = chain.proceed(request);
-        long t2 = System.nanoTime();
-        KLog.d("response_url", String.format("Received response for %s in %.1fms%n%s",
-                response.request().url(), (t2 - t1) / 1e6d, response.headers()));
+        KLog.d("http_response",
+                String.format("%s %n %s",
+                        response.request().url(),
+                        response.headers())
+        );
         return response;
     }
 }
