@@ -4,13 +4,13 @@ import android.util.SparseArray;
 
 import com.shun.blog.api.interceptor.CacheInterceptor;
 import com.shun.blog.api.interceptor.HeaderInterceptor;
-import com.shun.blog.api.interceptor.LogInterceptor;
 import com.shun.blog.api.interceptor.QueryParInterceptor;
 import com.shun.blog.app.Global;
 
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -54,7 +54,10 @@ public class AppWebClient {
                 .readTimeout(READ_TIME, TimeUnit.SECONDS)
                 .writeTimeout(WRITE_TIME, TimeUnit.SECONDS);
         if (Global.DEBUG) {
-            builder.addInterceptor(new LogInterceptor());
+            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            //设置 Debug Log 模式
+            builder.addInterceptor(loggingInterceptor);
         }
         //错误重连
 //        builder.retryOnConnectionFailure(true);

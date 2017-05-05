@@ -1,5 +1,7 @@
 package com.shun.blog.base.mvp;
 
+import android.app.Activity;
+
 import com.shun.blog.baserx.RxManager;
 
 /**
@@ -11,6 +13,7 @@ import com.shun.blog.baserx.RxManager;
 public abstract class BaseMvpPresenter<V, M> {
     protected V mView;
     protected M mMode;
+    protected Activity mActivity;
     protected RxManager mRxManage = new RxManager();
 
     /**

@@ -24,6 +24,8 @@ public abstract class BaseMvpFragment<P extends BaseMvpPresenter>
             mPresenter = TUtil.getT(this, 0);
         }
         mPresenter.attachView(this);
+        mPresenter.mMode = TUtil.getT(this, 1);
+        mPresenter.mActivity = getActivity();
         super.onViewCreated(view, savedInstanceState);
     }
 

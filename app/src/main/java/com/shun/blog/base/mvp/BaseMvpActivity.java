@@ -29,6 +29,7 @@ public abstract class BaseMvpActivity<P extends BaseMvpPresenter, M extends Base
         mPresenter = TUtil.getT(this, 0);
         mPresenter.attachView(this);
         mPresenter.mMode = TUtil.getT(this, 1);
+        mPresenter.mActivity = this;
         super.onCreate(savedInstanceState);
     }
 

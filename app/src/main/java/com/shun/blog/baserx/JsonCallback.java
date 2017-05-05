@@ -11,7 +11,7 @@ import rx.Subscriber;
  * 2，简化网络请求的处理。
  */
 
-public abstract class ApiCallback<R extends BaseResponse> extends Subscriber<R> {
+public abstract class JsonCallback<R extends BaseResponse> extends Subscriber<R> {
 
     public abstract void onSuccess(R result);
 
