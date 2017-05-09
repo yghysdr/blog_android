@@ -1,4 +1,4 @@
-package com.shun.blog.base;
+package com.shun.blog.base.ui;
 
 import android.app.Activity;
 import android.content.Context;
@@ -46,7 +46,7 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 返回之前的操作，如果需要集成
      */
-    private void beforeReturn() {
+    public void beforeReturn() {
     }
 
     protected abstract int getLayoutResource();

@@ -1,6 +1,6 @@
-package com.shun.blog.baserx;
+package com.shun.blog.base.net;
 
-import com.shun.blog.base.BaseResponse;
+import com.shun.blog.base.ui.BaseResponse;
 import com.socks.library.KLog;
 
 import rx.Subscriber;

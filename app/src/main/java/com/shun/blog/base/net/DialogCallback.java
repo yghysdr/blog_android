@@ -1,10 +1,10 @@
-package com.shun.blog.baserx;
+package com.shun.blog.base.net;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.view.Window;
 
-import com.shun.blog.base.BaseResponse;
+import com.shun.blog.base.ui.BaseResponse;
 
 /**
  * 对网络请求结果处理的封装，

@@ -1,9 +1,9 @@
 package com.shun.blog.ui.user.presenter;
 
-import com.shun.blog.base.BaseResponse;
-import com.shun.blog.base.mvp.BaseMvpPresenter;
-import com.shun.blog.baserx.DialogCallback;
-import com.shun.blog.baserx.RxSchedulers;
+import com.shun.blog.base.ui.BaseResponse;
+import com.shun.blog.base.ui.BaseMvpPresenter;
+import com.shun.blog.base.net.DialogCallback;
+import com.shun.blog.base.rx.RxSchedulers;
 import com.shun.blog.bean.User;
 import com.shun.blog.ui.user.activity.LoginActivity;
 import com.shun.blog.ui.user.contract.LoginContract;
@@ -41,7 +41,7 @@ public class LoginPresenterImpl extends BaseMvpPresenter<LoginActivity,
                 .login(user)
                 .compose(RxSchedulers.<BaseResponse<User>>io_main())
                 .delay(1, TimeUnit.SECONDS)
-                .subscribe(new DialogCallback<BaseResponse<User>>(mActivity) {
+                .subscribe(new DialogCallback<BaseResponse<User>>(mContext) {
                     @Override
                     public void onSuccess(BaseResponse<User> result) {
                         mView.loginSuccess(result.data);

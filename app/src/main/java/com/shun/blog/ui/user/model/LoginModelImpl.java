@@ -2,8 +2,8 @@ package com.shun.blog.ui.user.model;
 
 import com.shun.blog.api.AppWebClient;
 import com.shun.blog.api.HostType;
-import com.shun.blog.base.BaseModel;
-import com.shun.blog.base.BaseResponse;
+import com.shun.blog.base.ui.BaseModel;
+import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.User;
 import com.shun.blog.ui.user.contract.LoginContract;
 

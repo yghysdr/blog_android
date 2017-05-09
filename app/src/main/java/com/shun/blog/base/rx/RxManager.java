@@ -1,4 +1,4 @@
-package com.shun.blog.baserx;
+package com.shun.blog.base.rx;
 
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;

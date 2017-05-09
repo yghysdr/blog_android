@@ -2,9 +2,9 @@ package com.shun.blog.api;
 
 import android.util.SparseArray;
 
-import com.shun.blog.api.interceptor.CacheInterceptor;
-import com.shun.blog.api.interceptor.HeaderInterceptor;
-import com.shun.blog.api.interceptor.QueryParInterceptor;
+import com.shun.blog.base.net.CacheInterceptor;
+import com.shun.blog.base.net.HeaderInterceptor;
+import com.shun.blog.base.net.QueryParInterceptor;
 import com.shun.blog.app.Global;
 
 import java.util.concurrent.TimeUnit;

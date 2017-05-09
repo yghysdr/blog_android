@@ -1,6 +1,6 @@
 package com.shun.blog.ui.user.contract;
 
-import com.shun.blog.base.BaseResponse;
+import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.User;
 
 import rx.Observable;

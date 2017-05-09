@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,14 +8,23 @@
     tools:context="com.shun.blog.ui.home.activity.HomeActivity">
 
     <com.shun.blog.weights.MyToolbar
+        android:id="@+id/home_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:appName="@string/app_name"
         app:closeActivity="false" />
 
+    <FrameLayout
+        android:id="@+id/home_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/home_bar" />
+
     <Button
+        android:visibility="gone"
         android:id="@+id/home_login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:text="Hello World!" />
-</LinearLayout>
+</RelativeLayout>

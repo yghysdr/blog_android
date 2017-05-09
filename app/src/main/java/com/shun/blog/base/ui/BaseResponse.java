@@ -1,4 +1,4 @@
-package com.shun.blog.base;
+package com.shun.blog.base.ui;
 
 /**
  * Created by yghysdr on 16/11/26.

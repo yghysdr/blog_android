@@ -1,4 +1,4 @@
-package com.shun.blog.base;
+package com.shun.blog.bean;
 
 import java.io.Serializable;
 
@@ -8,6 +8,4 @@ import java.io.Serializable;
  */
 
 public class BaseBean implements Serializable {
-    //item在recyclerView中的位置
-    public int mItemPosition;
 }

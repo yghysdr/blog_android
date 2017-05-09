@@ -1,8 +1,8 @@
-package com.shun.blog.base.mvp;
+package com.shun.blog.base.ui;
 
 import android.app.Activity;
 
-import com.shun.blog.baserx.RxManager;
+import com.shun.blog.base.rx.RxManager;
 
 /**
  * mvp的基类Presenter
@@ -13,7 +13,7 @@ import com.shun.blog.baserx.RxManager;
 public abstract class BaseMvpPresenter<V, M> {
     protected V mView;
     protected M mMode;
-    protected Activity mActivity;
+    protected Activity mContext;
     protected RxManager mRxManage = new RxManager();
 
     /**

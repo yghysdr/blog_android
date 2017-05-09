@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.shun.blog.R;
-import com.shun.blog.base.mvp.BaseMvpActivity;
+import com.shun.blog.base.ui.BaseMvpActivity;
 import com.shun.blog.bean.User;
 import com.shun.blog.ui.user.contract.LoginContract;
 import com.shun.blog.ui.user.model.LoginModelImpl;

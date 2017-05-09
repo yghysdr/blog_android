@@ -1,4 +1,4 @@
-package com.shun.blog.base;
+package com.shun.blog.base.ui;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;

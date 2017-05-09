@@ -1,4 +1,4 @@
-package com.shun.blog.baserx;
+package com.shun.blog.base.rx;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;

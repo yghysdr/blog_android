@@ -1,10 +1,8 @@
-package com.shun.blog.base.mvp;
+package com.shun.blog.base.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.shun.blog.base.BaseActivity;
-import com.shun.blog.base.BaseModel;
 import com.shun.blog.utils.TUtil;
 
 /**
@@ -29,7 +27,7 @@ public abstract class BaseMvpActivity<P extends BaseMvpPresenter, M extends Base
         mPresenter = TUtil.getT(this, 0);
         mPresenter.attachView(this);
         mPresenter.mMode = TUtil.getT(this, 1);
-        mPresenter.mActivity = this;
+        mPresenter.mContext = this;
         super.onCreate(savedInstanceState);
     }
 
