@@ -1,4 +1,4 @@
-package com.shun.blog.base.weight;
+package com.yghysdr.srecycleview;
 
 /**
  * Created by yghysdr on 2017/5/8.

@@ -1,4 +1,4 @@
-package com.shun.blog.bean;
+package com.yghysdr.srecycleview;
 
 import java.io.Serializable;
 

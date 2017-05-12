@@ -1,4 +1,4 @@
-package com.shun.blog.base.weight;
+package com.yghysdr.srecycleview;
 
 
 import android.content.Context;
@@ -6,21 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.shun.blog.R;
-
-import butterknife.BindView;
-
 /**
  */
 public class FooterHolder extends BaseHolder implements IFooterHolder {
 
-    @BindView(R.id.item_more_loading)
     TextView itemMoreLoading;
-    @BindView(R.id.item_more_no)
     TextView itemMoreNo;
 
     public FooterHolder(Context context, ViewGroup root) {
         super(context, root, R.layout.item_footer);
+        itemMoreNo = (TextView) itemView.findViewById(R.id.item_more_no);
+        itemMoreLoading = (TextView) itemView.findViewById(R.id.item_more_loading);
     }
 
     @Override

@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.shun.blog.R;
-import com.shun.blog.base.weight.BaseHolder;
+import com.shun.blog.base.ui.MyBaseHolder;
 import com.shun.blog.bean.HomeBean;
 
 import butterknife.BindView;
@@ -14,7 +14,7 @@ import butterknife.BindView;
  * Created by yghysdr on 2017/5/8.
  */
 
-public class HomeHolder extends BaseHolder<HomeBean> {
+public class HomeHolder extends MyBaseHolder<HomeBean> {
     @BindView(R.id.home_item_title)
     TextView homeItemTitle;
 

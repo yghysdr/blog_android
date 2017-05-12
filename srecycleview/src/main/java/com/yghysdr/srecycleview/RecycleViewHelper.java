@@ -1,10 +1,8 @@
-package com.shun.blog.base.weight;
+package com.yghysdr.srecycleview;
 
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
-
-import com.shun.blog.bean.BaseBean;
 
 import java.util.Collection;
 
@@ -96,7 +94,6 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
      * @param beanList
      */
     public void addDataToView(Collection<BaseBean> beanList) {
-        mRequestStatus = 0;
         stopRequest();
         if (mQuestNum == 1) {
             mBaseRVAdapter.clear();
@@ -118,6 +115,7 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
     }
 
     public void stopRequest() {
+        mRequestStatus = 0;
         mSwipeRefreshLayout.setRefreshing(false);
         mSwipeRefreshLayout.setEnabled(true);
     }

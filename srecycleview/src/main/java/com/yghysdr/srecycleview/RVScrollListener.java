@@ -1,4 +1,4 @@
-package com.shun.blog.base.weight;
+package com.yghysdr.srecycleview;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

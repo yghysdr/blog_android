@@ -1,10 +1,8 @@
-package com.shun.blog.base.weight;
+package com.yghysdr.srecycleview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-
-import com.shun.blog.bean.BaseBean;
 
 import java.util.ArrayList;
 import java.util.Collection;

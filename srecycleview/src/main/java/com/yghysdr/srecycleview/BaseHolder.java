@@ -1,11 +1,9 @@
-package com.shun.blog.base.weight;
+package com.yghysdr.srecycleview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
-import butterknife.ButterKnife;
 
 /**
  * 对Holder的封装
@@ -20,7 +18,6 @@ public abstract class BaseHolder<D> extends RecyclerView.ViewHolder {
 
     public BaseHolder(Context context, ViewGroup root, int layoutRes) {
         super(LayoutInflater.from(context).inflate(layoutRes, root, false));
-        ButterKnife.bind(this, itemView);
         mContext = context;
     }
 

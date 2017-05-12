@@ -3,9 +3,9 @@ package com.shun.blog.ui.home.presenter;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import com.shun.blog.base.weight.BaseHolder;
-import com.shun.blog.base.weight.BaseRVAdapter;
 import com.shun.blog.ui.home.activity.HomeHolder;
+import com.yghysdr.srecycleview.BaseHolder;
+import com.yghysdr.srecycleview.BaseRVAdapter;
 
 /**
  * Created by yghysdr on 2017/5/8.

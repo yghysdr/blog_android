@@ -7,14 +7,14 @@ import android.support.v7.widget.RecyclerView;
 
 import com.shun.blog.R;
 import com.shun.blog.base.ui.BaseMvpFragment;
-import com.shun.blog.base.weight.BaseRVAdapter;
-import com.shun.blog.base.weight.RecycleViewHelper;
-import com.shun.blog.bean.BaseBean;
 import com.shun.blog.bean.HomeBean;
 import com.shun.blog.ui.home.contract.HomeContract;
 import com.shun.blog.ui.home.model.HomeModelImpl;
 import com.shun.blog.ui.home.presenter.HomeAdapter;
 import com.shun.blog.ui.home.presenter.HomePresenterImpl;
+import com.yghysdr.srecycleview.BaseBean;
+import com.yghysdr.srecycleview.BaseRVAdapter;
+import com.yghysdr.srecycleview.RecycleViewHelper;
 
 import java.util.ArrayList;
 import java.util.List;

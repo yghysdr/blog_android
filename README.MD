@@ -13,3 +13,4 @@ RecycleView+SwipeRefreshLayout组合，实现上啦加载更多，下拉刷新�
 - 实现RecycleViewHelper的Helper借口
 - 数据请求成功时调用 mHelper.addDataToView(...);
 - 数据请求失败时调用 mHelper.stopRequest();
+## RecycleViewHelper抽取成库

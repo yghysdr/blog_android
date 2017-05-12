@@ -1,6 +1,4 @@
-package com.shun.blog.base.weight;
-
-import com.shun.blog.bean.BaseBean;
+package com.yghysdr.srecycleview;
 
 /**
  * Created by yghysdr on 2017/5/8.
