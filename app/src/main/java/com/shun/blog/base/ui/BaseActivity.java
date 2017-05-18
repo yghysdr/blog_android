@@ -1,6 +1,7 @@
 package com.shun.blog.base.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,6 +25,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     protected BaseApplication mBaseApplication;
     protected Context mBaseActivity;
     protected P mPresenter;
+    protected boolean mFinishAnim = true, mStartAnim = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,5 +71,21 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
             mPresenter.detachView();
         }
         AppManager.getAppManager().finishActivity(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        if (mStartAnim) {
+            overridePendingTransition(R.anim.slide_right_in, R.anim.slide_left_out);
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        if (mFinishAnim) {
+            overridePendingTransition(R.anim.slide_left_in, R.anim.slide_right_out);
+        }
     }
 }

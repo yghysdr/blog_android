@@ -99,3 +99,4 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     protected abstract int getLayoutResource();
 }
 ```
+## 主页框架搭建

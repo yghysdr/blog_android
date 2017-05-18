@@ -1,20 +1,22 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shun.blog.ui.user.view.UserFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.shun.blog.ui.user.view.UserFragment">
 
     <com.shun.blog.weights.MyToolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:appName="用户中心"
         app:closeActivity="false" />
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/user_exit_btn"
+        style="@style/btn_1"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="20dp"
+        android:text="退出" />
+
+</FrameLayout>

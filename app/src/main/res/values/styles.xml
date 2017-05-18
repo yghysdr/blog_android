@@ -9,7 +9,7 @@
     </style>
 
     <!--主页底部tab-->
-    <style name="home_bottom_tab_style">
+    <style name="tab_bottom_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:button">@null</item>
@@ -19,7 +19,14 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="btn_1">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:minWidth">100dp</item>
+        <item name="android:minHeight">38dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

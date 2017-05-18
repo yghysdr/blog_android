@@ -14,6 +14,7 @@ import com.shun.blog.bean.User;
 import com.shun.blog.ui.user.contract.LoginContract;
 import com.shun.blog.ui.user.presenter.LoginPresenterImpl;
 import com.shun.blog.utils.MD5;
+import com.shun.blog.utils.UserData;
 import com.shun.blog.utils.Validation;
 import com.socks.library.KLog;
 
@@ -30,6 +31,7 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl>
     AutoCompleteTextView mPhoneView;
     @BindView(R.id.password)
     EditText mPasswordView;
+    private User mTempUser;
 
     @Override
     public int getLayoutResource() {
@@ -39,6 +41,7 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl>
     @Override
     protected void init() {
         super.init();
+        mPhoneView.setText(UserData.getExitPhone());
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -75,10 +78,10 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl>
         if (cancel) {
             focusView.requestFocus();
         } else {
-            User user = new User();
-            user.phone = email;
-            user.password = MD5.md5(password);
-            mPresenter.login(user);
+            mTempUser = new User();
+            mTempUser.phone = email;
+            mTempUser.password = MD5.md5(password);
+            mPresenter.login(mTempUser);
         }
     }
 
@@ -93,7 +96,9 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl>
 
     @Override
     public void loginSuccess(User user) {
-        KLog.d("登入成功");
+        user.phone = mTempUser.phone;
+        UserData.saveCurrentUser(user);
+        onBackPressed();
     }
 
     @Override

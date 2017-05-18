@@ -30,7 +30,7 @@ public class UserData {
         mContext = context;
     }
 
-    public static String exitUser() {
+    public static String getExitPhone() {
         return (String) SPUtils.get(mContext, EXIT_USER_PHONE, "");
     }
 
@@ -87,7 +87,7 @@ public class UserData {
      */
     public static void deleteCurrentUser() {
         User currentUserModel = getCurrentUser();
-        if (currentUserModel != null) {
+        if (currentUserModel != null && !TextUtils.isEmpty(currentUserModel.phone)) {
             SPUtils.put(mContext, EXIT_USER_PHONE, currentUserModel.phone);
         }
         SPUtils.remove(mContext, USER_INFO);

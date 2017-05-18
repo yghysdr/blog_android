@@ -1,8 +1,8 @@
 package com.shun.blog;
 
-import android.app.Activity;
 import android.content.Intent;
 
+import com.shun.blog.base.ui.BaseActivity;
 import com.shun.blog.ui.user.view.LoginActivity;
 
 /**
@@ -11,7 +11,7 @@ import com.shun.blog.ui.user.view.LoginActivity;
 
 public class Jump {
 
-    public static void login(Activity activity) {
+    public static void login(BaseActivity activity) {
         activity.startActivity(new Intent(activity, LoginActivity.class));
     }
 }

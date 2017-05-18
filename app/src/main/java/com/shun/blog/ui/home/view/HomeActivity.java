@@ -5,11 +5,13 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.shun.blog.Jump;
 import com.shun.blog.R;
 import com.shun.blog.base.ui.BaseActivity;
 import com.shun.blog.ui.article.view.NewFragment;
 import com.shun.blog.ui.home.presenter.HomePagerAdapter;
 import com.shun.blog.ui.user.view.UserFragment;
+import com.shun.blog.utils.UserData;
 import com.shun.blog.weights.NoScrollViewPager;
 
 import java.util.ArrayList;
@@ -42,6 +44,7 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void init() {
         super.init();
+        mFinishAnim = false;
         HomeFragment homeFragment = HomeFragment.newInstance();
         UserFragment userFragment = UserFragment.newInstance();
         NewFragment newFragment = NewFragment.newInstance();
@@ -65,7 +68,11 @@ public class HomeActivity extends BaseActivity {
                 homeVp.setCurrentItem(1, false);
                 break;
             case R.id.home_user_rb:
-                homeVp.setCurrentItem(2, false);
+                if (UserData.getCurrentUser() == null) {
+                    Jump.login(this);
+                } else {
+                    homeVp.setCurrentItem(2, false);
+                }
                 break;
         }
     }
