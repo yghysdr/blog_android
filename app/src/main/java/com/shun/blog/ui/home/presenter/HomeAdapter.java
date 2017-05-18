@@ -3,7 +3,7 @@ package com.shun.blog.ui.home.presenter;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import com.shun.blog.ui.home.activity.HomeHolder;
+import com.shun.blog.ui.home.view.HomeHolder;
 import com.yghysdr.srecycleview.BaseHolder;
 import com.yghysdr.srecycleview.BaseRVAdapter;
 

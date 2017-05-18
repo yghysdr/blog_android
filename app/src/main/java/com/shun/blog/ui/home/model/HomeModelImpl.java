@@ -5,7 +5,7 @@ import com.shun.blog.api.HostType;
 import com.shun.blog.base.ui.BaseModel;
 import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.HomeBean;
-import com.shun.blog.ui.home.contract.HomeContract;
+import com.shun.blog.ui.home.view.HomeContract;
 
 import java.util.List;
 

@@ -10,18 +10,20 @@ import com.shun.blog.BaseApplication;
 import com.shun.blog.R;
 import com.shun.blog.app.AppManager;
 import com.shun.blog.utils.StatusBarUtil;
+import com.shun.blog.utils.TUtil;
 
 import butterknife.ButterKnife;
 
 /**
  * Created by yghysdr on 16/11/26.
  * 所有Activity共同的
+ * 如果是MVP模式，只需要实现泛型P即可
  */
-
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity {
 
     protected BaseApplication mBaseApplication;
     protected Context mBaseActivity;
+    protected P mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +34,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mBaseApplication = BaseApplication.instance;
         mBaseActivity = this;
+        mPresenter = TUtil.getT(this, 0);
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
+            mPresenter.mContext = this;
+        }
         ButterKnife.bind(this);
         initStatusBar();
         init();
@@ -58,6 +65,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.detachView();
+        }
         AppManager.getAppManager().finishActivity(this);
     }
 }

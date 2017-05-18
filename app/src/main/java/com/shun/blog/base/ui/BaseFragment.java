@@ -3,54 +3,51 @@ package com.shun.blog.base.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.shun.blog.utils.TUtil;
+
 import butterknife.ButterKnife;
 
 /**
  * Created by yghysdr on 16/12/1.
+ * 1 如果是mvp模式只需要实现泛型P即可
+ * 2 该fragment是否被复用。通常结合FragmentPagerAdapter
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
 
     protected Activity mActivity;
     protected View mRootView;
-    /**
-     * 该fragment是否被复用。通常结合FragmentPagerAdapter
-     */
-    protected boolean mRepeatUse = false;
+    protected P mPresenter;
+    protected boolean mReUse = false;
+    //懒加载
     private boolean isViewCreated, isUIVisible;
 
-    /**
-     * 在onCreate之后执行
-     *
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
-     */
+
+    //onAttach--onCreate--onCreateView--onViewCreated
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if (mRootView != null && mRepeatUse) {
+        if (mReUse && mRootView != null) {
             return mRootView;
         }
         mRootView = inflater.inflate(getLayoutResource(), container, false);
         ButterKnife.bind(this, mRootView);
+        mPresenter = TUtil.getT(this, 0);
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
+            mPresenter.mContext = getActivity();
+        }
+        isViewCreated = true;
+        isLazyLoad();
         beforeReturn();
         return mRootView;
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        isViewCreated = true;
-        isLazyLoad();
-    }
 
     /**
      * 返回之前的操作，如果需要集成
@@ -63,7 +60,7 @@ public abstract class BaseFragment extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             isUIVisible = true;
-            lazyLoad();
+            isLazyLoad();
         } else {
             isUIVisible = false;
         }
@@ -78,10 +75,9 @@ public abstract class BaseFragment extends Fragment {
     }
 
     /**
-     * 延迟加载 * 子类必须重写此方法 取消预加载实现此方法
+     * 懒加载
      */
     protected void lazyLoad() {
-
     }
 
     /**
@@ -99,8 +95,16 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mRepeatUse) {
+        if (mReUse) {
             ((ViewGroup) mRootView.getParent()).removeView(mRootView);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.detachView();
         }
     }
 

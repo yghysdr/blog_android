@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.shun.blog.ui.home.activity.HomeActivity">
+    tools:context="com.shun.blog.ui.home.view.HomeActivity">
 
-    <com.shun.blog.weights.MyToolbar
-        android:id="@+id/home_bar"
+
+    <include
+        android:id="@+id/tab_i"
+        layout="@layout/include_home_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:appName="@string/app_name"
-        app:closeActivity="false" />
+        android:layout_alignParentBottom="true" />
 
-    <FrameLayout
-        android:id="@+id/home_fl"
+    <com.shun.blog.weights.NoScrollViewPager
+        android:id="@+id/home_vp"
+        android:layout_above="@id/tab_i"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/home_bar" />
+        android:layout_height="match_parent" />
 
-    <Button
-        android:visibility="gone"
-        android:id="@+id/home_login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="Hello World!" />
+
 </RelativeLayout>

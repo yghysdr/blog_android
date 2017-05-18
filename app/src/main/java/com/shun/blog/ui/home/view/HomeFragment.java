@@ -1,4 +1,4 @@
-package com.shun.blog.ui.home.activity;
+package com.shun.blog.ui.home.view;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,10 +7,8 @@ import android.view.View;
 
 import com.shun.blog.R;
 import com.shun.blog.base.net.Error;
-import com.shun.blog.base.ui.BaseMvpFragment;
+import com.shun.blog.base.ui.BaseFragment;
 import com.shun.blog.bean.HomeBean;
-import com.shun.blog.ui.home.contract.HomeContract;
-import com.shun.blog.ui.home.model.HomeModelImpl;
 import com.shun.blog.ui.home.presenter.HomeAdapter;
 import com.shun.blog.ui.home.presenter.HomePresenterImpl;
 import com.shun.blog.weights.multistatelayout.MultiStateLayout;
@@ -24,7 +22,7 @@ import butterknife.BindView;
 
 /**
  */
-public class HomeFragment extends BaseMvpFragment<HomePresenterImpl, HomeModelImpl>
+public class HomeFragment extends BaseFragment<HomePresenterImpl>
         implements HomeContract.View, RecycleViewHelper.Helper {
 
     @BindView(R.id.home_rv)
@@ -38,6 +36,7 @@ public class HomeFragment extends BaseMvpFragment<HomePresenterImpl, HomeModelIm
     private boolean mHaveData;
 
     public HomeFragment() {
+        mReUse = true;
     }
 
     public static HomeFragment newInstance() {
@@ -50,8 +49,8 @@ public class HomeFragment extends BaseMvpFragment<HomePresenterImpl, HomeModelIm
     }
 
     @Override
-    public void beforeReturn() {
-        super.beforeReturn();
+    protected void lazyLoad() {
+        super.lazyLoad();
         homeMulti.setState(MultiStateLayout.State.LOADING);
         mHelper = new RecycleViewHelper(mActivity, homeRv, new HomeAdapter(getActivity()),
                 new LinearLayoutManager(getActivity()), homeSrl, this);
@@ -68,7 +67,6 @@ public class HomeFragment extends BaseMvpFragment<HomePresenterImpl, HomeModelIm
                     });
         }
     }
-
 
     @Override
     public void onSuccess(List<HomeBean> beanList) {

@@ -2,10 +2,11 @@ package com.shun.blog.ui.home.presenter;
 
 import com.shun.blog.base.net.JsonCallback;
 import com.shun.blog.base.rx.RxSchedulers;
-import com.shun.blog.base.ui.BaseMvpPresenter;
+import com.shun.blog.base.ui.BasePresenter;
 import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.HomeBean;
-import com.shun.blog.ui.home.contract.HomeContract;
+import com.shun.blog.ui.home.view.HomeContract;
+import com.shun.blog.ui.home.model.HomeModelImpl;
 import com.yghysdr.srecycleview.IFooter;
 
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.concurrent.TimeUnit;
  * Created by yghysdr on 2017/04/27
  */
 
-public class HomePresenterImpl extends BaseMvpPresenter<HomeContract.View,
-        HomeContract.Model> implements HomeContract.Presenter {
+public class HomePresenterImpl extends BasePresenter<HomeContract.View,
+        HomeModelImpl> implements HomeContract.Presenter {
 
     @IFooter.Status
     int haveMore;

@@ -1,8 +1,9 @@
 package com.shun.blog.base.ui;
 
-import android.app.Activity;
+import android.content.Context;
 
 import com.shun.blog.base.rx.RxManager;
+import com.shun.blog.utils.TUtil;
 
 /**
  * mvp的基类Presenter
@@ -10,10 +11,10 @@ import com.shun.blog.base.rx.RxManager;
  *
  * @param <V>
  */
-public abstract class BaseMvpPresenter<V, M> {
+public abstract class BasePresenter<V, M extends BaseModel> {
     protected V mView;
     protected M mMode;
-    protected Activity mContext;
+    protected Context mContext;
     protected RxManager mRxManage = new RxManager();
 
     /**
@@ -23,6 +24,7 @@ public abstract class BaseMvpPresenter<V, M> {
      */
     protected void attachView(V mvpView) {
         this.mView = mvpView;
+        mMode = TUtil.getT(this, 1);
     }
 
     protected void detachView() {

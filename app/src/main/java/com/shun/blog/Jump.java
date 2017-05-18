@@ -3,7 +3,7 @@ package com.shun.blog;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.shun.blog.ui.user.activity.LoginActivity;
+import com.shun.blog.ui.user.view.LoginActivity;
 
 /**
  * Created by yghysdr on 2017/4/28.

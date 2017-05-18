@@ -1,4 +1,4 @@
-package com.shun.blog.ui.user.activity;
+package com.shun.blog.ui.user.view;
 
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -9,10 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.shun.blog.R;
-import com.shun.blog.base.ui.BaseMvpActivity;
+import com.shun.blog.base.ui.BaseActivity;
 import com.shun.blog.bean.User;
 import com.shun.blog.ui.user.contract.LoginContract;
-import com.shun.blog.ui.user.model.LoginModelImpl;
 import com.shun.blog.ui.user.presenter.LoginPresenterImpl;
 import com.shun.blog.utils.MD5;
 import com.shun.blog.utils.Validation;
@@ -24,8 +23,8 @@ import butterknife.OnClick;
 /**
  * 登入
  */
-public class LoginActivity extends BaseMvpActivity<LoginPresenterImpl,
-        LoginModelImpl> implements LoginContract.View {
+public class LoginActivity extends BaseActivity<LoginPresenterImpl>
+        implements LoginContract.View {
 
     @BindView(R.id.phone)
     AutoCompleteTextView mPhoneView;

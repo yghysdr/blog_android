@@ -28,3 +28,74 @@ org.gradle.java.home=/Applications/Android Studio.app/Contents/jre/jdk/Contents/
 
 [新版Bintray-极简上传Library到JCenter](https://juejin.im/post/5858cc37570c35006916b718)
 ## 处理网络请求状态
+
+## 优化
+### 懒加载
+```
+public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
+
+    protected boolean mReUse = false;
+    //懒加载
+    private boolean isViewCreated, isUIVisible;
+
+
+    //onAttach--onCreate--onCreateView--onViewCreated
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        if (mReUse && mRootView != null) {
+            return mRootView;
+        }
+        mRootView = inflater.inflate(getLayoutResource(), container, false);
+        //在onCreateView判断试图是否加载时为了复用fragment时不重新判断懒加载isViewCreated
+        isViewCreated = true;
+        isLazyLoad();
+        beforeReturn();
+        return mRootView;
+    }
+
+
+    /**
+     * 返回之前的操作，如果需要集成
+     */
+    public void beforeReturn() {
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            isUIVisible = true;
+            isLazyLoad();
+        } else {
+            isUIVisible = false;
+        }
+    }
+
+    private void isLazyLoad() {
+        if (isViewCreated && isUIVisible) {
+            lazyLoad();
+            isViewCreated = false;
+            isUIVisible = false;
+        }
+    }
+
+    /**
+     * 懒加载
+     */
+    protected void lazyLoad() {
+
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (mReUse) {
+            ((ViewGroup) mRootView.getParent()).removeView(mRootView);
+        }
+    }
+
+    protected abstract int getLayoutResource();
+}
+```

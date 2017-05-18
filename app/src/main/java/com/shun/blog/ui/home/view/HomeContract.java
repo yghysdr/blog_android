@@ -1,4 +1,4 @@
-package com.shun.blog.ui.home.contract;
+package com.shun.blog.ui.home.view;
 
 import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.HomeBean;

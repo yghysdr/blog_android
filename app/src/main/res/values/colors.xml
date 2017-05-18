@@ -3,4 +3,6 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="line_hov">#d8d8d8</color>
+    <color name="txt_1">#929292</color>
 </resources>
