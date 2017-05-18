@@ -17,13 +17,13 @@ public class HomeContract {
     public interface View {
         void onSuccess(List<HomeBean> beanList);
 
-        void onFailed();
+        void onFailed(int errorNo, String errorMsg);
     }
 
     public interface Presenter {
         void requestData(int page, int pageSize);
 
-        boolean haveMore();
+        int haveMore();
     }
 
     public interface Model {

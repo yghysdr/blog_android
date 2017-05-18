@@ -23,4 +23,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--<string name="network_error">Network Error</string>-->
+    <string name="status_empty">NO DATA</string>
+    <string name="status_error">Error</string>
+    <string name="status_error_net">Network problems/(ㄒoㄒ)/~~</string>
+
 </resources>

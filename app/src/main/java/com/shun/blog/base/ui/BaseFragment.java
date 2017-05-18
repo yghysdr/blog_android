@@ -3,6 +3,7 @@ package com.shun.blog.base.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ public abstract class BaseFragment extends Fragment {
      * 该fragment是否被复用。通常结合FragmentPagerAdapter
      */
     protected boolean mRepeatUse = false;
+    private boolean isViewCreated, isUIVisible;
 
     /**
      * 在onCreate之后执行
@@ -43,43 +45,37 @@ public abstract class BaseFragment extends Fragment {
         return mRootView;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        isViewCreated = true;
+        isLazyLoad();
+    }
+
     /**
      * 返回之前的操作，如果需要集成
      */
     public void beforeReturn() {
     }
 
-    protected abstract int getLayoutResource();
-
-    protected boolean isVisible;
-
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (getUserVisibleHint()) {
-            isVisible = true;
-            onVisible();
+        if (isVisibleToUser) {
+            isUIVisible = true;
+            lazyLoad();
         } else {
-            isVisible = false;
-            onInvisible();
+            isUIVisible = false;
         }
     }
 
-    /**
-     * 可见
-     */
-    protected void onVisible() {
-        lazyLoad();
+    private void isLazyLoad() {
+        if (isViewCreated && isUIVisible) {
+            lazyLoad();
+            isViewCreated = false;
+            isUIVisible = false;
+        }
     }
-
-
-    /**
-     * 不可见
-     */
-    protected void onInvisible() {
-
-    }
-
 
     /**
      * 延迟加载 * 子类必须重写此方法 取消预加载实现此方法
@@ -107,4 +103,6 @@ public abstract class BaseFragment extends Fragment {
             ((ViewGroup) mRootView.getParent()).removeView(mRootView);
         }
     }
+
+    protected abstract int getLayoutResource();
 }

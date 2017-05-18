@@ -17,24 +17,23 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
      */
     public static final int EVERY_PAGE_COUNT = 10;
 
-    Context mContext;
-    RecyclerView mRecyclerView;
-    BaseRVAdapter mBaseRVAdapter;
-    RecyclerView.LayoutManager mLayoutManager;
-    SwipeRefreshLayout mSwipeRefreshLayout;
+    private Context mContext;
+    private RecyclerView mRecyclerView;
+    private BaseRVAdapter mBaseRVAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     /**
      * 当前是第几次请求
      */
-    public int mQuestNum = 0;
+    private int mQuestCount = 0;
 
-    /**
-     * 0 未请求数据
-     * 1
-     */
-    private int mRequestStatus = 0;
 
-    public boolean mHaveMoreDate = false;
+    private boolean mRequestingData = false;
+
+    @IFooter.Status
+    private int mDataStatus = 0;
+
     private final FooterHolder mHolder;
 
     public RecycleViewHelper(Context context,
@@ -52,9 +51,13 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
         mRecyclerView.setLayoutManager(layoutManager);
         mHolder = new FooterHolder(mContext, null);
         mHelper = helper;
-        onRefresh();
         initListener();
     }
+
+    public int getQuestCount() {
+        return mQuestCount;
+    }
+
 
     private void initListener() {
         mSwipeRefreshLayout.setOnRefreshListener(this);
@@ -71,17 +74,17 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
     @Override
     public void onRefresh() {
         mSwipeRefreshLayout.setRefreshing(true);
-        mHaveMoreDate = true;
-        mQuestNum = 0;
+        mDataStatus = IFooter.HAVE_MORE;
+        mQuestCount = 0;
         readyData();
     }
 
-    public void readyData() {
-        if (mHaveMoreDate && mRequestStatus == 0) {
-            mQuestNum++;
-            mRequestStatus = 1;
+    private void readyData() {
+        if (mDataStatus == IFooter.HAVE_MORE && !mRequestingData) {
+            mQuestCount++;
+            mRequestingData = true;
             if (mHelper != null) {
-                mHelper.requestData(mQuestNum, EVERY_PAGE_COUNT);
+                mHelper.requestData(mQuestCount, EVERY_PAGE_COUNT);
             } else {
                 stopRequest();
             }
@@ -95,29 +98,25 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
      */
     public void addDataToView(Collection<BaseBean> beanList) {
         stopRequest();
-        if (mQuestNum == 1) {
+        if (mQuestCount == 1) {
             mBaseRVAdapter.clear();
             mBaseRVAdapter.addAll(beanList);
             mBaseRVAdapter.setFooterView(mHolder);
         } else {
             mBaseRVAdapter.addAll(beanList);
         }
-        if (mHelper != null) {
-            mHaveMoreDate = mHelper.haveMoreData();
-        } else {
-            mHaveMoreDate = false;
-        }
-        if (mHaveMoreDate) {
-            mHolder.setStatus(0);
-        } else {
-            mHolder.setStatus(1);
-        }
     }
 
     public void stopRequest() {
-        mRequestStatus = 0;
+        mRequestingData = false;
         mSwipeRefreshLayout.setRefreshing(false);
         mSwipeRefreshLayout.setEnabled(true);
+        if (mHelper != null) {
+            mDataStatus = mHelper.haveMoreData();
+        } else {
+            mDataStatus = IFooter.NO_MORE;
+        }
+        mHolder.setStatus(mDataStatus);
     }
 
     public Helper mHelper;
@@ -125,6 +124,7 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
     public interface Helper {
         void requestData(int page, int size);
 
-        boolean haveMoreData();
+        @IFooter.Status
+        int haveMoreData();
     }
 }

@@ -28,7 +28,7 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void init() {
         super.init();
-        HomeFragment homeFragment = HomeFragment.newInstance("", "");
+        HomeFragment homeFragment = HomeFragment.newInstance();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.home_fl, homeFragment);
         transaction.commit();

@@ -6,8 +6,8 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.shun.blog.R;
@@ -16,7 +16,7 @@ import com.shun.blog.R;
  * Created by yghysdr on 2017/4/28.
  */
 
-public class MyToolbar extends RelativeLayout implements View.OnClickListener {
+public class MyToolbar extends FrameLayout implements View.OnClickListener {
 
     ImageView appBackIv;
     TextView appTitleTv;
@@ -26,15 +26,11 @@ public class MyToolbar extends RelativeLayout implements View.OnClickListener {
     private boolean mCloseActivity;
 
     public MyToolbar(Context context) {
-        super(context);
-        init(context);
+        this(context, null);
     }
 
     public MyToolbar(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context);
-        initAttrs(context, attrs);
-        initDate();
+        this(context, attrs, 0);
     }
 
     public MyToolbar(Context context, AttributeSet attrs, int defStyleAttr) {

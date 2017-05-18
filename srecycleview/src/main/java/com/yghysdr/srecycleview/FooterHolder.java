@@ -8,15 +8,20 @@ import android.widget.TextView;
 
 /**
  */
-public class FooterHolder extends BaseHolder implements IFooterHolder {
+public class FooterHolder extends BaseHolder implements IFooter {
+
+    @Status
+    int mCurState;
 
     TextView itemMoreLoading;
     TextView itemMoreNo;
+    TextView itemError;
 
     public FooterHolder(Context context, ViewGroup root) {
         super(context, root, R.layout.item_footer);
         itemMoreNo = (TextView) itemView.findViewById(R.id.item_more_no);
         itemMoreLoading = (TextView) itemView.findViewById(R.id.item_more_loading);
+        itemError = (TextView) itemView.findViewById(R.id.item_error);
     }
 
     @Override
@@ -25,18 +30,16 @@ public class FooterHolder extends BaseHolder implements IFooterHolder {
     }
 
     @Override
-    public void setStatus(int status) {
-        if (status == 0) {
-            itemMoreLoading.setVisibility(View.VISIBLE);
-            itemMoreNo.setVisibility(View.GONE);
-        } else {
-            itemMoreLoading.setVisibility(View.GONE);
-            itemMoreNo.setVisibility(View.VISIBLE);
-        }
+    public void setStatus(@Status int status) {
+        mCurState = status;
+        itemMoreLoading.setVisibility(status == HAVE_MORE ? View.VISIBLE : View.GONE);
+        itemMoreNo.setVisibility(status == NO_MORE ? View.VISIBLE : View.GONE);
+        itemError.setVisibility(status == ERROR ? View.VISIBLE : View.GONE);
     }
 
+    @Status
     @Override
-    public void getStatus() {
-
+    public int getStatus() {
+        return mCurState;
     }
 }

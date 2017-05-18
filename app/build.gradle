@@ -49,6 +49,6 @@ dependencies {
     compile rootProject.ext.dependencies["glide"]
 
     testCompile 'junit:junit:4.12'
-//    compile project(path: ':srecycleview')
-    compile 'com.yghysdr:srecycleview:1.0.0'
+    compile project(path: ':srecycleview')
+//    compile 'com.yghysdr:srecycleview:1.0.0'
 }

@@ -27,3 +27,4 @@ org.gradle.java.home=/Applications/Android Studio.app/Contents/jre/jdk/Contents/
 ```
 
 [新版Bintray-极简上传Library到JCenter](https://juejin.im/post/5858cc37570c35006916b718)
+## 处理网络请求状态

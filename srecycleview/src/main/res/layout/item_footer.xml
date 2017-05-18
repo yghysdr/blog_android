@@ -3,6 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/item_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="出现点问题..."
+        android:textColor="#FF4081"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/item_more_loading"
