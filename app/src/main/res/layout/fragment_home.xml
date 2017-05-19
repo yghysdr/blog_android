@@ -1,35 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.shun.blog.ui.home.view.HomeFragment">
 
-    <com.shun.blog.weights.MyToolbar
+    <android.support.design.widget.TabLayout
+        android:id="@+id/home_tl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:appName="首页"
-        app:closeActivity="false" />
+        android:background="@color/colorPrimary"
+        app:tabIndicatorColor="@color/line_hov_tab"
+        app:tabSelectedTextColor="@color/txt_tl_on"
+        app:tabTextColor="@color/txt_tl_off" />
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/home_srl"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/home_vp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <com.shun.blog.weights.multistatelayout.MultiStateLayout
-            android:id="@+id/home_multi"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/home_rv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </com.shun.blog.weights.multistatelayout.MultiStateLayout>
-
-
-    </android.support.v4.widget.SwipeRefreshLayout>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

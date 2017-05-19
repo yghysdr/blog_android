@@ -7,7 +7,7 @@ import com.yghysdr.srecycleview.BaseBean;
  * Created by yghysdr on 2017/5/8.
  */
 
-public class HomeBean extends BaseBean {
+public class ArticleBean extends BaseBean {
     /**
      * des : 新描述
      * content : 33

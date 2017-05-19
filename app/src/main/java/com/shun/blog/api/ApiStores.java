@@ -1,7 +1,7 @@
 package com.shun.blog.api;
 
 import com.shun.blog.base.ui.BaseResponse;
-import com.shun.blog.bean.HomeBean;
+import com.shun.blog.bean.ArticleBean;
 import com.shun.blog.bean.User;
 
 import java.util.List;
@@ -19,11 +19,19 @@ import rx.Observable;
 
 public interface ApiStores {
 
-
     @POST("login")
     Observable<BaseResponse<User>> login(@Body User user);
 
-    @GET("list?type=0")
-    Observable<BaseResponse<List<HomeBean>>> getHomeList(@Query("page") int page, @Query("size") int size);
+
+    int list_home = 0;
+    int list_android = 1;
+    int list_web = 2;
+
+    @GET("list")
+    Observable<BaseResponse<List<ArticleBean>>> getHomeList(
+            @Query("type") int type,
+            @Query("page") int page,
+            @Query("size") int size
+    );
 
 }

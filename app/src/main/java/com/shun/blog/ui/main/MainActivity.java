@@ -1,4 +1,4 @@
-package com.shun.blog.ui.home.view;
+package com.shun.blog.ui.main;
 
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -8,8 +8,8 @@ import android.widget.RadioGroup;
 import com.shun.blog.Jump;
 import com.shun.blog.R;
 import com.shun.blog.base.ui.BaseActivity;
-import com.shun.blog.ui.article.view.NewFragment;
-import com.shun.blog.ui.home.presenter.HomePagerAdapter;
+import com.shun.blog.ui.discover.view.DiscoverFragment;
+import com.shun.blog.ui.home.view.HomeFragment;
 import com.shun.blog.ui.user.view.UserFragment;
 import com.shun.blog.utils.UserData;
 import com.shun.blog.weights.NoScrollViewPager;
@@ -20,58 +20,55 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class HomeActivity extends BaseActivity {
+public class MainActivity extends BaseActivity {
 
-
-    @BindView(R.id.home_home_rb)
-    RadioButton homeHomeRb;
-    @BindView(R.id.home_new_rb)
-    RadioButton homeNewRb;
-    @BindView(R.id.home_user_rb)
-    RadioButton homeUserRb;
-    @BindView(R.id.home_tab_rg)
-    RadioGroup homeTabRg;
-    @BindView(R.id.home_vp)
-    NoScrollViewPager homeVp;
-    private HomePagerAdapter mAdapter;
+    @BindView(R.id.main_vp)
+    NoScrollViewPager mainVp;
+    @BindView(R.id.main_home_rb)
+    RadioButton mainHomeRb;
+    @BindView(R.id.main_new_rb)
+    RadioButton mainNewRb;
+    @BindView(R.id.main_user_rb)
+    RadioButton mainUserRb;
+    @BindView(R.id.main_tab_rg)
+    RadioGroup mainTabRg;
+    private MainPagerAdapter mAdapter;
 
     @Override
     public int getLayoutResource() {
-        return R.layout.activity_home;
+        return R.layout.activity_main;
     }
-
 
     @Override
     protected void init() {
         super.init();
         mFinishAnim = false;
         HomeFragment homeFragment = HomeFragment.newInstance();
+        DiscoverFragment discoverFragment = DiscoverFragment.newInstance();
         UserFragment userFragment = UserFragment.newInstance();
-        NewFragment newFragment = NewFragment.newInstance();
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(homeFragment);
-        fragmentList.add(newFragment);
+        fragmentList.add(discoverFragment);
         fragmentList.add(userFragment);
-        mAdapter = new HomePagerAdapter(getSupportFragmentManager(), fragmentList);
-        homeVp.setAdapter(mAdapter);
-        homeVp.setCurrentItem(0);
+        mAdapter = new MainPagerAdapter(getSupportFragmentManager(), fragmentList);
+        mainVp.setAdapter(mAdapter);
+        mainVp.setCurrentItem(0);
     }
 
-
-    @OnClick({R.id.home_home_rb, R.id.home_new_rb, R.id.home_user_rb})
+    @OnClick({R.id.main_home_rb, R.id.main_new_rb, R.id.main_user_rb})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.home_home_rb:
-                homeVp.setCurrentItem(0, false);
+            case R.id.main_home_rb:
+                mainVp.setCurrentItem(0, false);
                 break;
-            case R.id.home_new_rb:
-                homeVp.setCurrentItem(1, false);
+            case R.id.main_new_rb:
+                mainVp.setCurrentItem(1, false);
                 break;
-            case R.id.home_user_rb:
+            case R.id.main_user_rb:
                 if (UserData.getCurrentUser() == null) {
                     Jump.login(this);
                 } else {
-                    homeVp.setCurrentItem(2, false);
+                    mainVp.setCurrentItem(2, false);
                 }
                 break;
         }

@@ -4,18 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.shun.blog.ui.home.view.HomeActivity">
+    tools:context="com.shun.blog.ui.main.MainActivity">
 
 
     <include
         android:id="@+id/tab_i"
-        layout="@layout/include_home_bottom"
+        layout="@layout/include_main_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
     <com.shun.blog.weights.NoScrollViewPager
-        android:id="@+id/home_vp"
+        android:id="@+id/main_vp"
         android:layout_above="@id/tab_i"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

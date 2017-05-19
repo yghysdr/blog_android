@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#298CE5</color>
+    <color name="colorPrimaryDark">#298CE5</color>
+    <color name="colorAccent">#ffffff</color>
     <color name="line_hov">#d8d8d8</color>
-    <color name="txt_1">#929292</color>
+    <color name="line_hov_tab">#ffffff</color>
+    <color name="txt_tl_off">#d5d5d5</color>
+    <color name="txt_tl_on">#ffffff</color>
+    <color name="bg_nav">#ffffff</color>
+
 </resources>

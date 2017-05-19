@@ -7,10 +7,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.List;
 
 /**
- * Created by yghysdr on 2017/5/18.
+ * Created by yghysdr on 2017/5/19.
  */
 
 public class HomePagerAdapter extends FragmentPagerAdapter {
+
     private List<Fragment> mFragmentList;
 
     public HomePagerAdapter(FragmentManager fm, List<Fragment> fragmentList) {
@@ -26,5 +27,18 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return mFragmentList.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        switch (position) {
+            case 0:
+                return "home";
+            case 1:
+                return "android";
+            case 2:
+                return "web";
+        }
+        return super.getPageTitle(position);
     }
 }
