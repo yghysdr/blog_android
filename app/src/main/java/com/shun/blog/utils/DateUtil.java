@@ -80,11 +80,6 @@ public class DateUtil {
     private static final String FORMAT = "yyyy-MM-dd HH:mm:ss";
 
 
-    public static Date str2Date(String str) {
-        return str2Date(str, null);
-    }
-
-
     public static Date str2Date(String str, String format) {
         if (str == null || str.length() == 0) {
             return null;
@@ -100,6 +95,12 @@ public class DateUtil {
             e.printStackTrace();
         }
         return date;
+    }
+
+
+    public static String long2Str(long timeStamp, String format) {
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(timeStamp);
     }
 
 
@@ -164,8 +165,9 @@ public class DateUtil {
 
     /**
      * 获得当前日期的字符串格式
-     * @param format    格式化的类型
-     * @return  返回格式化之后的事件
+     *
+     * @param format 格式化的类型
+     * @return 返回格式化之后的事件
      */
     public static String getCurDateStr(String format) {
         Calendar c = Calendar.getInstance();
@@ -175,9 +177,8 @@ public class DateUtil {
 
 
     /**
-     *
      * @param time 当前的时间
-     * @return  格式到秒
+     * @return 格式到秒
      */
     //
     public static String getMillon(long time) {
@@ -188,9 +189,8 @@ public class DateUtil {
 
 
     /**
-     *
-     * @param time  当前的时间
-     * @return  当前的天
+     * @param time 当前的时间
+     * @return 当前的天
      */
     public static String getDay(long time) {
 
@@ -200,7 +200,6 @@ public class DateUtil {
 
 
     /**
-     *
      * @param time 时间
      * @return 返回一个毫秒
      */
@@ -214,9 +213,10 @@ public class DateUtil {
 
     /**
      * 在日期上增加数个整月
+     *
      * @param date 日期
-     * @param n 要增加的月数
-     * @return   增加数个整月
+     * @param n    要增加的月数
+     * @return 增加数个整月
      */
     public static Date addMonth(Date date, int n) {
         Calendar cal = Calendar.getInstance();
@@ -229,9 +229,10 @@ public class DateUtil {
 
     /**
      * 在日期上增加天数
+     *
      * @param date 日期
-     * @param n 要增加的天数
-     * @return   增加之后的天数
+     * @param n    要增加的天数
+     * @return 增加之后的天数
      */
     public static Date addDay(Date date, int n) {
         Calendar cal = Calendar.getInstance();
@@ -246,8 +247,8 @@ public class DateUtil {
      * 获取距现在某一小时的时刻
      *
      * @param format 格式化时间的格式
-     * @param h 距现在的小时 例如：h=-1为上一个小时，h=1为下一个小时
-     * @return  获取距现在某一小时的时刻
+     * @param h      距现在的小时 例如：h=-1为上一个小时，h=1为下一个小时
+     * @return 获取距现在某一小时的时刻
      */
     public static String getNextHour(String format, int h) {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -260,6 +261,7 @@ public class DateUtil {
 
     /**
      * 获取时间戳
+     *
      * @return 获取时间戳
      */
     public static String getTimeString() {
@@ -268,7 +270,6 @@ public class DateUtil {
         return df.format(calendar.getTime());
 
     }
-
 
 
     /**
@@ -325,7 +326,8 @@ public class DateUtil {
 
     /**
      * 获得默认的 date pattern
-     * @return  默认的格式
+     *
+     * @return 默认的格式
      */
     public static String getDatePattern() {
 
@@ -393,7 +395,7 @@ public class DateUtil {
      *
      * @param strDate 日期字符串
      * @param pattern 日期格式
-     * @return  提取字符串日期
+     * @return 提取字符串日期
      */
     public static Date parse(String strDate, String pattern) {
         SimpleDateFormat df = new SimpleDateFormat(pattern);
@@ -410,9 +412,9 @@ public class DateUtil {
     /**
      * 按用户格式字符串距离今天的天数
      *
-     * @param date 日期字符串
+     * @param date   日期字符串
      * @param format 日期格式
-     * @return  按用户格式字符串距离今天的天数
+     * @return 按用户格式字符串距离今天的天数
      */
     public static int countDays(String date, String format) {
         long t = Calendar.getInstance().getTime().getTime();

@@ -2,11 +2,15 @@
 <resources>
     <color name="colorPrimary">#298CE5</color>
     <color name="colorPrimaryDark">#298CE5</color>
-    <color name="colorAccent">#ffffff</color>
-    <color name="line_hov">#d8d8d8</color>
+    <color name="colorAccent">#298CE5</color>
+    <color name="line_hov">#d5d5d5</color>
     <color name="line_hov_tab">#ffffff</color>
+    <color name="bg_nav">#ffffff</color>
+    <color name="bg">#F0F4F7</color>
+    <color name="bg_item">#ffffff</color>
+    <color name="txt_title">#1d1d1d</color>
+    <color name="txt_content">#1d1d1d</color>
+    <color name="txt_ps">#95999C</color>
     <color name="txt_tl_off">#d5d5d5</color>
     <color name="txt_tl_on">#ffffff</color>
-    <color name="bg_nav">#ffffff</color>
-
 </resources>

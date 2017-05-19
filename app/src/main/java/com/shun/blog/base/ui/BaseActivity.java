@@ -59,7 +59,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
      * 当不需要的是否覆盖即可
      */
     public void initStatusBar() {
-        StatusBarUtil.setColor(this, mBaseApplication.getResColor(R.color.colorPrimary), 0);
+        StatusBarUtil.setColor(this, mBaseApplication.getResColor(R.color.colorPrimary), 50);
     }
 
     public abstract int getLayoutResource();

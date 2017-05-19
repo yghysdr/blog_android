@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context="com.shun.blog.ui.main.MainActivity">
 
-
     <include
         android:id="@+id/tab_i"
         layout="@layout/include_main_bottom"
@@ -16,9 +15,8 @@
 
     <com.shun.blog.weights.NoScrollViewPager
         android:id="@+id/main_vp"
-        android:layout_above="@id/tab_i"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        android:layout_above="@id/tab_i" />
 
 </RelativeLayout>
