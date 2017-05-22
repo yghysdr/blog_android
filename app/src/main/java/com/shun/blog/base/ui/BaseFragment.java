@@ -1,6 +1,5 @@
 package com.shun.blog.base.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,7 +19,7 @@ import butterknife.ButterKnife;
 
 public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
 
-    protected Activity mActivity;
+    protected BaseActivity mActivity;
     protected View mRootView;
     protected P mPresenter;
     protected boolean mReUse = false;
@@ -88,7 +87,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mActivity = (Activity) context;
+        mActivity = (BaseActivity) context;
     }
 
 

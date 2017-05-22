@@ -5,13 +5,11 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.shun.blog.Jump;
 import com.shun.blog.R;
 import com.shun.blog.base.ui.BaseActivity;
 import com.shun.blog.ui.discover.view.DiscoverFragment;
 import com.shun.blog.ui.home.view.HomeFragment;
 import com.shun.blog.ui.user.view.UserFragment;
-import com.shun.blog.utils.UserData;
 import com.shun.blog.weights.NoScrollViewPager;
 
 import java.util.ArrayList;
@@ -65,11 +63,7 @@ public class MainActivity extends BaseActivity {
                 mainVp.setCurrentItem(1, false);
                 break;
             case R.id.main_user_rb:
-                if (UserData.getCurrentUser() == null) {
-                    Jump.login(this);
-                } else {
-                    mainVp.setCurrentItem(2, false);
-                }
+                mainVp.setCurrentItem(2, false);
                 break;
         }
     }

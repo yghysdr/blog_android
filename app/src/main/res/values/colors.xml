@@ -13,4 +13,5 @@
     <color name="txt_ps">#95999C</color>
     <color name="txt_tl_off">#d5d5d5</color>
     <color name="txt_tl_on">#ffffff</color>
+    <color name="txt_warning">#FB583F</color>
 </resources>

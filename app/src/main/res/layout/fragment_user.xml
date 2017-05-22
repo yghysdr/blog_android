@@ -1,8 +1,9 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     android:orientation="vertical"
     tools:context="com.shun.blog.ui.user.view.UserFragment">
 
@@ -12,11 +13,80 @@
         app:appName="用户中心"
         app:closeActivity="false" />
 
-    <Button
-        android:id="@+id/user_exit_btn"
-        style="@style/btn_1"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="20dp"
-        android:text="退出" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_padding"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="1dp">
+
+            <LinearLayout
+                android:id="@+id/user_info_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/item_padding">
+
+                <ImageView
+                    android:id="@+id/user_avatar_iv"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_padding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/user_nick"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toRightOf="@id/user_avatar_iv"
+                        android:text="@string/comm_nick"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/user_des"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:layout_toRightOf="@id/user_avatar_iv"
+                        android:text="@string/comm_des"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/user_exit_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp">
+
+            <TextView
+                android:id="@+id/user_exit_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="14dp"
+                android:text="退出登录"
+                android:textColor="@color/txt_warning"
+                android:textSize="16sp" />
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+
+</LinearLayout>

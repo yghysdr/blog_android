@@ -25,6 +25,7 @@ public abstract class BasePresenter<V, M extends BaseModel> {
     protected void attachView(V mvpView) {
         this.mView = mvpView;
         mMode = TUtil.getT(this, 1);
+        addRxBus();
     }
 
     protected void detachView() {
@@ -32,4 +33,5 @@ public abstract class BasePresenter<V, M extends BaseModel> {
         mRxManage.clear();
     }
 
+    public void addRxBus(){}
 }

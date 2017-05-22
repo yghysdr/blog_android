@@ -1,148 +1,119 @@
 package com.shun.blog.base.rx;
 
-import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 import rx.subjects.PublishSubject;
 import rx.subjects.SerializedSubject;
-import rx.subscriptions.CompositeSubscription;
+import rx.subjects.Subject;
 
 /**
- * RxBus
- * 推荐使用 doAndAddSubscribe,当页面销毁时，调用unSubscribe。
+ * PublishSubject: 只会把在订阅发生的时间点之后来自原始Observable的数据发射给观察者
+ * <p/>
+ * Created by YoKeyword on 2015/6/17.
  */
-
 public class RxBus {
-    private static volatile RxBus mInstance;
-    private SerializedSubject<Object, Object> mSubject;
-    private HashMap<String, CompositeSubscription> mSubscriptionMap;
+    private static volatile RxBus mDefaultInstance;
+    private final Subject<Object, Object> mBus;
 
-    private RxBus() {
-        //PublishSubject只会把在订阅发生的时间点之后来自原始Observable的数据发射给观察者
-        mSubject = new SerializedSubject<>(PublishSubject.create());
+    private final Map<Class<?>, Object> mStickyEventMap;
+
+    public RxBus() {
+        mBus = new SerializedSubject<>(PublishSubject.create());
+        mStickyEventMap = new ConcurrentHashMap<>();
     }
 
-    public static RxBus getInstance() {
-        if (mInstance == null) {
+    public static RxBus getDefault() {
+        if (mDefaultInstance == null) {
             synchronized (RxBus.class) {
-                if (mInstance == null) {
-                    mInstance = new RxBus();
+                if (mDefaultInstance == null) {
+                    mDefaultInstance = new RxBus();
                 }
             }
         }
-        return mInstance;
+        return mDefaultInstance;
     }
 
     /**
      * 发送事件
-     *
-     * @param o
      */
-    public void post(Object o) {
-        mSubject.onNext(o);
+    public void post(Object event) {
+        mBus.onNext(event);
     }
 
     /**
-     * 返回指定类型的Observable实例
-     *
-     * @param type
-     * @param <T>
-     * @return
+     * 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
      */
-    public <T> Observable<T> toObservable(final Class<T> type) {
-        return mSubject.ofType(type);
+    public <T> Observable<T> toObservable(Class<T> eventType) {
+        return mBus.ofType(eventType);
     }
 
     /**
-     * 是否已有观察者订阅
-     *
-     * @return
+     * 判断是否有订阅者
      */
     public boolean hasObservers() {
-        return mSubject.hasObservers();
+        return mBus.hasObservers();
+    }
+
+    public void reset() {
+        mDefaultInstance = null;
     }
 
     /**
-     * 没有异常处理，自动保存
-     *
-     * @param o
-     * @param type
-     * @param next
-     * @param <T>
-     * @return
+     * Stciky 相关
      */
-    public <T> Subscription doAndAddSubscribe(Object o, Class<T> type, Action1<T> next) {
-        Subscription subscription = toObservable(type)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(next);
-        addSubscription(o, subscription);
-        return subscription;
-    }
 
     /**
-     * 有异常处理，
-     *
-     * @param o
-     * @param type
-     * @param next
-     * @param error 这个参数可以不使用，但是一旦使用就不能为unll
-     * @param <T>
-     * @return
+     * 发送一个新Sticky事件
      */
-    public <T> Subscription doAndAddSubscribe(
-            Object o, Class<T> type, Action1<T> next, Action1<Throwable> error) {
-        Subscription subscription = toObservable(type)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(next, error);
-        addSubscription(o, subscription);
-        return subscription;
-    }
-
-
-    /**
-     * 保存订阅后的subscription
-     *
-     * @param o
-     * @param subscription
-     */
-    public void addSubscription(Object o, Subscription subscription) {
-        if (mSubscriptionMap == null) {
-            mSubscriptionMap = new HashMap<>();
+    public void postSticky(Object event) {
+        synchronized (mStickyEventMap) {
+            mStickyEventMap.put(event.getClass(), event);
         }
-        String key = o.getClass().getName();
-        if (mSubscriptionMap.get(key) != null) {
-            mSubscriptionMap.get(key).add(subscription);
-        } else {
-            CompositeSubscription compositeSubscription = new CompositeSubscription();
-            compositeSubscription.add(subscription);
-            mSubscriptionMap.put(key, compositeSubscription);
+        post(event);
+    }
+
+    /**
+     * 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
+     */
+    public <T> Observable<T> toObservableSticky(final Class<T> eventType) {
+        synchronized (mStickyEventMap) {
+            Observable<T> observable = mBus.ofType(eventType);
+            final Object event = mStickyEventMap.get(eventType);
+
+            if (event != null) {
+                return observable.mergeWith(Observable.just(eventType.cast(event)));
+            } else {
+                return observable;
+            }
         }
     }
 
     /**
-     * 取消订阅
-     *
-     * @param o
+     * 根据eventType获取Sticky事件
      */
-    public void unSubscribe(Object o) {
-        if (mSubscriptionMap == null) {
-            return;
+    public <T> T getStickyEvent(Class<T> eventType) {
+        synchronized (mStickyEventMap) {
+            return eventType.cast(mStickyEventMap.get(eventType));
         }
+    }
 
-        String key = o.getClass().getName();
-        if (!mSubscriptionMap.containsKey(key)) {
-            return;
+    /**
+     * 移除指定eventType的Sticky事件
+     */
+    public <T> T removeStickyEvent(Class<T> eventType) {
+        synchronized (mStickyEventMap) {
+            return eventType.cast(mStickyEventMap.remove(eventType));
         }
-        if (mSubscriptionMap.get(key) != null) {
-            mSubscriptionMap.get(key).unsubscribe();
-        }
+    }
 
-        mSubscriptionMap.remove(key);
+    /**
+     * 移除所有的Sticky事件
+     */
+    public void removeAllStickyEvents() {
+        synchronized (mStickyEventMap) {
+            mStickyEventMap.clear();
+        }
     }
 }

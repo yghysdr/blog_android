@@ -102,3 +102,4 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
 ## 主页框架搭建
 ## 主页框架搭建优化
 ## home页面数据挂载
+## rxbus

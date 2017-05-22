@@ -9,8 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.shun.blog.R;
+import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.ui.BaseActivity;
 import com.shun.blog.bean.User;
+import com.shun.blog.event.LoginEvent;
 import com.shun.blog.ui.user.contract.LoginContract;
 import com.shun.blog.ui.user.presenter.LoginPresenterImpl;
 import com.shun.blog.utils.MD5;
@@ -98,6 +100,9 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl>
     public void loginSuccess(User user) {
         user.phone = mTempUser.phone;
         UserData.saveCurrentUser(user);
+        LoginEvent event = new LoginEvent();
+        event.succeed = true;
+        RxBus.getDefault().post(event);
         onBackPressed();
     }
 
