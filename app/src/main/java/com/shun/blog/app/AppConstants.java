@@ -6,5 +6,6 @@ package com.shun.blog.app;
  */
 
 public class AppConstants {
+    public static final String THEME_NORMAL = "com.yghysdr.blog.theme";
 
 }

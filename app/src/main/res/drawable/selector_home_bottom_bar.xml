@@ -2,7 +2,7 @@
 <!--RadioButton的文字选择-->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:color="@color/colorPrimary" android:state_checked="true" />
-    <item android:color="@color/txt_tl_off" />
+    <item android:color="?attr/color_txt_nav_bot_on" android:state_checked="true" />
+    <item android:color="?attr/color_txt_nav_bot_off" />
 
 </selector>

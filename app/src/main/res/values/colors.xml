@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--正常模式-->
     <color name="colorPrimary">#298CE5</color>
     <color name="colorPrimaryDark">#298CE5</color>
     <color name="colorAccent">#298CE5</color>
     <color name="line_hov">#d5d5d5</color>
     <color name="line_hov_tab">#ffffff</color>
-    <color name="bg_nav">#ffffff</color>
     <color name="bg">#F0F4F7</color>
+    <color name="bg_nav_bot">#ffffff</color>
     <color name="bg_item">#ffffff</color>
     <color name="txt_title">#1d1d1d</color>
     <color name="txt_content">#1d1d1d</color>
-    <color name="txt_ps">#95999C</color>
-    <color name="txt_tl_off">#d5d5d5</color>
-    <color name="txt_tl_on">#ffffff</color>
+    <color name="txt_des">#95999C</color>
+    <color name="txt_nav_off">#d5d5d5</color>
+    <color name="txt_nav_on">#ffffff</color>
+    <color name="txt_nav_bot_off">#d5d5d5</color>
+    <color name="txt_nav_bot_on">#298CE5</color>
     <color name="txt_warning">#FB583F</color>
+
+    <!--夜间模式-->
+    <color name="colorPrimary_n">#283138</color>
+    <color name="colorPrimaryDark_n">#283138</color>
+    <color name="colorAccent_n">#283138</color>
+    <color name="line_hov_n">#2F3E45</color>
+    <color name="line_hov_tab_n">#283138</color>
+    <color name="bg_n">#212B30</color>
+    <color name="bg_nav_bot_n">#283138</color>
+    <color name="bg_item_n">#37474F</color>
+    <color name="txt_title_n">#7D8D95</color>
+    <color name="txt_content_n">#E0E9F4</color>
+    <color name="txt_des_n">#E0E9F4</color>
+    <color name="txt_nav_off_n">#d5d5d5</color>
+    <color name="txt_nav_on_n">#ffffff</color>
+    <color name="txt_nav_bot_off_n">#486876</color>
+    <color name="txt_nav_bot_on_n">#298CE5</color>
+    <color name="txt_warning_n">#FB583F</color>
 </resources>

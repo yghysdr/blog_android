@@ -6,6 +6,39 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="color_line_hov">@color/line_hov</item>
+        <item name="color_line_hov_tab">@color/line_hov_tab</item>
+        <item name="color_bg">@color/bg</item>
+        <item name="color_bg_nav_bot">@color/bg_nav_bot</item>
+        <item name="color_bg_item">@color/bg_item</item>
+        <item name="color_txt_title">@color/txt_title</item>
+        <item name="color_txt_content">@color/txt_content</item>
+        <item name="color_txt_des">@color/txt_des</item>
+        <item name="color_txt_nav_off">@color/txt_nav_off</item>
+        <item name="color_txt_nav_on">@color/txt_nav_on</item>
+        <item name="color_txt_nav_bot_off">@color/txt_nav_bot_off</item>
+        <item name="color_txt_nav_bot_on">@color/txt_nav_bot_on</item>
+        <item name="color_txt_warning">@color/txt_warning</item>
+    </style>
+
+    <style name="AppThemeNight" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary_n</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_n</item>
+        <item name="colorAccent">@color/colorAccent_n</item>
+        <item name="color_line_hov">@color/line_hov_n</item>
+        <item name="color_line_hov_tab">@color/line_hov_tab_n</item>
+        <item name="color_bg">@color/bg_n</item>
+        <item name="color_bg_nav_bot">@color/bg_nav_bot_n</item>
+        <item name="color_bg_item">@color/bg_item_n</item>
+        <item name="color_txt_title">@color/txt_title_n</item>
+        <item name="color_txt_content">@color/txt_content_n</item>
+        <item name="color_txt_des">@color/txt_des_n</item>
+        <item name="color_txt_nav_off">@color/txt_nav_off_n</item>
+        <item name="color_txt_nav_on">@color/txt_nav_on_n</item>
+        <item name="color_txt_nav_bot_off">@color/txt_nav_bot_off_n</item>
+        <item name="color_txt_nav_bot_on">@color/txt_nav_bot_on_n</item>
+        <item name="color_txt_warning">@color/txt_warning_n</item>
     </style>
 
     <!--主页底部tab-->
@@ -20,7 +53,7 @@
     </style>
 
     <style name="btn_1">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">?attr/colorPrimary</item>
         <item name="android:minWidth">100dp</item>
         <item name="android:minHeight">38dp</item>
         <item name="android:textSize">20dp</item>

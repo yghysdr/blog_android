@@ -103,3 +103,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
 ## 主页框架搭建优化
 ## home页面数据挂载
 ## rxbus
+## 夜间模式
+还未实现不许重启界面更改
+activity设置主题必须在setContentView之前

@@ -10,9 +10,12 @@ import android.widget.TextView;
 
 import com.shun.blog.Jump;
 import com.shun.blog.R;
+import com.shun.blog.app.AppConstants;
 import com.shun.blog.base.ui.BaseFragment;
 import com.shun.blog.bean.User;
 import com.shun.blog.ui.user.presenter.UserPresenterImpl;
+import com.shun.blog.utils.SPUtils;
+import com.shun.blog.utils.ToastUtils;
 import com.shun.blog.utils.UserData;
 import com.shun.blog.weights.MyDialog;
 
@@ -80,7 +83,8 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
     }
 
     @OnClick({R.id.user_exit_tv,
-            R.id.user_info_ll
+            R.id.user_info_ll,
+            R.id.user_night_tv
     })
     public void onClick(View view) {
         switch (view.getId()) {
@@ -91,6 +95,16 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
                 if (mCurUser == null) {
                     Jump.login(mActivity);
                 }
+                break;
+            case R.id.user_night_tv:
+                if ((Boolean) SPUtils.get(mActivity, AppConstants.THEME_NORMAL, true)) {
+                    mActivity.setTheme(R.style.AppThemeNight);
+                    SPUtils.put(mActivity, AppConstants.THEME_NORMAL, false);
+                } else {
+                    mActivity.setTheme(R.style.AppTheme);
+                    SPUtils.put(mActivity, AppConstants.THEME_NORMAL, true);
+                }
+                ToastUtils.showToastLimitTime("模式切换");
                 break;
         }
     }
