@@ -29,5 +29,6 @@
     <string name="comm_login_no">未登入</string>
     <string name="comm_nick">昵称</string>
     <string name="comm_des">这家伙很懒/(ㄒoㄒ)/~~</string>
+    <string name="title_activity_article">ArticleActivity</string>
 
 </resources>

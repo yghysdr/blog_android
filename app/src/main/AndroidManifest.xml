@@ -26,10 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.user.view.LoginActivity">
-        </activity>
-
-        <activity android:name=".ui.article.view.NewActivity"></activity>
+        <activity android:name=".ui.user.view.LoginActivity"></activity>
+        <activity android:name=".ui.article.view.NewActivity" />
+        <activity
+            android:name=".ui.article.view.ArticleActivity"
+            android:label="@string/title_activity_article"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

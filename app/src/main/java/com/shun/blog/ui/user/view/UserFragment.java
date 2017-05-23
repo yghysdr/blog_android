@@ -6,6 +6,7 @@ import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -54,6 +55,14 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
     MyToolbar userTb;
     @BindView(R.id.user_night_sc)
     SwitchCompat userNightSC;
+    @BindView(R.id.user_edit_tv)
+    TextView userEditTv;
+    @BindView(R.id.user_line_1_v)
+    View userLine1V;
+    @BindView(R.id.user_line_1_fl)
+    FrameLayout userLine1Fl;
+    @BindView(R.id.user_edit_cv)
+    CardView userEditCv;
 
     private User mCurUser;
 
@@ -119,19 +128,22 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
         userNightSC.setChecked(!(Boolean) SPUtils.get(mActivity, AppConstants.THEME_NORMAL, true));
     }
 
-    @OnClick({R.id.user_exit_tv,
+    @OnClick({R.id.user_exit_cv,
             R.id.user_info_ll,
-            R.id.user_night_tv
+            R.id.user_edit_cv
     })
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.user_exit_tv:
+            case R.id.user_exit_cv:
                 exit();
                 break;
             case R.id.user_info_ll:
                 if (mCurUser == null) {
                     Jump.login(mActivity);
                 }
+                break;
+            case R.id.user_edit_cv:
+                Jump.edit(mActivity);
                 break;
         }
     }
@@ -143,6 +155,8 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
         userExitCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
         userInfoCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
         userNightCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
+        userEditCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
+        userLine1Fl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
         userLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
         userTb.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
         userTb.setTitleTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
@@ -150,6 +164,8 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
         userDes.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtContent));
         userNightTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
         userExitTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtWarning));
+        userEditTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+        userLine1V.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.lineHov));
         ThemeEvent event = new ThemeEvent();
         RxBus.getDefault().post(event);
     }

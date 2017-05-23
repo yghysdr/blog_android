@@ -44,13 +44,15 @@ public class ThemeUtil extends BaseUtils {
     public static final int txtNavBotOff = 306;
     public static final int txtNavOn = 307;
     public static final int txtNavOff = 308;
+    public static final int lineHov = 400;
 
 
     @IntDef({bg, bgItem, bgNavBot,
             primary,
             txtTitle, txtContent, txtWarning,
             txtNavBotOn, txtNavBotOff, txtNav,
-            txtDes, txtNavOn, txtNavOff})
+            txtDes, txtNavOn, txtNavOff,
+            lineHov})
     @Retention(RetentionPolicy.SOURCE)
     public @interface ColorType {
     }
@@ -88,6 +90,7 @@ public class ThemeUtil extends BaseUtils {
         TypedValue txtNavBotOff_type = new TypedValue();
         TypedValue txtNavOn_type = new TypedValue();
         TypedValue txtNavOff_type = new TypedValue();
+        TypedValue lineHov_type = new TypedValue();
 
         Resources.Theme theme = mActivity.getTheme();
 
@@ -106,6 +109,7 @@ public class ThemeUtil extends BaseUtils {
         theme.resolveAttribute(R.attr.color_txt_nav_bot_off, txtNavBotOff_type, true);
         theme.resolveAttribute(R.attr.color_txt_nav_on, txtNavOn_type, true);
         theme.resolveAttribute(R.attr.color_txt_nav_off, txtNavOff_type, true);
+        theme.resolveAttribute(R.attr.color_line_hov, lineHov_type, true);
 
         typedValueMap.put(bg, bg_type);
         typedValueMap.put(bgItem, bgItem_type);
@@ -120,6 +124,7 @@ public class ThemeUtil extends BaseUtils {
         typedValueMap.put(txtNavBotOff, txtNavBotOff_type);
         typedValueMap.put(txtNavOn, txtNavOn_type);
         typedValueMap.put(txtNavOff, txtNavOff_type);
+        typedValueMap.put(lineHov, lineHov_type);
         return typedValueMap;
     }
 
