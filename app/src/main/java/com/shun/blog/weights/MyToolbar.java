@@ -3,6 +3,8 @@ package com.shun.blog.weights;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ public class MyToolbar extends FrameLayout implements View.OnClickListener {
 
     ImageView appBackIv;
     TextView appTitleTv;
+    FrameLayout appTitleFl;
     private Context mContext;
     private View mRootView;
     private String mAppName;
@@ -47,12 +50,20 @@ public class MyToolbar extends FrameLayout implements View.OnClickListener {
         }
     }
 
+    public void setBackgroundResource(@DrawableRes int resId) {
+        appTitleFl.setBackgroundResource(resId);
+    }
+
+    public void setTitleTextColor(@ColorInt int color) {
+        appTitleTv.setTextColor(color);
+    }
 
     private void init(Context context) {
         mContext = context;
         mRootView = LayoutInflater.from(context).inflate(R.layout.view_my_toolbar, this);
         appBackIv = (ImageView) mRootView.findViewById(R.id.app_back_iv);
         appTitleTv = (TextView) mRootView.findViewById(R.id.app_title_tv);
+        appTitleFl = (FrameLayout) mRootView.findViewById(R.id.app_title_fl);
         appBackIv.setOnClickListener(this);
         appTitleTv.setOnClickListener(this);
     }

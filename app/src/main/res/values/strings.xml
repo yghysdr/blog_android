@@ -3,6 +3,9 @@
     <string name="app_name">blog_android</string>
     <string name="title_login">登入</string>
     <string name="title_activity_login1">Sign in</string>
+    <string name="bar_home">首页</string>
+    <string name="bar_discover">发现</string>
+    <string name="bar_my">我的</string>
 
     <!--error-->
     <string name="prompt_email">Email</string>

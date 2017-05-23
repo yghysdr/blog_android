@@ -11,13 +11,17 @@ import android.widget.TextView;
 import com.shun.blog.Jump;
 import com.shun.blog.R;
 import com.shun.blog.app.AppConstants;
+import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.ui.BaseFragment;
 import com.shun.blog.bean.User;
+import com.shun.blog.event.ThemeEvent;
 import com.shun.blog.ui.user.presenter.UserPresenterImpl;
 import com.shun.blog.utils.SPUtils;
+import com.shun.blog.utils.ThemeUtil;
 import com.shun.blog.utils.ToastUtils;
 import com.shun.blog.utils.UserData;
 import com.shun.blog.weights.MyDialog;
+import com.shun.blog.weights.MyToolbar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -35,8 +39,18 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
     TextView userExitTv;
     @BindView(R.id.user_info_ll)
     LinearLayout userInfoLl;
+    @BindView(R.id.user_ll)
+    LinearLayout userLl;
     @BindView(R.id.user_exit_cv)
     CardView userExitCv;
+    @BindView(R.id.user_info_cv)
+    CardView userInfoCv;
+    @BindView(R.id.user_night_tv)
+    TextView userNightTv;
+    @BindView(R.id.user_night_cv)
+    CardView userNightCv;
+    @BindView(R.id.user_tb)
+    MyToolbar userTb;
 
     private User mCurUser;
 
@@ -99,14 +113,36 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
             case R.id.user_night_tv:
                 if ((Boolean) SPUtils.get(mActivity, AppConstants.THEME_NORMAL, true)) {
                     mActivity.setTheme(R.style.AppThemeNight);
+                    ThemeUtil.initTheme(mActivity, R.style.AppThemeNight);
+                    refreshUI();
                     SPUtils.put(mActivity, AppConstants.THEME_NORMAL, false);
                 } else {
                     mActivity.setTheme(R.style.AppTheme);
+                    ThemeUtil.initTheme(mActivity, R.style.AppTheme);
                     SPUtils.put(mActivity, AppConstants.THEME_NORMAL, true);
+                    refreshUI();
                 }
                 ToastUtils.showToastLimitTime("模式切换");
                 break;
         }
+    }
+
+    /**
+     * 刷新UI界面
+     */
+    private void refreshUI() {
+        userExitCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
+        userInfoCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
+        userNightCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
+        userLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
+        userTb.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
+        userTb.setTitleTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+        userNick.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+        userDes.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtContent));
+        userNightTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+        userExitTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtWarning));
+        ThemeEvent event = new ThemeEvent();
+        RxBus.getDefault().post(event);
     }
 
     public void exit() {

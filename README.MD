@@ -106,3 +106,5 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
 ## 夜间模式
 还未实现不许重启界面更改
 activity设置主题必须在setContentView之前
+## 夜间模式，
+个人中心，不重启切换，夜间模式的抽取

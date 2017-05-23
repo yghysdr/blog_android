@@ -9,6 +9,7 @@
     <color name="bg">#F0F4F7</color>
     <color name="bg_nav_bot">#ffffff</color>
     <color name="bg_item">#ffffff</color>
+    <color name="txt_nav">#ffffff</color>
     <color name="txt_title">#1d1d1d</color>
     <color name="txt_content">#1d1d1d</color>
     <color name="txt_des">#95999C</color>
@@ -27,6 +28,7 @@
     <color name="bg_n">#212B30</color>
     <color name="bg_nav_bot_n">#283138</color>
     <color name="bg_item_n">#37474F</color>
+    <color name="txt_nav_n">#ffffff</color>
     <color name="txt_title_n">#7D8D95</color>
     <color name="txt_content_n">#E0E9F4</color>
     <color name="txt_des_n">#E0E9F4</color>

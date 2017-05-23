@@ -11,6 +11,7 @@
         <item name="color_bg">@color/bg</item>
         <item name="color_bg_nav_bot">@color/bg_nav_bot</item>
         <item name="color_bg_item">@color/bg_item</item>
+        <item name="color_txt_nav">@color/txt_nav</item>
         <item name="color_txt_title">@color/txt_title</item>
         <item name="color_txt_content">@color/txt_content</item>
         <item name="color_txt_des">@color/txt_des</item>
@@ -31,6 +32,7 @@
         <item name="color_bg">@color/bg_n</item>
         <item name="color_bg_nav_bot">@color/bg_nav_bot_n</item>
         <item name="color_bg_item">@color/bg_item_n</item>
+        <item name="color_txt_nav">@color/txt_nav_n</item>
         <item name="color_txt_title">@color/txt_title_n</item>
         <item name="color_txt_content">@color/txt_content_n</item>
         <item name="color_txt_des">@color/txt_des_n</item>
