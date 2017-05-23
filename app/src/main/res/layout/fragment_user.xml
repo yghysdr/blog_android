@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/color_bg"
     android:orientation="vertical"
-    android:id="@+id/user_ll"
     tools:context="com.shun.blog.ui.user.view.UserFragment">
 
     <com.shun.blog.weights.MyToolbar
@@ -15,10 +15,9 @@
         app:appName="用户中心"
         app:closeActivity="false" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.CardView
             android:id="@+id/user_info_cv"
@@ -76,7 +75,7 @@
             android:id="@+id/user_night_cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@id/user_info_cv"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:clickable="true"
@@ -85,22 +84,41 @@
             app:cardCornerRadius="0dp"
             app:cardElevation="0dp">
 
-            <TextView
-                android:id="@+id/user_night_tv"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="14dp"
-                android:text="夜间模式"
-                android:textColor="?attr/color_txt_title"
-                android:textSize="16sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/user_night_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:padding="14dp"
+                    android:text="夜间模式"
+                    android:textColor="?attr/color_txt_title"
+                    android:textSize="16sp" />
+
+                <Switch
+                    android:id="@+id/user_night_s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp" />
+            </RelativeLayout>
+
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:id="@+id/user_exit_cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_below="@id/user_night_cv"
+            android:layout_marginTop="40dp"
             android:clickable="true"
             android:foreground="?attr/selectableItemBackground"
             app:cardBackgroundColor="?attr/color_bg_item"
@@ -117,6 +135,7 @@
                 android:textColor="?attr/color_txt_warning"
                 android:textSize="16sp" />
         </android.support.v7.widget.CardView>
-    </LinearLayout>
+
+    </RelativeLayout>
 
 </LinearLayout>

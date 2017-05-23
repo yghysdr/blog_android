@@ -4,8 +4,10 @@ import android.content.DialogInterface;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.shun.blog.Jump;
@@ -18,7 +20,6 @@ import com.shun.blog.event.ThemeEvent;
 import com.shun.blog.ui.user.presenter.UserPresenterImpl;
 import com.shun.blog.utils.SPUtils;
 import com.shun.blog.utils.ThemeUtil;
-import com.shun.blog.utils.ToastUtils;
 import com.shun.blog.utils.UserData;
 import com.shun.blog.weights.MyDialog;
 import com.shun.blog.weights.MyToolbar;
@@ -51,6 +52,8 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
     CardView userNightCv;
     @BindView(R.id.user_tb)
     MyToolbar userTb;
+    @BindView(R.id.user_night_s)
+    Switch userNightS;
 
     private User mCurUser;
 
@@ -94,6 +97,23 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
         } else {
             userDes.setText(mCurUser.des);
         }
+        userNightS.setChecked(!(Boolean) SPUtils.get(mActivity, AppConstants.THEME_NORMAL, true));
+        userNightS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mActivity.setTheme(R.style.AppThemeNight);
+                    ThemeUtil.initTheme(mActivity, R.style.AppThemeNight);
+                    refreshUI();
+                    SPUtils.put(mActivity, AppConstants.THEME_NORMAL, false);
+                } else {
+                    mActivity.setTheme(R.style.AppTheme);
+                    ThemeUtil.initTheme(mActivity, R.style.AppTheme);
+                    SPUtils.put(mActivity, AppConstants.THEME_NORMAL, true);
+                    refreshUI();
+                }
+            }
+        });
     }
 
     @OnClick({R.id.user_exit_tv,
@@ -109,20 +129,6 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
                 if (mCurUser == null) {
                     Jump.login(mActivity);
                 }
-                break;
-            case R.id.user_night_tv:
-                if ((Boolean) SPUtils.get(mActivity, AppConstants.THEME_NORMAL, true)) {
-                    mActivity.setTheme(R.style.AppThemeNight);
-                    ThemeUtil.initTheme(mActivity, R.style.AppThemeNight);
-                    refreshUI();
-                    SPUtils.put(mActivity, AppConstants.THEME_NORMAL, false);
-                } else {
-                    mActivity.setTheme(R.style.AppTheme);
-                    ThemeUtil.initTheme(mActivity, R.style.AppTheme);
-                    SPUtils.put(mActivity, AppConstants.THEME_NORMAL, true);
-                    refreshUI();
-                }
-                ToastUtils.showToastLimitTime("模式切换");
                 break;
         }
     }
