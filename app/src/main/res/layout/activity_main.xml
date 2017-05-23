@@ -7,20 +7,28 @@
     android:orientation="vertical"
     tools:context="com.shun.blog.ui.main.view.MainActivity">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/main_tb"
+    <android.support.v7.widget.CardView
+        android:id="@+id/main_cv"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="?attr/color_bg_nav_bot"
-        app:tabIndicatorHeight="0dp"
-        app:tabSelectedTextColor="?attr/color_txt_nav_bot_on"
-        app:tabTextColor="?attr/color_txt_nav_bot_off" />
+        app:cardCornerRadius="0dp">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/main_tb"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="?attr/color_bg_nav_bot"
+            app:tabIndicatorHeight="0dp"
+            app:tabSelectedTextColor="?attr/color_txt_nav_bot_on"
+            app:tabTextColor="?attr/color_txt_nav_bot_off" />
+    </android.support.v7.widget.CardView>
+
 
     <com.shun.blog.weights.NoScrollViewPager
         android:id="@+id/main_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/main_tb" />
+        android:layout_above="@id/main_cv" />
 
 </RelativeLayout>

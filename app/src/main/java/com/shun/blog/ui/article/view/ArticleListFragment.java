@@ -5,6 +5,9 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.shun.blog.R;
 import com.shun.blog.base.net.Error;
@@ -13,6 +16,7 @@ import com.shun.blog.bean.ArticleBean;
 import com.shun.blog.ui.article.contract.ArticleListContract;
 import com.shun.blog.ui.article.presenter.ArticleListAdapter;
 import com.shun.blog.ui.article.presenter.ArticleListPresenterImpl;
+import com.shun.blog.utils.ThemeUtil;
 import com.shun.blog.weights.multistatelayout.MultiStateLayout;
 import com.yghysdr.srecycleview.BaseBean;
 import com.yghysdr.srecycleview.RecycleViewHelper;
@@ -37,6 +41,8 @@ public class ArticleListFragment extends BaseFragment<ArticleListPresenterImpl>
     SwipeRefreshLayout homeSrl;
     @BindView(R.id.home_multi)
     MultiStateLayout homeMulti;
+    @BindView(R.id.article_ll)
+    LinearLayout articleLl;
 
     private RecycleViewHelper mHelper;
     private boolean mHaveData;
@@ -116,6 +122,23 @@ public class ArticleListFragment extends BaseFragment<ArticleListPresenterImpl>
     @Override
     public int haveMoreData() {
         return mPresenter.haveMore();
+    }
+
+    @Override
+    public void refreshTheme() {
+        articleLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
+        int childCount = homeRv.getChildCount();
+        for (int childIndex = 0; childIndex < childCount; childIndex++) {
+            ViewGroup childView = (ViewGroup) homeRv.getChildAt(childIndex);
+            childView.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
+            TextView titleTv = (TextView) childView.findViewById(R.id.article_item_title_tv);
+            titleTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+            TextView contentTv = (TextView) childView.findViewById(R.id.article_item_content_tv);
+            contentTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtContent));
+            TextView desTv = (TextView) childView.findViewById(R.id.article_item_time_tv);
+            desTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtDes));
+        }
+        ThemeUtil.dealRecycleView(homeRv);
     }
 
 }

@@ -6,6 +6,7 @@ package com.shun.blog.ui.home.contract;
 
 public class HomeContract {
     public interface View {
+        void refreshTheme();
     }
 
     public interface Presenter {

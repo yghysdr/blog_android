@@ -4,6 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="?attr/color_bg"
+    android:id="@+id/article_ll"
     android:orientation="vertical">
 
 

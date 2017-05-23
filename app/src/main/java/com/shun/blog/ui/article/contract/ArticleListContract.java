@@ -17,6 +17,8 @@ public class ArticleListContract {
         void onSuccess(List<ArticleBean> beanList);
 
         void onFailed(int errorNo, String errorMsg);
+
+        void refreshTheme();
     }
 
     public interface Presenter {

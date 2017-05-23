@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/color_bg"
+    android:id="@+id/discover_fl"
     tools:context="com.shun.blog.ui.discover.view.DiscoverFragment">
 
     <com.shun.blog.weights.MyToolbar
+        android:id="@+id/discover_tb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:appName="发现"

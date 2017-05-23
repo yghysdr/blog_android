@@ -5,7 +5,9 @@ package com.shun.blog.ui.discover.contract;
  */
 
 public class DiscoverContract {
+
     public interface View {
+        void refreshTheme();
     }
 
     public interface Presenter {
@@ -13,6 +15,4 @@ public class DiscoverContract {
 
     public interface Model {
     }
-
-
 }
