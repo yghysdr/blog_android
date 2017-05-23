@@ -24,7 +24,7 @@
     <color name="colorPrimaryDark_n">#283138</color>
     <color name="colorAccent_n">#283138</color>
     <color name="line_hov_n">#2F3E45</color>
-    <color name="line_hov_tab_n">#283138</color>
+    <color name="line_hov_tab_n">#ffffff</color>
     <color name="bg_n">#212B30</color>
     <color name="bg_nav_bot_n">#283138</color>
     <color name="bg_item_n">#37474F</color>

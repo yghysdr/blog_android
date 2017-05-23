@@ -110,4 +110,5 @@ activity设置主题必须在setContentView之前
 个人中心，不重启切换，夜间模式的抽取
 ## 夜间模式
 完善夜间模式
-## Switch
+## SwitchCompat
+## 适配KitKat

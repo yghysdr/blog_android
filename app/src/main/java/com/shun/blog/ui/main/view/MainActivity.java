@@ -34,7 +34,11 @@ public class MainActivity extends BaseActivity<MainPresenterImpl>
 
     @Override
     public int getLayoutResource() {
-        return R.layout.activity_main;
+        if (Build.VERSION.SDK_INT <= 21) {
+            return R.layout.activity_main_k;
+        } else {
+            return R.layout.activity_main;
+        }
     }
 
     @Override

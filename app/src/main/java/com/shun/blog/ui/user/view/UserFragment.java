@@ -2,12 +2,12 @@ package com.shun.blog.ui.user.view;
 
 import android.content.DialogInterface;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.shun.blog.Jump;
@@ -52,8 +52,8 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
     CardView userNightCv;
     @BindView(R.id.user_tb)
     MyToolbar userTb;
-    @BindView(R.id.user_night_s)
-    Switch userNightS;
+    @BindView(R.id.user_night_sc)
+    SwitchCompat userNightSC;
 
     private User mCurUser;
 
@@ -79,7 +79,7 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
     }
 
     private void initListener() {
-        userNightS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        userNightSC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -116,7 +116,7 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
         } else {
             userDes.setText(mCurUser.des);
         }
-        userNightS.setChecked(!(Boolean) SPUtils.get(mActivity, AppConstants.THEME_NORMAL, true));
+        userNightSC.setChecked(!(Boolean) SPUtils.get(mActivity, AppConstants.THEME_NORMAL, true));
     }
 
     @OnClick({R.id.user_exit_tv,
