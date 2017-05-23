@@ -75,8 +75,27 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
     protected void lazyLoad() {
         super.lazyLoad();
         initUserInfo();
+        initListener();
     }
 
+    private void initListener() {
+        userNightS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mActivity.setTheme(R.style.AppThemeNight);
+                    ThemeUtil.initTheme(mActivity, R.style.AppThemeNight);
+                    refreshUI();
+                    SPUtils.put(mActivity, AppConstants.THEME_NORMAL, false);
+                } else {
+                    mActivity.setTheme(R.style.AppTheme);
+                    ThemeUtil.initTheme(mActivity, R.style.AppTheme);
+                    SPUtils.put(mActivity, AppConstants.THEME_NORMAL, true);
+                    refreshUI();
+                }
+            }
+        });
+    }
 
     public void initUserInfo() {
         mCurUser = UserData.getCurrentUser();
@@ -98,22 +117,6 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
             userDes.setText(mCurUser.des);
         }
         userNightS.setChecked(!(Boolean) SPUtils.get(mActivity, AppConstants.THEME_NORMAL, true));
-        userNightS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    mActivity.setTheme(R.style.AppThemeNight);
-                    ThemeUtil.initTheme(mActivity, R.style.AppThemeNight);
-                    refreshUI();
-                    SPUtils.put(mActivity, AppConstants.THEME_NORMAL, false);
-                } else {
-                    mActivity.setTheme(R.style.AppTheme);
-                    ThemeUtil.initTheme(mActivity, R.style.AppTheme);
-                    SPUtils.put(mActivity, AppConstants.THEME_NORMAL, true);
-                    refreshUI();
-                }
-            }
-        });
     }
 
     @OnClick({R.id.user_exit_tv,
