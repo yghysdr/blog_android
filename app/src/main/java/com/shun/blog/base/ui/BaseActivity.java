@@ -8,6 +8,8 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StyleRes;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.shun.blog.BaseApplication;
 import com.shun.blog.R;
@@ -16,6 +18,7 @@ import com.shun.blog.app.AppManager;
 import com.shun.blog.utils.SPUtils;
 import com.shun.blog.utils.StatusBarUtil;
 import com.shun.blog.utils.TUtil;
+import com.shun.blog.utils.ThemeUtil;
 
 import butterknife.ButterKnife;
 
@@ -30,6 +33,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     protected Context mBaseActivity;
     protected P mPresenter;
     protected boolean mFinishAnim = true, mStartAnim = true;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,8 +80,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         StatusBarUtil.setColor(this, mBaseApplication.getResColor(id), 0);
     }
 
-    public abstract int getLayoutResource();
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -102,4 +104,37 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
             overridePendingTransition(R.anim.slide_left_in, R.anim.slide_right_out);
         }
     }
+
+    protected void initToolBar(CharSequence title) {
+        initToolBar(title, true);
+    }
+
+    protected void initToolBar(CharSequence title, boolean haveBack) {
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (mToolbar != null) {
+            mToolbar.setTitle(title);
+            setSupportActionBar(mToolbar);
+            if (haveBack) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return super.onOptionsItemSelected(item);
+        }
+        return true;
+    }
+
+    protected void refreshToolbar() {
+        if (mToolbar != null) {
+            mToolbar.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
+            mToolbar.setTitleTextColor(ThemeUtil.getColorId(ThemeUtil.txtNav));
+        }
+    }
+
+    public abstract int getLayoutResource();
 }

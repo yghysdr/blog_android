@@ -6,4 +6,5 @@
     android:layout_height="match_parent"
     tools:context="com.shun.blog.ui.article.view.NewActivity">
 
+    <include layout="@layout/include_toolbar" />
 </RelativeLayout>

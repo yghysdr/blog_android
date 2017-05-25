@@ -8,12 +8,7 @@
     android:orientation="vertical"
     tools:context="com.shun.blog.ui.user.view.UserFragment">
 
-    <com.shun.blog.weights.MyToolbar
-        android:id="@+id/user_tb"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:appName="用户中心"
-        app:closeActivity="false" />
+    <include layout="@layout/include_toolbar" />
 
     <LinearLayout
         android:layout_width="match_parent"

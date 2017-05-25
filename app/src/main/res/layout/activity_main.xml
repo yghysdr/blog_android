@@ -17,7 +17,7 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/main_tb"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/tab_height"
             android:background="?attr/color_bg_nav_bot"
             app:tabIndicatorHeight="0dp"
             app:tabSelectedTextColor="?attr/color_txt_nav_bot_on"

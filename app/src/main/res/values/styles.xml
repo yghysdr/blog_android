@@ -20,6 +20,7 @@
         <item name="color_txt_nav_bot_off">@color/txt_nav_bot_off</item>
         <item name="color_txt_nav_bot_on">@color/txt_nav_bot_on</item>
         <item name="color_txt_warning">@color/txt_warning</item>
+        <item name="colorControlNormal">@android:color/white</item>
     </style>
 
     <style name="AppThemeNight" parent="AppTheme">
@@ -78,6 +79,10 @@
         <item name="android:textSize">16sp</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">14dp</item>
+    </style>
+
+    <style name="toolbar">
+        <item name="colorControlNormal">?attr/color_txt_nav</item>
     </style>
 
 </resources>

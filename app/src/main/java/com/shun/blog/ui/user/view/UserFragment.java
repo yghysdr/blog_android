@@ -23,7 +23,6 @@ import com.shun.blog.utils.SPUtils;
 import com.shun.blog.utils.ThemeUtil;
 import com.shun.blog.utils.UserData;
 import com.shun.blog.weights.MyDialog;
-import com.shun.blog.weights.MyToolbar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -51,8 +50,6 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
     TextView userNightTv;
     @BindView(R.id.user_night_cv)
     CardView userNightCv;
-    @BindView(R.id.user_tb)
-    MyToolbar userTb;
     @BindView(R.id.user_night_sc)
     SwitchCompat userNightSC;
     @BindView(R.id.user_edit_tv)
@@ -83,6 +80,7 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
+        initToolBar(getString(R.string.title_my));
         initUserInfo();
         initListener();
     }
@@ -152,14 +150,13 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
      * 刷新UI界面
      */
     private void refreshUI() {
+        refreshToolbar();
         userExitCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
         userInfoCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
         userNightCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
         userEditCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
         userLine1Fl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
         userLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
-        userTb.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
-        userTb.setTitleTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
         userNick.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
         userDes.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtContent));
         userNightTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));

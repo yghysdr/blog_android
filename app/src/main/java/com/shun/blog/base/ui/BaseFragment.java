@@ -3,11 +3,15 @@ package com.shun.blog.base.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.shun.blog.R;
 import com.shun.blog.utils.TUtil;
+import com.shun.blog.utils.ThemeUtil;
 
 import butterknife.ButterKnife;
 
@@ -23,8 +27,13 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     protected View mRootView;
     protected P mPresenter;
     protected boolean mReUse = false;
+    /**
+     * 是否有返回按钮
+     */
+    protected boolean mHaveBack = true;
     //懒加载
     private boolean isViewCreated, isUIVisible;
+    private Toolbar mToolbar;
 
 
     //onAttach--onCreate--onCreateView--onViewCreated
@@ -46,7 +55,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
         beforeReturn();
         return mRootView;
     }
-
 
     /**
      * 返回之前的操作，如果需要集成
@@ -104,6 +112,37 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
         super.onDestroy();
         if (mPresenter != null) {
             mPresenter.detachView();
+        }
+    }
+
+    protected void initToolBar(CharSequence title) {
+        initToolBar(title, false);
+    }
+
+    protected void initToolBar(CharSequence title, boolean haveBack) {
+        mToolbar = (Toolbar) mRootView.findViewById(R.id.toolbar);
+        if (mToolbar != null) {
+            mActivity.setSupportActionBar(mToolbar);
+            mToolbar.setTitle(title);
+            if (haveBack) {
+                mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            mActivity.onBackPressed();
+            return super.onOptionsItemSelected(item);
+        }
+        return true;
+    }
+
+    protected void refreshToolbar() {
+        if (mToolbar != null) {
+            mToolbar.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
+            mToolbar.setTitleTextColor(ThemeUtil.getColorId(ThemeUtil.txtNav));
         }
     }
 

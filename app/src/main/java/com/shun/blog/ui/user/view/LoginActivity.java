@@ -43,6 +43,7 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl>
     @Override
     protected void init() {
         super.init();
+        initToolBar(getString(R.string.title_login));
         mPhoneView.setText(UserData.getExitPhone());
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
