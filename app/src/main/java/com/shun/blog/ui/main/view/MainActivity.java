@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.util.TypedValue;
 
 import com.shun.blog.R;
+import com.shun.blog.app.AppManager;
 import com.shun.blog.base.ui.BaseActivity;
 import com.shun.blog.ui.discover.view.DiscoverFragment;
 import com.shun.blog.ui.home.view.HomeFragment;
@@ -15,6 +16,7 @@ import com.shun.blog.ui.main.contract.MainContract;
 import com.shun.blog.ui.main.presenter.MainPresenterImpl;
 import com.shun.blog.ui.user.view.UserFragment;
 import com.shun.blog.utils.ThemeUtil;
+import com.shun.blog.utils.ToastUtils;
 import com.shun.blog.weights.NoScrollViewPager;
 
 import java.util.ArrayList;
@@ -99,5 +101,16 @@ public class MainActivity extends BaseActivity<MainPresenterImpl>
             theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
             getWindow().setStatusBarColor(getResources().getColor(typedValue.resourceId));
         }
+    }
+
+    private long currentTime;
+
+    @Override
+    public void onBackPressed() {
+        if (2000 > System.currentTimeMillis() - currentTime) {
+            AppManager.getAppManager().AppExit(this, false);
+        }
+        ToastUtils.showToastLimitTime(getString(R.string.toast_exit_app));
+        currentTime = System.currentTimeMillis();
     }
 }

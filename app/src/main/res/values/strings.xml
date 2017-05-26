@@ -35,5 +35,6 @@
     <string name="comm_nick">昵称</string>
     <string name="comm_des">这家伙很懒/(ㄒoㄒ)/~~</string>
     <string name="title_activity_article">ArticleActivity</string>
+    <string name="toast_exit_app">再按一次退出应用</string>
 
 </resources>

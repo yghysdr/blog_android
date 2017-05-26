@@ -47,6 +47,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
             initTheme(R.style.AppThemeNight);
         }
         setContentView(getLayoutResource());
+        AppManager.getAppManager().addActivity(this);
         //设置只能横屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mBaseApplication = BaseApplication.instance;

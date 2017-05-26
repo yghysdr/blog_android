@@ -113,3 +113,4 @@ activity设置主题必须在setContentView之前
 ## SwitchCompat
 ## 适配KitKat
 ## 侧滑推出
+## 双击退出应用
