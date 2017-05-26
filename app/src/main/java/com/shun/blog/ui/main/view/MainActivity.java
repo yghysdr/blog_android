@@ -74,6 +74,12 @@ public class MainActivity extends BaseActivity<MainPresenterImpl>
     }
 
     @Override
+    protected void doBeforeSetContentView() {
+        super.doBeforeSetContentView();
+        mSlidBack = false;
+    }
+
+    @Override
     public void changeTheme() {
         refreshStatusBar();
         changeBotBar();

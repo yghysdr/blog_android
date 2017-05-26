@@ -21,6 +21,7 @@
         <item name="color_txt_nav_bot_on">@color/txt_nav_bot_on</item>
         <item name="color_txt_warning">@color/txt_warning</item>
         <item name="colorControlNormal">@android:color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="AppThemeNight" parent="AppTheme">

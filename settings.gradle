@@ -1,1 +1,1 @@
-include ':app', ':srecycleview'
+include ':app', ':srecycleview', ':swipeback'

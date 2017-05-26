@@ -112,3 +112,4 @@ activity设置主题必须在setContentView之前
 完善夜间模式
 ## SwitchCompat
 ## 适配KitKat
+## 侧滑推出

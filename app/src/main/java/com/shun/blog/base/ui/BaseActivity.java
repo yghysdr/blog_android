@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StyleRes;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
@@ -21,13 +20,14 @@ import com.shun.blog.utils.TUtil;
 import com.shun.blog.utils.ThemeUtil;
 
 import butterknife.ButterKnife;
+import me.yokeyword.swipebackfragment.SwipeBackActivity;
 
 /**
  * Created by yghysdr on 16/11/26.
  * 所有Activity共同的
  * 如果是MVP模式，只需要实现泛型P即可
  */
-public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity {
+public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackActivity {
 
     protected BaseApplication mBaseApplication;
     protected Context mBaseActivity;
@@ -70,7 +70,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     /**
      * 设置layout前配置
      */
-    private void doBeforeSetContentView() {
+    protected void doBeforeSetContentView() {
     }
 
     /**

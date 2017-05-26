@@ -27,10 +27,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     protected View mRootView;
     protected P mPresenter;
     protected boolean mReUse = false;
-    /**
-     * 是否有返回按钮
-     */
-    protected boolean mHaveBack = true;
     //懒加载
     private boolean isViewCreated, isUIVisible;
     private Toolbar mToolbar;
