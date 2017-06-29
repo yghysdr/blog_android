@@ -20,8 +20,11 @@ public class ArticleListModelImpl extends BaseModel
 
 
     @Override
-    public Observable<BaseResponse<List<ArticleBean>>> requestData(int type, int page, int pageSize) {
-        return AppWebClient.getApiStores(HostType.BLOG).getHomeList(type, page, pageSize);
+    public Observable<BaseResponse<List<ArticleBean>>> requestData(
+            int type, int page, int pageSize) {
+        return AppWebClient
+                .getApiStores(HostType.BLOG)
+                .getHomeList(type, page, pageSize);
     }
 
 }

@@ -33,11 +33,11 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "home";
+                return "HOME";
             case 1:
-                return "android";
+                return "ARCHIVE";
             case 2:
-                return "web";
+                return "TAG";
         }
         return super.getPageTitle(position);
     }

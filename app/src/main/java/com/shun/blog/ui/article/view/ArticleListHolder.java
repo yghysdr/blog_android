@@ -8,6 +8,7 @@ import com.shun.blog.R;
 import com.shun.blog.base.ui.MyBaseHolder;
 import com.shun.blog.bean.ArticleBean;
 import com.shun.blog.utils.DateUtil;
+import com.shun.blog.utils.StringUtils;
 
 import butterknife.BindView;
 
@@ -19,8 +20,8 @@ public class ArticleListHolder extends MyBaseHolder<ArticleBean> {
 
     @BindView(R.id.article_item_title_tv)
     TextView articleItemTitleTv;
-    @BindView(R.id.article_item_content_tv)
-    TextView articleItemContentTv;
+    @BindView(R.id.article_item_des_tv)
+    TextView articleItemDesTv;
     @BindView(R.id.article_item_time_tv)
     TextView articleItemTimeTv;
 
@@ -30,8 +31,8 @@ public class ArticleListHolder extends MyBaseHolder<ArticleBean> {
 
     @Override
     public void initData(ArticleBean data) {
-        articleItemTitleTv.setText(data.title);
-        articleItemContentTv.setText(data.des);
+        articleItemTitleTv.setText(StringUtils.getArticleContent(data.title));
+        articleItemDesTv.setText(StringUtils.getArticleDes(data.des));
         articleItemTimeTv.setText(DateUtil.long2Str(data.updatedAt, DateUtil.FORMAT_YMD));
     }
 }

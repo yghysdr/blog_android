@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -75,8 +76,13 @@ public class ArticleListFragment extends BaseFragment<ArticleListPresenterImpl>
     protected void lazyLoad() {
         super.lazyLoad();
         homeMulti.setState(MultiStateLayout.State.LOADING);
-        mHelper = new RecycleViewHelper(mActivity, homeRv, new ArticleListAdapter(getActivity()),
-                new LinearLayoutManager(getActivity()), homeSrl, this);
+        mHelper = new RecycleViewHelper(
+                mActivity,
+                homeRv,
+                new ArticleListAdapter(getActivity()),
+                new LinearLayoutManager(getActivity()),
+                homeSrl,
+                this);
         mHelper.onRefresh();
         View networkErrorView = homeMulti.getNetworkErrorView();
         if (null != networkErrorView) {
@@ -131,12 +137,27 @@ public class ArticleListFragment extends BaseFragment<ArticleListPresenterImpl>
         for (int childIndex = 0; childIndex < childCount; childIndex++) {
             ViewGroup childView = (ViewGroup) homeRv.getChildAt(childIndex);
             childView.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
+
             TextView titleTv = (TextView) childView.findViewById(R.id.article_item_title_tv);
-            titleTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
-            TextView contentTv = (TextView) childView.findViewById(R.id.article_item_content_tv);
-            contentTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtContent));
-            TextView desTv = (TextView) childView.findViewById(R.id.article_item_time_tv);
-            desTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtDes));
+            if (titleTv != null) {
+                titleTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+            }
+
+            TextView desTv = (TextView) childView.findViewById(R.id.article_item_des_tv);
+            if (desTv != null) {
+                desTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtContent));
+                desTv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
+            }
+
+            FrameLayout itemDesFl = (FrameLayout) childView.findViewById(R.id.article_item_des_fl);
+            if (itemDesFl != null) {
+                itemDesFl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
+            }
+
+            TextView timeTv = (TextView) childView.findViewById(R.id.article_item_time_tv);
+            if (timeTv != null) {
+                timeTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtDes));
+            }
         }
         ThemeUtil.dealRecycleView(homeRv);
     }

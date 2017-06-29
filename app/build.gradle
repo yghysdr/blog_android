@@ -49,6 +49,7 @@ dependencies {
     compile rootProject.ext.dependencies["glide"]
     compile project(path: ':srecycleview')
     //    compile 'com.yghysdr:srecycleview:1.0.0'
-    testCompile 'junit:junit:4.12'
     compile project(':swipeback')
+    compile 'com.android.support:support-v4:25.3.1'
+    testCompile 'junit:junit:4.12'
 }

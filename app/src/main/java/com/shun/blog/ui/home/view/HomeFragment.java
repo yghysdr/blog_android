@@ -7,7 +7,9 @@ import android.support.v4.view.ViewPager;
 import com.shun.blog.R;
 import com.shun.blog.api.ApiStores;
 import com.shun.blog.base.ui.BaseFragment;
+import com.shun.blog.ui.article.view.ArchiveFragment;
 import com.shun.blog.ui.article.view.ArticleListFragment;
+import com.shun.blog.ui.article.view.TagFragment;
 import com.shun.blog.ui.home.contract.HomeContract;
 import com.shun.blog.ui.home.presenter.HomePagerAdapter;
 import com.shun.blog.ui.home.presenter.HomePresenterImpl;
@@ -41,13 +43,9 @@ public class HomeFragment extends BaseFragment<HomePresenterImpl> implements
         List<Fragment> fragmentList = new ArrayList<>();
         ArticleListFragment homeArticle = ArticleListFragment
                 .newInstance(ApiStores.list_home);
-        ArticleListFragment androidArticle = ArticleListFragment
-                .newInstance(ApiStores.list_android);
-        ArticleListFragment webArticle = ArticleListFragment
-                .newInstance(ApiStores.list_web);
         fragmentList.add(homeArticle);
-        fragmentList.add(androidArticle);
-        fragmentList.add(webArticle);
+        fragmentList.add(ArchiveFragment.newInstance());
+        fragmentList.add(TagFragment.newInstance());
         HomePagerAdapter adapter = new HomePagerAdapter(getFragmentManager(), fragmentList);
         homeVp.setAdapter(adapter);
         homeTL.setupWithViewPager(homeVp);

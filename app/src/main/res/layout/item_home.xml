@@ -23,29 +23,39 @@
             android:id="@+id/article_item_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:text="@string/comm_loading"
             android:textColor="?attr/color_txt_title"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/article_item_content_tv"
+        <FrameLayout
+            android:id="@+id/article_item_des_fl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center_vertical"
-            android:text="@string/comm_loading"
-            android:textColor="?attr/color_txt_title"
-            android:textSize="12sp" />
+            android:layout_marginTop="5dp"
+            android:background="?attr/colorPrimary">
+
+            <TextView
+                android:id="@+id/article_item_des_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:background="?attr/color_bg_item"
+                android:paddingLeft="5dp"
+                android:text="@string/comm_loading"
+                android:textColor="?attr/color_txt_title"
+                android:textSize="14sp" />
+        </FrameLayout>
+
 
         <TextView
             android:id="@+id/article_item_time_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:gravity="right"
             android:text="@string/comm_time"
-            android:textColor="?attr/color_txt_des" />
+            android:textColor="?attr/color_txt_des"
+            android:textSize="12sp" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
