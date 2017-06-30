@@ -24,7 +24,7 @@ public abstract class BaseRVAdapter extends RecyclerView.Adapter<BaseHolder> {
     /**
      * 数据放在adapter中维护
      */
-    protected ArrayList<BaseBean> mDataList = new ArrayList<>();
+    protected ArrayList<Object> mDataList = new ArrayList<>();
 
     public BaseRVAdapter(Context mContext) {
         this.mContext = mContext;
@@ -61,7 +61,7 @@ public abstract class BaseRVAdapter extends RecyclerView.Adapter<BaseHolder> {
      *
      * @param list
      */
-    public void addAll(Collection<BaseBean> list) {
+    public void addAll(Collection<Object> list) {
         if (list == null) {
             return;
         }

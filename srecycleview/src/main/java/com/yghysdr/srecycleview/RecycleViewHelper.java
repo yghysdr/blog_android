@@ -96,7 +96,7 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
      *
      * @param beanList
      */
-    public void addDataToView(Collection<BaseBean> beanList) {
+    public void addDataToView(Collection<Object> beanList) {
         stopRequest();
         if (mQuestCount == 1) {
             mBaseRVAdapter.clear();

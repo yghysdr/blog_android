@@ -1,6 +1,7 @@
 package com.shun.blog.api;
 
 import com.shun.blog.base.ui.BaseResponse;
+import com.shun.blog.bean.Archive;
 import com.shun.blog.bean.ArticleBean;
 import com.shun.blog.bean.User;
 
@@ -33,5 +34,8 @@ public interface ApiStores {
             @Query("page") int page,
             @Query("size") int size
     );
+
+    @GET("archive")
+    Observable<BaseResponse<List<Archive>>> getArchive();
 
 }

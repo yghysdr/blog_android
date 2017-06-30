@@ -14,17 +14,12 @@ import rx.Observable;
 public class ArticleListContract {
 
     public interface View {
-        void onSuccess(List<ArticleBean> beanList);
-
-        void onFailed(int errorNo, String errorMsg);
 
         void refreshTheme();
     }
 
     public interface Presenter {
-        void requestData(int type, int page, int pageSize);
 
-        int haveMore();
     }
 
     public interface Model {

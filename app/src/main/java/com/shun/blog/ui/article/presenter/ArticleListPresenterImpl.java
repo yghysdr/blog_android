@@ -3,7 +3,7 @@ package com.shun.blog.ui.article.presenter;
 import com.shun.blog.base.net.JsonCallback;
 import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.rx.RxSchedulers;
-import com.shun.blog.base.ui.BasePresenter;
+import com.shun.blog.base.ui.BaseListPresenter;
 import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.ArticleBean;
 import com.shun.blog.event.ThemeEvent;
@@ -21,16 +21,13 @@ import rx.functions.Action1;
  * Created by yghysdr on 2017/04/27
  */
 
-public class ArticleListPresenterImpl extends BasePresenter<ArticleListFragment,
+public class ArticleListPresenterImpl extends BaseListPresenter<ArticleListFragment,
         ArticleListModelImpl> implements ArticleListContract.Presenter {
 
-    @IFooter.Status
-    int haveMore;
-
     @Override
-    public void requestData(int type, int page, int pageSize) {
+    public void requestData(Object msg, int page, int pageSize) {
         mRxManage.addAsync(mMode
-                .requestData(type, page, pageSize)
+                .requestData((Integer)msg, page, pageSize)
                 .delaySubscription(3, TimeUnit.SECONDS)
                 .compose(RxSchedulers.<BaseResponse<List<ArticleBean>>>io_main())
                 .subscribe(new JsonCallback<BaseResponse<List<ArticleBean>>>() {
@@ -47,12 +44,6 @@ public class ArticleListPresenterImpl extends BasePresenter<ArticleListFragment,
                         mView.onFailed(code, msg);
                     }
                 }));
-    }
-
-    @IFooter.Status
-    @Override
-    public int haveMore() {
-        return haveMore;
     }
 
     @Override
