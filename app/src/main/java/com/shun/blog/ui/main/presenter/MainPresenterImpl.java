@@ -2,6 +2,7 @@ package com.shun.blog.ui.main.presenter;
 
 import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.ui.BasePresenter;
+import com.shun.blog.event.JumpEvent;
 import com.shun.blog.event.ThemeEvent;
 import com.shun.blog.ui.main.contract.MainContract;
 import com.shun.blog.ui.main.model.MainModelImpl;
@@ -26,5 +27,16 @@ public class MainPresenterImpl extends BasePresenter<MainActivity, MainModelImpl
                         mView.changeTheme();
                     }
                 }));
+
+        mRxManage.addAsync(RxBus.getDefault()
+                .toObservable(JumpEvent.class)
+                .subscribe(new Action1<JumpEvent>() {
+                    @Override
+                    public void call(JumpEvent event) {
+                        mView.jumpPage(event);
+                    }
+                }));
     }
+
+
 }

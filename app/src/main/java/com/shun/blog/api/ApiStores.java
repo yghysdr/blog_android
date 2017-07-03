@@ -25,14 +25,17 @@ public interface ApiStores {
 
 
     int list_home = 0;
-    int list_android = 1;
-    int list_web = 2;
 
     @GET("list")
     Observable<BaseResponse<List<ArticleBean>>> getHomeList(
             @Query("type") int type,
             @Query("page") int page,
             @Query("size") int size
+    );
+
+    @GET("article")
+    Observable<BaseResponse<ArticleBean>> getArticle(
+            @Query("id") int id
     );
 
     @GET("archive")

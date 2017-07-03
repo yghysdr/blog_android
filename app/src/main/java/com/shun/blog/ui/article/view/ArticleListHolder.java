@@ -1,12 +1,15 @@
 package com.shun.blog.ui.article.view;
 
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.shun.blog.R;
+import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.ui.MyBaseHolder;
 import com.shun.blog.bean.ArticleBean;
+import com.shun.blog.event.JumpEvent;
 import com.shun.blog.utils.DateUtil;
 import com.shun.blog.utils.StringUtils;
 
@@ -34,5 +37,13 @@ public class ArticleListHolder extends MyBaseHolder<ArticleBean> {
         articleItemTitleTv.setText(StringUtils.getArticleContent(data.title));
         articleItemDesTv.setText(StringUtils.getArticleDes(data.des));
         articleItemTimeTv.setText(DateUtil.long2Str(data.updatedAt, DateUtil.FORMAT_YMD));
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JumpEvent event = new JumpEvent();
+                event.order = JumpEvent.ARTICLE;
+                RxBus.getDefault().post(event);
+            }
+        });
     }
 }

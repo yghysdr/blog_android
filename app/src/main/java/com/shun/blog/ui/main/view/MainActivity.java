@@ -1,5 +1,6 @@
 package com.shun.blog.ui.main.view;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.support.design.widget.TabLayout;
@@ -9,10 +10,12 @@ import android.util.TypedValue;
 import com.shun.blog.R;
 import com.shun.blog.app.AppManager;
 import com.shun.blog.base.ui.BaseActivity;
+import com.shun.blog.event.JumpEvent;
+import com.shun.blog.ui.article.view.ArticleActivity;
 import com.shun.blog.ui.discover.view.DiscoverFragment;
 import com.shun.blog.ui.home.view.HomeFragment;
-import com.shun.blog.ui.main.presenter.MainPagerAdapter;
 import com.shun.blog.ui.main.contract.MainContract;
+import com.shun.blog.ui.main.presenter.MainPagerAdapter;
 import com.shun.blog.ui.main.presenter.MainPresenterImpl;
 import com.shun.blog.ui.user.view.UserFragment;
 import com.shun.blog.utils.ThemeUtil;
@@ -85,6 +88,14 @@ public class MainActivity extends BaseActivity<MainPresenterImpl>
     public void changeTheme() {
         refreshStatusBar();
         changeBotBar();
+    }
+
+    public void jumpPage(JumpEvent event) {
+        Intent intent;
+        if (event.order.equals(JumpEvent.ARTICLE)) {
+            intent = new Intent(this, ArticleActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void changeBotBar() {
