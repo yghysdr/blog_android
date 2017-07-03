@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.util.TypedValue;
 
 import com.shun.blog.R;
+import com.shun.blog.api.ApiStores;
 import com.shun.blog.app.AppManager;
 import com.shun.blog.base.ui.BaseActivity;
 import com.shun.blog.event.JumpEvent;
@@ -94,6 +95,8 @@ public class MainActivity extends BaseActivity<MainPresenterImpl>
         Intent intent;
         if (event.order.equals(JumpEvent.ARTICLE)) {
             intent = new Intent(this, ArticleActivity.class);
+            intent.putExtra(ArticleActivity.URL, ApiStores.BASE_ARTICLE_URL + event.articleId);
+            intent.putExtra(ArticleActivity.TITLE, getString(R.string.title_article));
             startActivity(intent);
         }
     }

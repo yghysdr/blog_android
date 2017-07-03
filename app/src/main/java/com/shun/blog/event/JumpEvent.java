@@ -8,4 +8,6 @@ public class JumpEvent {
     public static final String ARTICLE = "com.shun.blog.jump.event.article";
 
     public String order;
+
+    public int articleId;
 }

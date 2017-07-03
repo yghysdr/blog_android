@@ -9,11 +9,10 @@
     tools:context="com.shun.blog.ui.article.view.ArticleActivity"
     tools:showIn="@layout/activity_article">
 
-    <TextView
-        android:id="@+id/article_content_tv"
-        android:layout_marginTop="@dimen/title_height"
+    <com.shun.blog.weights.MyWebView
+        android:id="@+id/article_content_wv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/title_height" />
 
 </RelativeLayout>

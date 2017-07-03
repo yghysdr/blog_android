@@ -33,7 +33,7 @@ public class ArticleListHolder extends MyBaseHolder<ArticleBean> {
     }
 
     @Override
-    public void initData(ArticleBean data) {
+    public void initData(final ArticleBean data) {
         articleItemTitleTv.setText(StringUtils.getArticleContent(data.title));
         articleItemDesTv.setText(StringUtils.getArticleDes(data.des));
         articleItemTimeTv.setText(DateUtil.long2Str(data.updatedAt, DateUtil.FORMAT_YMD));
@@ -42,6 +42,7 @@ public class ArticleListHolder extends MyBaseHolder<ArticleBean> {
             public void onClick(View v) {
                 JumpEvent event = new JumpEvent();
                 event.order = JumpEvent.ARTICLE;
+                event.articleId = data.id;
                 RxBus.getDefault().post(event);
             }
         });

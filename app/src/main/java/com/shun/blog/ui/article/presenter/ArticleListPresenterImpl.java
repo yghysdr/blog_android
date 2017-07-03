@@ -13,7 +13,6 @@ import com.shun.blog.ui.article.view.ArticleListFragment;
 import com.yghysdr.srecycleview.IFooter;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import rx.functions.Action1;
 
@@ -28,7 +27,6 @@ public class ArticleListPresenterImpl extends BaseListPresenter<ArticleListFragm
     public void requestData(Object msg, int page, int pageSize) {
         mRxManage.addAsync(mMode
                 .requestData((Integer)msg, page, pageSize)
-                .delaySubscription(3, TimeUnit.SECONDS)
                 .compose(RxSchedulers.<BaseResponse<List<ArticleBean>>>io_main())
                 .subscribe(new JsonCallback<BaseResponse<List<ArticleBean>>>() {
                     @Override
