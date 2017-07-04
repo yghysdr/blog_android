@@ -10,5 +10,5 @@ import java.util.List;
 
 public class Archive extends BaseBean{
     public long year;
-    public List<ArticleBean> articleList;
+    public List<Article> articleList;
 }

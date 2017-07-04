@@ -1,11 +1,11 @@
-package com.shun.blog.ui.article.model;
+package com.shun.blog.ui.home.model;
 
 import com.shun.blog.api.AppWebClient;
 import com.shun.blog.api.HostType;
 import com.shun.blog.base.ui.BaseModel;
 import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.Archive;
-import com.shun.blog.ui.article.contract.ArchiveContract;
+import com.shun.blog.ui.home.contract.ArchiveContract;
 
 import java.util.List;
 

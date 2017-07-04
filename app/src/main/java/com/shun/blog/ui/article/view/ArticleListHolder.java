@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.shun.blog.R;
 import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.ui.MyBaseHolder;
-import com.shun.blog.bean.ArticleBean;
+import com.shun.blog.bean.Article;
 import com.shun.blog.event.JumpEvent;
 import com.shun.blog.utils.DateUtil;
 import com.shun.blog.utils.StringUtils;
@@ -19,7 +19,7 @@ import butterknife.BindView;
  * Created by yghysdr on 2017/5/8.
  */
 
-public class ArticleListHolder extends MyBaseHolder<ArticleBean> {
+public class ArticleListHolder extends MyBaseHolder<Article> {
 
     @BindView(R.id.article_item_title_tv)
     TextView articleItemTitleTv;
@@ -33,7 +33,7 @@ public class ArticleListHolder extends MyBaseHolder<ArticleBean> {
     }
 
     @Override
-    public void initData(final ArticleBean data) {
+    public void initData(final Article data) {
         articleItemTitleTv.setText(StringUtils.getArticleContent(data.title));
         articleItemDesTv.setText(StringUtils.getArticleDes(data.des));
         articleItemTimeTv.setText(DateUtil.long2Str(data.updatedAt, DateUtil.FORMAT_YMD));

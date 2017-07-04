@@ -1,7 +1,7 @@
 package com.shun.blog.ui.article.contract;
 
 import com.shun.blog.base.ui.BaseResponse;
-import com.shun.blog.bean.ArticleBean;
+import com.shun.blog.bean.Article;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class ArticleListContract {
     }
 
     public interface Model {
-        Observable<BaseResponse<List<ArticleBean>>> requestData(int type, int page, int pageSize);
+        Observable<BaseResponse<List<Article>>> requestData(int type, int page, int pageSize);
     }
 
 }

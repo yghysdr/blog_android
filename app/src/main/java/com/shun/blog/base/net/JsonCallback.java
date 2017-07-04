@@ -31,7 +31,6 @@ public abstract class JsonCallback<R extends BaseResponse> extends Subscriber<R>
     public void onError(Throwable e) {
         ExceptionHandle.ResponseThrowable error = ExceptionHandle.handleException(e);
         onFailure(error.code, error.message);
-
     }
 
     @Override

@@ -4,7 +4,7 @@ import com.shun.blog.api.AppWebClient;
 import com.shun.blog.api.HostType;
 import com.shun.blog.base.ui.BaseModel;
 import com.shun.blog.base.ui.BaseResponse;
-import com.shun.blog.bean.ArticleBean;
+import com.shun.blog.bean.Article;
 import com.shun.blog.ui.article.contract.ArticleListContract;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class ArticleListModelImpl extends BaseModel
 
 
     @Override
-    public Observable<BaseResponse<List<ArticleBean>>> requestData(
+    public Observable<BaseResponse<List<Article>>> requestData(
             int type, int page, int pageSize) {
         return AppWebClient
                 .getApiStores(HostType.BLOG)

@@ -1,0 +1,14 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.shun.blog.ui.home.view.ArchiveListFragment">
+
+    <com.shun.blog.weights.TagsLayout
+        android:id="@+id/tag_tl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/color_bg"
+        android:paddingTop="30dp" />
+
+</FrameLayout>

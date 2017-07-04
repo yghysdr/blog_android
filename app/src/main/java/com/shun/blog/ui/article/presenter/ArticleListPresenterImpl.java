@@ -5,7 +5,7 @@ import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.rx.RxSchedulers;
 import com.shun.blog.base.ui.BaseListPresenter;
 import com.shun.blog.base.ui.BaseResponse;
-import com.shun.blog.bean.ArticleBean;
+import com.shun.blog.bean.Article;
 import com.shun.blog.event.ThemeEvent;
 import com.shun.blog.ui.article.contract.ArticleListContract;
 import com.shun.blog.ui.article.model.ArticleListModelImpl;
@@ -27,10 +27,10 @@ public class ArticleListPresenterImpl extends BaseListPresenter<ArticleListFragm
     public void requestData(Object msg, int page, int pageSize) {
         mRxManage.addAsync(mMode
                 .requestData((Integer)msg, page, pageSize)
-                .compose(RxSchedulers.<BaseResponse<List<ArticleBean>>>io_main())
-                .subscribe(new JsonCallback<BaseResponse<List<ArticleBean>>>() {
+                .compose(RxSchedulers.<BaseResponse<List<Article>>>io_main())
+                .subscribe(new JsonCallback<BaseResponse<List<Article>>>() {
                     @Override
-                    public void onSuccess(BaseResponse<List<ArticleBean>> result) {
+                    public void onSuccess(BaseResponse<List<Article>> result) {
                         haveMore = result.haveMore ? IFooter.HAVE_MORE : IFooter.NO_MORE;
                         mView.onSuccess(result.data);
                     }

@@ -2,7 +2,8 @@ package com.shun.blog.api;
 
 import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.Archive;
-import com.shun.blog.bean.ArticleBean;
+import com.shun.blog.bean.Article;
+import com.shun.blog.bean.Tag;
 import com.shun.blog.bean.User;
 
 import java.util.List;
@@ -27,14 +28,14 @@ public interface ApiStores {
     int list_home = 0;
 
     @GET("list")
-    Observable<BaseResponse<List<ArticleBean>>> getHomeList(
+    Observable<BaseResponse<List<Article>>> getHomeList(
             @Query("type") int type,
             @Query("page") int page,
             @Query("size") int size
     );
 
     @GET("article")
-    Observable<BaseResponse<ArticleBean>> getArticle(
+    Observable<BaseResponse<Article>> getArticle(
             @Query("id") int id
     );
 
@@ -42,5 +43,8 @@ public interface ApiStores {
     Observable<BaseResponse<List<Archive>>> getArchive();
 
     String BASE_ARTICLE_URL = "http://www.yghysdr.cn/article#/";
+
+    @GET("sortdata")
+    Observable<BaseResponse<List<Tag>>> getTagData();
 
 }

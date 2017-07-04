@@ -1,4 +1,4 @@
-package com.shun.blog.ui.article.view;
+package com.shun.blog.ui.home.view;
 
 import android.content.Context;
 import android.view.ViewGroup;

@@ -1,9 +1,9 @@
-package com.shun.blog.ui.article.view;
+package com.shun.blog.ui.home.view;
 
 import com.shun.blog.base.ui.BaseListFragment;
 import com.shun.blog.bean.Archive;
-import com.shun.blog.ui.article.presenter.ArchiveListAdapter;
-import com.shun.blog.ui.article.presenter.ArchiveListPresenterImpl;
+import com.shun.blog.ui.home.presenter.ArchiveListAdapter;
+import com.shun.blog.ui.home.presenter.ArchiveListPresenterImpl;
 import com.yghysdr.srecycleview.BaseRVAdapter;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
 public class ArchiveListFragment extends BaseListFragment<ArchiveListPresenterImpl> {
 
     public ArchiveListFragment() {
-        // Required empty public constructor
+        mReUse = true;
     }
 
     public static ArchiveListFragment newInstance() {

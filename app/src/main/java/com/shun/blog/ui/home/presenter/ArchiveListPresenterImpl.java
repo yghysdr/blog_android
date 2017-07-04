@@ -1,13 +1,13 @@
-package com.shun.blog.ui.article.presenter;
+package com.shun.blog.ui.home.presenter;
 
 import com.shun.blog.base.net.JsonCallback;
 import com.shun.blog.base.rx.RxSchedulers;
 import com.shun.blog.base.ui.BaseListPresenter;
 import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.Archive;
-import com.shun.blog.ui.article.contract.ArchiveContract;
-import com.shun.blog.ui.article.model.ArchiveModelImpl;
-import com.shun.blog.ui.article.view.ArchiveListFragment;
+import com.shun.blog.ui.home.contract.ArchiveContract;
+import com.shun.blog.ui.home.model.ArchiveModelImpl;
+import com.shun.blog.ui.home.view.ArchiveListFragment;
 import com.yghysdr.srecycleview.IFooter;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.shun.blog.ui.article.contract;
+package com.shun.blog.ui.home.contract;
 
 import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.Archive;

@@ -17,7 +17,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenterImpl>
     FrameLayout discoverFl;
 
     public DiscoverFragment() {
-        mReUse = false;
+        mReUse = true;
     }
 
     public static DiscoverFragment newInstance() {

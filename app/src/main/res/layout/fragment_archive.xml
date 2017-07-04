@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.shun.blog.ui.article.view.ArchiveListFragment">
+    tools:context="com.shun.blog.ui.home.view.ArchiveListFragment">
 
 
     <android.support.v4.widget.SwipeRefreshLayout
