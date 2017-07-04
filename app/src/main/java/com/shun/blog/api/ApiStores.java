@@ -41,6 +41,6 @@ public interface ApiStores {
     @GET("archive")
     Observable<BaseResponse<List<Archive>>> getArchive();
 
-    public static final String BASE_ARTICLE_URL = "http://www.yghysdr.cn/#/article/";
+    String BASE_ARTICLE_URL = "http://www.yghysdr.cn/article#/";
 
 }
