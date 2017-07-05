@@ -29,6 +29,7 @@
         <activity android:name=".ui.user.view.LoginActivity" />
         <activity android:name=".ui.article.view.NewActivity" />
         <activity android:name=".ui.article.view.ArticleActivity" />
+        <activity android:name=".ui.article.view.SortActivity"></activity>
     </application>
 
 </manifest>

@@ -2,12 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/color_bg"
     tools:context="com.shun.blog.ui.home.view.ArchiveListFragment">
 
     <com.shun.blog.weights.TagsLayout
         android:id="@+id/tag_tl"
+        android:layout_marginRight="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?attr/color_bg" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.shun.blog.Jump;
 import com.shun.blog.R;
 import com.shun.blog.app.AppConstants;
@@ -123,6 +124,9 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
         } else {
             userDes.setText(mCurUser.des);
         }
+        Glide.with(this)
+                .load(mCurUser.avatar)
+                .into(userAvatarIv);
         userNightSC.setChecked(!(Boolean) SPUtils.get(mActivity, AppConstants.THEME_NORMAL, true));
     }
 

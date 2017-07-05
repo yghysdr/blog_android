@@ -1,6 +1,7 @@
 package com.shun.blog.base.net;
 
 import com.shun.blog.base.ui.BaseResponse;
+import com.shun.blog.utils.ToastUtils;
 import com.socks.library.KLog;
 
 import rx.Subscriber;
@@ -17,6 +18,7 @@ public abstract class JsonCallback<R extends BaseResponse> extends Subscriber<R>
 
     public void onFailure(int code, String msg) {
         KLog.d("http_error", "code:" + code + "" + "msg:" + msg);
+        ToastUtils.showToastLimitTime(msg);
     }
 
     public void onFinish() {

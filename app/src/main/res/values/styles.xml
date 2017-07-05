@@ -101,4 +101,9 @@
         <item name="android:clickable">false</item>
     </style>
 
+    <style name="edit_text">
+        <item name="colorControlNormal">#986399</item>
+        <item name="colorControlActivated">#432979</item>
+    </style>
+
 </resources>

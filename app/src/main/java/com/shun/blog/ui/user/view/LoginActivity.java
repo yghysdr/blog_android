@@ -18,7 +18,6 @@ import com.shun.blog.ui.user.presenter.LoginPresenterImpl;
 import com.shun.blog.utils.MD5;
 import com.shun.blog.utils.UserData;
 import com.shun.blog.utils.Validation;
-import com.socks.library.KLog;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -60,29 +59,24 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl>
     private void attemptLogin() {
         mPhoneView.setError(null);
         mPasswordView.setError(null);
-        String email = mPhoneView.getText().toString();
+        String phone = mPhoneView.getText().toString();
         String password = mPasswordView.getText().toString();
         boolean cancel = false;
         View focusView = null;
-        if (TextUtils.isEmpty(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
-        if (TextUtils.isEmpty(email)) {
-            mPhoneView.setError(getString(R.string.error_field_required));
-            focusView = mPhoneView;
-            cancel = true;
-        } else if (!Validation.isPhone(email)) {
+        if (!Validation.isPhone(phone)) {
             mPhoneView.setError(getString(R.string.error_invalid_email));
             focusView = mPhoneView;
+            cancel = true;
+        } else if (TextUtils.isEmpty(password)) {
+            mPasswordView.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView;
             cancel = true;
         }
         if (cancel) {
             focusView.requestFocus();
         } else {
             mTempUser = new User();
-            mTempUser.phone = email;
+            mTempUser.phone = phone;
             mTempUser.password = MD5.md5(password);
             mPresenter.login(mTempUser);
         }
@@ -109,7 +103,6 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl>
 
     @Override
     public void loginFailed() {
-        KLog.d("登入失败");
     }
 }
 

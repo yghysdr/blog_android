@@ -13,6 +13,7 @@ import com.shun.blog.app.AppManager;
 import com.shun.blog.base.ui.BaseActivity;
 import com.shun.blog.event.JumpEvent;
 import com.shun.blog.ui.article.view.ArticleActivity;
+import com.shun.blog.ui.article.view.SortActivity;
 import com.shun.blog.ui.discover.view.DiscoverFragment;
 import com.shun.blog.ui.home.view.HomeFragment;
 import com.shun.blog.ui.main.contract.MainContract;
@@ -97,6 +98,10 @@ public class MainActivity extends BaseActivity<MainPresenterImpl>
             intent = new Intent(this, ArticleActivity.class);
             intent.putExtra(ArticleActivity.URL, ApiStores.BASE_ARTICLE_URL + event.articleId);
             intent.putExtra(ArticleActivity.TITLE, getString(R.string.title_article));
+            startActivity(intent);
+        } else if (event.order.equals(JumpEvent.SORT)) {
+            intent = new Intent(this, SortActivity.class);
+            intent.putExtra(SortActivity.SORT_TAG, event.tag);
             startActivity(intent);
         }
     }

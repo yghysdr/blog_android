@@ -50,7 +50,6 @@ public class TagsLayout extends ViewGroup {
         int modeWidth = MeasureSpec.getMode(widthMeasureSpec);
         int modeHeight = MeasureSpec.getMode(heightMeasureSpec);
 
-//        GLog.i(sizeWidth + "," + sizeHeight);
 
         // 如果是warp_content情况下，记录宽和高
         int width = 0;

@@ -22,6 +22,7 @@ public class ArticleListFragment extends BaseListFragment<ArticleListPresenterIm
         implements ArticleListContract.View, RecycleViewHelper.Helper {
 
     private static final String ARG_PARAM1 = "com.shun.blog.article.list.type";
+    private static final String ARG_PARAM2 = "com.shun.blog.article.list.is.viewpager";
 
     private int mArticleType;
 
@@ -31,17 +32,27 @@ public class ArticleListFragment extends BaseListFragment<ArticleListPresenterIm
     }
 
     public static ArticleListFragment newInstance(int type) {
+        return newInstance(type, false);
+    }
+
+    public static ArticleListFragment newInstance(int type, boolean isViewPager) {
         ArticleListFragment fragment = new ArticleListFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, type);
+        args.putBoolean(ARG_PARAM2, isViewPager);
+        fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mArticleType = getArguments().getInt(ARG_PARAM1);
+            mArticleType = getArguments().getInt(ARG_PARAM1, 0);
+            if (!isUIVisible) {
+                isUIVisible = getArguments().getBoolean(ARG_PARAM2, false);
+            }
         }
     }
 

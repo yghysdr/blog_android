@@ -22,7 +22,6 @@ public class ArchiveListFragment extends BaseListFragment<ArchiveListPresenterIm
         return new ArchiveListFragment();
     }
 
-
     @Override
     public BaseRVAdapter getAdapter() {
         return new ArchiveListAdapter(mActivity);

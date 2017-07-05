@@ -11,7 +11,7 @@ public class User extends BaseBean {
     public String nick;
     public String phone;
     public String token;
-    public String uid;
+    public int uid;
     public String avatar;
     public String password;
     public String des;

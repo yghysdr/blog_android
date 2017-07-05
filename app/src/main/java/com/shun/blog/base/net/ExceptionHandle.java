@@ -33,7 +33,7 @@ public class ExceptionHandle {
         ResponseThrowable ex;
         if (!NetUtil.isNetworkAvailable(BaseApplication.instance)) {
             ex = new ResponseThrowable(e, Error.NO_NET_ERROR);
-            ex.message = BaseApplication.getResString(R.string.action_sign_in);
+            ex.message = BaseApplication.getResString(R.string.action_sign);
             return ex;
         }
         if (e instanceof retrofit2.adapter.rxjava.HttpException) {

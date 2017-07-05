@@ -11,33 +11,29 @@
     <string name="bar_discover">发现</string>
     <string name="bar_my">我的</string>
 
-
     <!--error-->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <!--error-RecycleView-->
     <string name="status_empty">NO DATA</string>
     <string name="status_error">Error</string>
     <string name="status_error_net">Network problems/(ㄒoㄒ)/~~</string>
+    <!--error-login-->
+    <string name="prompt_phone">手机</string>
+    <string name="prompt_password">密码 (必须)</string>
+    <string name="action_sign">登入</string>
+    <string name="error_invalid_email">手机号不正确</string>
+    <string name="error_invalid_password">密码是必须的</string>
+    <string name="error_field_required">This field is required</string>
 
-    <!--content-->
+
+    <!--comm-->
     <string name="comm_loading">加载中...</string>
     <string name="comm_time">0000.00.00</string>
     <string name="comm_login_no">未登入</string>
     <string name="comm_nick">昵称</string>
     <string name="comm_des">这家伙很懒/(ㄒoㄒ)/~~</string>
-    <string name="title_activity_article">ArticleActivity</string>
+
+    <!--toast-->
     <string name="toast_exit_app">再按一次退出应用</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

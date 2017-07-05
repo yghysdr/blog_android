@@ -28,11 +28,14 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     protected P mPresenter;
     protected boolean mReUse = false;
     //懒加载
-    private boolean isViewCreated, isUIVisible;
+    protected boolean isViewCreated = false, isUIVisible = false;
     private Toolbar mToolbar;
 
 
-    //onAttach--onCreate--onCreateView--onViewCreated
+    /**
+     * SetUserVisibleHint(false)-->SetUserVisibleHint(true)
+     * -->onAttach-->onCreate-->onCreateView-->onViewCreated
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

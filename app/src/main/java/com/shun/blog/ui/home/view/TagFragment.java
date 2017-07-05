@@ -6,8 +6,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shun.blog.R;
+import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.ui.BaseFragment;
 import com.shun.blog.bean.Tag;
+import com.shun.blog.event.JumpEvent;
 import com.shun.blog.ui.home.contract.TagContract;
 import com.shun.blog.ui.home.presenter.TagPresenterImpl;
 import com.shun.blog.utils.DensityUtil;
@@ -49,7 +51,7 @@ public class TagFragment extends BaseFragment<TagPresenterImpl>
     public void addTags(List<Tag> tags) {
         tagTl.removeAllViews();
         for (int i = 0; i < tags.size(); i++) {
-            Tag tag = tags.get(i);
+            final Tag tag = tags.get(i);
             TextView tv = (TextView) LayoutInflater
                     .from(mActivity)
                     .inflate(R.layout.item_view_tag, null);
@@ -58,8 +60,8 @@ public class TagFragment extends BaseFragment<TagPresenterImpl>
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(
+                    DensityUtil.dip2px(mActivity, 20),
                     DensityUtil.dip2px(mActivity, 10),
-                    DensityUtil.dip2px(mActivity, 4),
                     0,
                     0
             );
@@ -68,7 +70,10 @@ public class TagFragment extends BaseFragment<TagPresenterImpl>
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    JumpEvent jumpEvent = new JumpEvent();
+                    jumpEvent.order = JumpEvent.SORT;
+                    jumpEvent.tag = tag;
+                    RxBus.getDefault().post(jumpEvent);
                 }
             });
         }
