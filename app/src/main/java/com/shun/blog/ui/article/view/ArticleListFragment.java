@@ -1,8 +1,8 @@
 package com.shun.blog.ui.article.view;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.shun.blog.R;
@@ -11,6 +11,7 @@ import com.shun.blog.ui.article.contract.ArticleListContract;
 import com.shun.blog.ui.article.presenter.ArticleListAdapter;
 import com.shun.blog.ui.article.presenter.ArticleListPresenterImpl;
 import com.shun.blog.utils.ThemeUtil;
+import com.socks.library.KLog;
 import com.yghysdr.srecycleview.BaseRVAdapter;
 import com.yghysdr.srecycleview.RecycleViewHelper;
 
@@ -74,6 +75,7 @@ public class ArticleListFragment extends BaseListFragment<ArticleListPresenterIm
 
     @Override
     public void refreshTheme() {
+        KLog.w("yghysdr...");
         mBaseRootLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
         int childCount = mBaseRv.getChildCount();
         for (int childIndex = 0; childIndex < childCount; childIndex++) {
@@ -85,15 +87,14 @@ public class ArticleListFragment extends BaseListFragment<ArticleListPresenterIm
                 titleTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
             }
 
+            View desV = childView.findViewById(R.id.article_item_des_v);
+            if (desV != null) {
+                desV.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
+            }
+
             TextView desTv = (TextView) childView.findViewById(R.id.article_item_des_tv);
             if (desTv != null) {
                 desTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtContent));
-                desTv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
-            }
-
-            FrameLayout itemDesFl = (FrameLayout) childView.findViewById(R.id.article_item_des_fl);
-            if (itemDesFl != null) {
-                itemDesFl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
             }
 
             TextView timeTv = (TextView) childView.findViewById(R.id.article_item_time_tv);

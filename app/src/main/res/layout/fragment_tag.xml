@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/color_bg"
+    android:id="@+id/tag_root_fl"
     tools:context="com.shun.blog.ui.home.view.ArchiveListFragment">
 
     <com.shun.blog.weights.TagsLayout

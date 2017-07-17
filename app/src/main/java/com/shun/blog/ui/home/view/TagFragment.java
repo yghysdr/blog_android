@@ -2,6 +2,7 @@ package com.shun.blog.ui.home.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import com.shun.blog.event.JumpEvent;
 import com.shun.blog.ui.home.contract.TagContract;
 import com.shun.blog.ui.home.presenter.TagPresenterImpl;
 import com.shun.blog.utils.DensityUtil;
+import com.shun.blog.utils.ThemeUtil;
 import com.shun.blog.weights.TagsLayout;
 
 import java.util.List;
@@ -27,6 +29,8 @@ public class TagFragment extends BaseFragment<TagPresenterImpl>
 
     @BindView(R.id.tag_tl)
     TagsLayout tagTl;
+    @BindView(R.id.tag_root_fl)
+    FrameLayout tagRootFl;
 
     public TagFragment() {
         mReUse = true;
@@ -47,8 +51,11 @@ public class TagFragment extends BaseFragment<TagPresenterImpl>
         mPresenter.requestTag();
     }
 
+    private List<Tag> mTags;
+
     @Override
     public void addTags(List<Tag> tags) {
+        mTags = tags;
         tagTl.removeAllViews();
         for (int i = 0; i < tags.size(); i++) {
             final Tag tag = tags.get(i);
@@ -81,7 +88,9 @@ public class TagFragment extends BaseFragment<TagPresenterImpl>
 
     @Override
     public void refreshTheme() {
-
+        tagRootFl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
+        if (mTags != null) {
+            addTags(mTags);
+        }
     }
-
 }

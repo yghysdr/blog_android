@@ -19,7 +19,6 @@ import butterknife.BindView;
 public abstract class BaseListFragment<P extends BaseListPresenter> extends BaseFragment<P>
         implements RecycleViewHelper.Helper {
 
-
     @BindView(R.id.base_rv)
     protected RecyclerView mBaseRv;
     @BindView(R.id.base_recycle_srl)

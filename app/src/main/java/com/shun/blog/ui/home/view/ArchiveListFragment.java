@@ -1,10 +1,15 @@
 package com.shun.blog.ui.home.view;
 
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.shun.blog.R;
 import com.shun.blog.base.ui.BaseListFragment;
 import com.shun.blog.bean.Archive;
 import com.shun.blog.ui.home.contract.ArchiveContract;
 import com.shun.blog.ui.home.presenter.ArchiveListAdapter;
 import com.shun.blog.ui.home.presenter.ArchiveListPresenterImpl;
+import com.shun.blog.utils.ThemeUtil;
 import com.yghysdr.srecycleview.BaseRVAdapter;
 
 import java.util.ArrayList;
@@ -42,6 +47,28 @@ public class ArchiveListFragment extends BaseListFragment<ArchiveListPresenterIm
 
     @Override
     public void refreshTheme() {
+        mBaseRootLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
+        int childCount = mBaseRv.getChildCount();
+        for (int childIndex = 0; childIndex < childCount; childIndex++) {
+            ViewGroup childView = (ViewGroup) mBaseRv.getChildAt(childIndex);
+            childView.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
 
+
+            TextView titleTv = (TextView) childView.findViewById(R.id.archive_title);
+            if (titleTv != null) {
+                titleTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+            }
+
+            TextView timeTv = (TextView) childView.findViewById(R.id.archive_time);
+            if (timeTv != null) {
+                timeTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtDes));
+            }
+
+            TextView yearTv = (TextView) childView.findViewById(R.id.archive_year);
+            if (yearTv != null) {
+                yearTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+            }
+        }
+        ThemeUtil.dealRecycleView(mBaseRv);
     }
 }
