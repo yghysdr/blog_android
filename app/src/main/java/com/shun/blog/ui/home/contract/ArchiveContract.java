@@ -14,6 +14,7 @@ import rx.Observable;
 public class ArchiveContract {
 
     public interface View {
+        void refreshTheme();
     }
 
     public interface Presenter {

@@ -1,10 +1,10 @@
-package com.shun.blog.ui.home.contract;
+package com.shun.blog.ui.main.contract;
 
 /**
  * Created by yghysdr on 2017/5/19.
  */
 
-public class HomeContract {
+public class IndexContract {
     public interface View {
         void refreshTheme();
     }

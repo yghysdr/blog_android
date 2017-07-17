@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.shun.blog.ui.home.view.HomeFragment">
+    tools:context="com.shun.blog.ui.main.view.IndexFragment">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/home_tl"

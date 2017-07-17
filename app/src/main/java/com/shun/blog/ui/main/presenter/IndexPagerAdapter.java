@@ -1,4 +1,4 @@
-package com.shun.blog.ui.home.presenter;
+package com.shun.blog.ui.main.presenter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,11 +10,11 @@ import java.util.List;
  * Created by yghysdr on 2017/5/19.
  */
 
-public class HomePagerAdapter extends FragmentPagerAdapter {
+public class IndexPagerAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> mFragmentList;
 
-    public HomePagerAdapter(FragmentManager fm, List<Fragment> fragmentList) {
+    public IndexPagerAdapter(FragmentManager fm, List<Fragment> fragmentList) {
         super(fm);
         mFragmentList = fragmentList;
     }

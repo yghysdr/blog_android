@@ -15,7 +15,6 @@ import com.shun.blog.event.JumpEvent;
 import com.shun.blog.ui.article.view.ArticleActivity;
 import com.shun.blog.ui.article.view.SortActivity;
 import com.shun.blog.ui.discover.view.DiscoverFragment;
-import com.shun.blog.ui.home.view.HomeFragment;
 import com.shun.blog.ui.main.contract.MainContract;
 import com.shun.blog.ui.main.presenter.MainPagerAdapter;
 import com.shun.blog.ui.main.presenter.MainPresenterImpl;
@@ -52,7 +51,7 @@ public class MainActivity extends BaseActivity<MainPresenterImpl>
     protected void init() {
         super.init();
         mFinishAnim = false;
-        HomeFragment homeFragment = HomeFragment.newInstance();
+        IndexFragment homeFragment = IndexFragment.newInstance();
         DiscoverFragment discoverFragment = DiscoverFragment.newInstance();
         UserFragment userFragment = UserFragment.newInstance();
         List<Fragment> fragmentList = new ArrayList<>();

@@ -1,9 +1,11 @@
 package com.shun.blog.ui.home.presenter;
 
+import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.rx.RxSchedulers;
 import com.shun.blog.base.ui.BasePresenter;
 import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.Tag;
+import com.shun.blog.event.ThemeEvent;
 import com.shun.blog.ui.home.contract.TagContract;
 import com.shun.blog.ui.home.model.TagModelImpl;
 import com.shun.blog.ui.home.view.TagFragment;
@@ -29,5 +31,18 @@ public class TagPresenterImpl extends BasePresenter<TagFragment, TagModelImpl>
                         mView.addTags(listBaseResponse.data);
                     }
                 });
+    }
+
+    @Override
+    public void addRxBus() {
+        super.addRxBus();
+        mRxManage.addAsync(RxBus.getDefault()
+                .toObservable(ThemeEvent.class)
+                .subscribe(new Action1<ThemeEvent>() {
+                    @Override
+                    public void call(ThemeEvent themeEvent) {
+                        mView.refreshTheme();
+                    }
+                }));
     }
 }

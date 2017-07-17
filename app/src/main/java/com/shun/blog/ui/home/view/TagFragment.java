@@ -79,4 +79,9 @@ public class TagFragment extends BaseFragment<TagPresenterImpl>
         }
     }
 
+    @Override
+    public void refreshTheme() {
+
+    }
+
 }
