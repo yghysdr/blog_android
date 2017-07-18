@@ -54,7 +54,7 @@ public class IndexFragment extends BaseFragment<IndexPresenterImpl> implements
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_index;
     }
 
     @Override
