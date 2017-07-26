@@ -111,22 +111,22 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
             userNick.setText("未登入");
             userDes.setText("登入查看");
             userExitCv.setVisibility(View.GONE);
-            return;
-        }
-        userExitCv.setVisibility(View.VISIBLE);
-        if (TextUtils.isEmpty(mCurUser.nick)) {
-            userNick.setText(getString(R.string.comm_nick));
         } else {
-            userNick.setText(mCurUser.nick);
+            userExitCv.setVisibility(View.VISIBLE);
+            if (TextUtils.isEmpty(mCurUser.nick)) {
+                userNick.setText(getString(R.string.comm_nick));
+            } else {
+                userNick.setText(mCurUser.nick);
+            }
+            if (TextUtils.isEmpty(mCurUser.des)) {
+                userDes.setText(getString(R.string.comm_des));
+            } else {
+                userDes.setText(mCurUser.des);
+            }
+            Glide.with(this)
+                    .load(mCurUser.avatar)
+                    .into(userAvatarIv);
         }
-        if (TextUtils.isEmpty(mCurUser.des)) {
-            userDes.setText(getString(R.string.comm_des));
-        } else {
-            userDes.setText(mCurUser.des);
-        }
-        Glide.with(this)
-                .load(mCurUser.avatar)
-                .into(userAvatarIv);
         userNightSC.setChecked(!(Boolean) SPUtils.get(mActivity, AppConstants.THEME_NORMAL, true));
     }
 
