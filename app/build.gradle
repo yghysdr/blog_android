@@ -14,10 +14,25 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    Properties props = new Properties()
+    props.load(new FileInputStream(file("signing.properties")))
+    signingConfigs {
+        release {
+            storeFile file(props['KEYSTORE_FILE'])
+            keyAlias props['KEY_ALIAS']
+            keyPassword props['KEY_PASSWORD']
+            storePassword props['KEYSTORE_PASSWORD']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
         }
     }
 
