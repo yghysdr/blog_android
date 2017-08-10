@@ -16,6 +16,10 @@ public class DateUtil {
      */
     public static String FORMAT_Y = "yyyy";
 
+    public static String FORMAT_YM = "yyyy年MM月";
+
+    public static String FORMAT_D = "dd日";
+
     /**
      * 英文简写如：12:01
      */

@@ -1,6 +1,6 @@
 <resources>
     <!--title-->
-    <string name="app_name">blog_android</string>
+    <string name="app_name">BLOG</string>
     <string name="title_login">登入</string>
     <string name="title_activity_login1">Sign in</string>
     <string name="title_article">文章</string>
@@ -34,6 +34,7 @@
 
     <!--toast-->
     <string name="toast_exit_app">再按一次退出应用</string>
+    <string name="txt_share">分享</string>
 
 
 </resources>

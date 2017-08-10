@@ -11,7 +11,6 @@ import com.shun.blog.ui.article.contract.ArticleListContract;
 import com.shun.blog.ui.article.presenter.ArticleListAdapter;
 import com.shun.blog.ui.article.presenter.ArticleListPresenterImpl;
 import com.shun.blog.utils.ThemeUtil;
-import com.socks.library.KLog;
 import com.yghysdr.srecycleview.BaseRVAdapter;
 import com.yghysdr.srecycleview.RecycleViewHelper;
 
@@ -75,8 +74,10 @@ public class ArticleListFragment extends BaseListFragment<ArticleListPresenterIm
 
     @Override
     public void refreshTheme() {
-        KLog.w("yghysdr...");
         mBaseRootLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
+        /**
+         * 得到的是在视图中的item条数
+         */
         int childCount = mBaseRv.getChildCount();
         for (int childIndex = 0; childIndex < childCount; childIndex++) {
             ViewGroup childView = (ViewGroup) mBaseRv.getChildAt(childIndex);
@@ -100,6 +101,11 @@ public class ArticleListFragment extends BaseListFragment<ArticleListPresenterIm
             TextView timeTv = (TextView) childView.findViewById(R.id.article_item_time_tv);
             if (timeTv != null) {
                 timeTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtDes));
+            }
+
+            TextView statusTv = (TextView) childView.findViewById(R.id.item_footer_status_tv);
+            if (statusTv != null) {
+                statusTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
             }
         }
         ThemeUtil.dealRecycleView(mBaseRv);

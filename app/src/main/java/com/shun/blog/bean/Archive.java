@@ -9,6 +9,6 @@ import java.util.List;
  */
 
 public class Archive extends BaseBean{
-    public long year;
+    public long timestamp;
     public List<Article> articleList;
 }

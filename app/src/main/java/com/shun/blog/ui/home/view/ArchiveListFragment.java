@@ -39,7 +39,7 @@ public class ArchiveListFragment extends BaseListFragment<ArchiveListPresenterIm
         List<Archive> archiveList = (List<Archive>) beanList;
         List<Object> objectList = new ArrayList<>();
         for (Archive archive : archiveList) {
-            objectList.add(archive.year);
+            objectList.add(archive.timestamp);
             objectList.addAll(archive.articleList);
         }
         mHelper.addDataToView(objectList);

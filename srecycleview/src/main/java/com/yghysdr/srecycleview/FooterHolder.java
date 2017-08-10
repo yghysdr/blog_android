@@ -24,6 +24,10 @@ public class FooterHolder extends BaseHolder implements IFooter {
         itemError = (TextView) itemView.findViewById(R.id.item_error);
     }
 
+    public FooterHolder(Context context, ViewGroup root, int layoutRes) {
+        super(context, root, layoutRes);
+    }
+
     @Override
     public void initData(Object data) {
 

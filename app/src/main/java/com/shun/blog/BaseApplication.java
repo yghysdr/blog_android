@@ -5,6 +5,7 @@ import android.support.multidex.MultiDexApplication;
 
 import com.shun.blog.app.Global;
 import com.shun.blog.base.BaseUtils;
+import com.shun.blog.utils.ShareUtils;
 import com.shun.blog.utils.UserData;
 import com.shun.blog.weights.multistatelayout.MultiStateConfiguration;
 import com.shun.blog.weights.multistatelayout.MultiStateLayout;
@@ -46,6 +47,7 @@ public class BaseApplication extends MultiDexApplication {
         UserData.init(this);
         KLog.init(Global.DEBUG);
         BaseUtils.init(this);
+        ShareUtils.init(this);
         MultiStateConfiguration.Builder builder = new MultiStateConfiguration.Builder();
         builder.setCommonEmptyLayout(R.layout.layout_empty)
                 .setCommonNetworkErrorLayout(R.layout.layout_error_net)

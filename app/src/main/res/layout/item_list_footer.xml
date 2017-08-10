@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/color_bg_item">
+
+    <TextView
+        android:id="@+id/item_footer_status_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/color_bg_item"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="加载中..."
+        android:textColor="?attr/color_txt_title"
+        android:textSize="12sp" />
+
+</RelativeLayout>

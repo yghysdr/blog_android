@@ -14,19 +14,19 @@ import butterknife.BindView;
  * Created by yghysdr on 2017/5/8.
  */
 
-public class ArchiveHolderYear extends MyBaseHolder<Long> {
+public class ArchiveHolderTime extends MyBaseHolder<Long> {
 
 
     @BindView(R.id.archive_year)
     TextView archiveYear;
 
 
-    public ArchiveHolderYear(Context context, ViewGroup root) {
+    public ArchiveHolderTime(Context context, ViewGroup root) {
         super(context, root, R.layout.item_archive_year);
     }
 
     @Override
     public void initData(Long data) {
-        archiveYear.setText(DateUtil.long2Str(data, DateUtil.FORMAT_Y) + "年");
+        archiveYear.setText(DateUtil.long2Str(data, DateUtil.FORMAT_YM));
     }
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.ViewGroup;
 
 import com.shun.blog.ui.home.view.ArchiveHolder;
-import com.shun.blog.ui.home.view.ArchiveHolderYear;
+import com.shun.blog.ui.home.view.ArchiveHolderTime;
 import com.yghysdr.srecycleview.BaseHolder;
 import com.yghysdr.srecycleview.BaseRVAdapter;
 
@@ -22,7 +22,7 @@ public class ArchiveListAdapter extends BaseRVAdapter {
     @Override
     protected BaseHolder myOnCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_YEAR) {
-            return new ArchiveHolderYear(mContext, parent);
+            return new ArchiveHolderTime(mContext, parent);
         }
         return new ArchiveHolder(mContext, parent);
     }

@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:text="@string/comm_loading"
-                android:textColor="?attr/color_txt_title"
+                android:textColor="?attr/color_txt_content"
                 android:textSize="14sp" />
 
         </LinearLayout>

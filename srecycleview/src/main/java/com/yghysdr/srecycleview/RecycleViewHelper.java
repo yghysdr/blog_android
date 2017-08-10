@@ -39,6 +39,7 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
     public RecycleViewHelper(Context context,
                              RecyclerView recyclerView,
                              BaseRVAdapter adapter,
+                             FooterHolder footerHolder,
                              RecyclerView.LayoutManager layoutManager,
                              SwipeRefreshLayout refreshLayout,
                              Helper helper) {
@@ -49,9 +50,25 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
         mBaseRVAdapter = adapter;
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(layoutManager);
-        mHolder = new FooterHolder(mContext, null);
+        mHolder = footerHolder;
         mHelper = helper;
         initListener();
+    }
+
+    public RecycleViewHelper(Context context,
+                             RecyclerView recyclerView,
+                             BaseRVAdapter adapter,
+                             RecyclerView.LayoutManager layoutManager,
+                             SwipeRefreshLayout refreshLayout,
+                             Helper helper) {
+        this(context,
+                recyclerView,
+                adapter,
+                new FooterHolder(context, null),
+                layoutManager,
+                refreshLayout,
+                helper
+        );
     }
 
     public int getQuestCount() {
