@@ -45,7 +45,7 @@ public abstract class BaseListFragment<P extends BaseListPresenter> extends Base
                 mActivity,
                 mBaseRv,
                 getAdapter(),
-                new BaseFooterHolder(mActivity, null),
+                new FooterHolder(mActivity, null),
                 new LinearLayoutManager(getActivity()),
                 mBaseSrl,
                 this);

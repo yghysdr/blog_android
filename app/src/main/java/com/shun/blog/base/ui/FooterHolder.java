@@ -5,21 +5,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.shun.blog.R;
+import com.yghysdr.srecycleview.BaseFooterHolder;
 import com.yghysdr.srecycleview.IFooter;
 
 /**
  * Created by yghysdr on 2017/8/9.
  */
 
-public class BaseFooterHolder extends MyBaseHolder implements IFooter {
+public class FooterHolder extends BaseFooterHolder implements IFooter {
 
     @Status
     int mCurState;
 
     TextView itemFooterStatusTv;
 
-    public BaseFooterHolder(Context context, ViewGroup root) {
-        super(context, root, com.yghysdr.srecycleview.R.layout.item_list_footer);
+    public FooterHolder(Context context, ViewGroup root) {
+        super(context, root, R.layout.item_list_footer);
         itemFooterStatusTv = (TextView) itemView.findViewById(R.id.item_footer_status_tv);
     }
 

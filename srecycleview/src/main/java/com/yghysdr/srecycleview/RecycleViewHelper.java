@@ -34,12 +34,12 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
     @IFooter.Status
     private int mDataStatus = 0;
 
-    private final FooterHolder mHolder;
+    private final BaseFooterHolder mHolder;
 
     public RecycleViewHelper(Context context,
                              RecyclerView recyclerView,
                              BaseRVAdapter adapter,
-                             FooterHolder footerHolder,
+                             BaseFooterHolder footerHolder,
                              RecyclerView.LayoutManager layoutManager,
                              SwipeRefreshLayout refreshLayout,
                              Helper helper) {
@@ -64,7 +64,7 @@ public class RecycleViewHelper implements SwipeRefreshLayout.OnRefreshListener {
         this(context,
                 recyclerView,
                 adapter,
-                new FooterHolder(context, null),
+                new BaseFooterHolder(context, null),
                 layoutManager,
                 refreshLayout,
                 helper

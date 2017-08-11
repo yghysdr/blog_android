@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 /**
  */
-public class FooterHolder extends BaseHolder implements IFooter {
+public class BaseFooterHolder extends BaseHolder implements IFooter {
 
     @Status
     int mCurState;
@@ -17,14 +17,14 @@ public class FooterHolder extends BaseHolder implements IFooter {
     TextView itemMoreNo;
     TextView itemError;
 
-    public FooterHolder(Context context, ViewGroup root) {
+    public BaseFooterHolder(Context context, ViewGroup root) {
         super(context, root, R.layout.item_footer);
         itemMoreNo = (TextView) itemView.findViewById(R.id.item_more_no);
         itemMoreLoading = (TextView) itemView.findViewById(R.id.item_more_loading);
         itemError = (TextView) itemView.findViewById(R.id.item_error);
     }
 
-    public FooterHolder(Context context, ViewGroup root, int layoutRes) {
+    public BaseFooterHolder(Context context, ViewGroup root, int layoutRes) {
         super(context, root, layoutRes);
     }
 
