@@ -62,9 +62,9 @@ dependencies {
     compile rootProject.ext.dependencies["butterknife"]
     apt rootProject.ext.dependencies["butterknife-compiler"]
     compile rootProject.ext.dependencies["glide"]
-    compile project(path: ':srecycleview')
-    //    compile 'com.yghysdr:srecycleview:1.0.0'
+    testCompile rootProject.ext.dependencies["junit"]
+    debugCompile rootProject.ext.dependencies["debug-leakcanary"]
+    releaseCompile rootProject.ext.dependencies["release-leakcanary"]
+    compile project(':srecycleview')
     compile project(':swipeback')
-    compile 'com.android.support:support-v4:25.3.1'
-    testCompile 'junit:junit:4.12'
 }

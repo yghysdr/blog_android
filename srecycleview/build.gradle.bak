@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -30,4 +31,13 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.1'
     compile 'com.android.support:appcompat-v7:25.1.1'
     testCompile 'junit:junit:4.12'
+}
+
+publish {
+    userOrg = 'yghysdr'      //bintray注册的用户名
+    groupId = 'com.yghysdr'         //compile引用时的第1部分groupId
+    artifactId = 'srecycleview'     //compile引用时的第2部分项目名
+    publishVersion = '1.0.0'    //compile引用时的第3部分版本号
+    desc = 'recycleview helper'
+    website = 'https://github.com/shun99/blog_android'
 }
