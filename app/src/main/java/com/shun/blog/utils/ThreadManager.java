@@ -82,7 +82,12 @@ public class ThreadManager {
          */
         public void execute(Runnable runnable) {
             if (mPool == null) {
-                mPool = new ThreadPoolExecutor(mCorePoolSize, mMaximumPoolSize, mKeepAliveTime, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>(10));
+                mPool = new ThreadPoolExecutor(
+                        mCorePoolSize,
+                        mMaximumPoolSize,
+                        mKeepAliveTime,
+                        TimeUnit.MILLISECONDS,
+                        new LinkedBlockingDeque<Runnable>(10));
             }
             if (!mPool.isShutdown() && !mPool.isTerminated()) {
                 mPool.execute(runnable);
