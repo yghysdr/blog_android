@@ -11,7 +11,8 @@ public class HostType {
     /**
      * 天气host
      */
-    public static final String HOST_BLOG = "http://www.yghysdr.cn/api/";
+//    public static final String HOST_BLOG = "http://www.yghysdr.cn/api/";
+    public static final String HOST_BLOG = "http://127.0.0.1:5000/api/v1/";
     public static final int BLOG = 1;
 
     /**

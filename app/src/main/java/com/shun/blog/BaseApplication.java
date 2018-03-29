@@ -10,6 +10,7 @@ import com.shun.blog.utils.UserData;
 import com.shun.blog.weights.multistatelayout.MultiStateConfiguration;
 import com.shun.blog.weights.multistatelayout.MultiStateLayout;
 import com.socks.library.KLog;
+import com.squareup.leakcanary.LeakCanary;
 
 
 /**
@@ -43,6 +44,7 @@ public class BaseApplication extends MultiDexApplication {
     }
 
     private void init() {
+        LeakCanary.install(this);
         Global.init(this);
         UserData.init(this);
         KLog.init(Global.DEBUG);

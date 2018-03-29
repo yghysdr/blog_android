@@ -12,6 +12,6 @@ public class JumpEvent {
 
     public String order;
 
-    public int articleId;
+    public String articleId;
     public Tag tag;
 }

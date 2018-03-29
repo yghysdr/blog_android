@@ -27,7 +27,7 @@ public interface ApiStores {
 
     int list_home = 0;
 
-    @GET("list")
+    @GET("article/list")
     Observable<BaseResponse<List<Article>>> getHomeList(
             @Query("type") int type,
             @Query("page") int page,
@@ -44,7 +44,7 @@ public interface ApiStores {
 
     String BASE_ARTICLE_URL = "http://www.yghysdr.cn/article#/";
 
-    @GET("sortdata")
+    @GET("label/list")
     Observable<BaseResponse<List<Tag>>> getTagData();
 
 }

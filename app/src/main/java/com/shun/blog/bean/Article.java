@@ -22,10 +22,10 @@ public class Article extends BaseBean {
     public String title;
     public String des;
     public String content;
-    public int id;
+    public String id;
     public long createdAt;
     public long updatedAt;
     public int version;
-    public int userId;
+    public String userId;
 
 }

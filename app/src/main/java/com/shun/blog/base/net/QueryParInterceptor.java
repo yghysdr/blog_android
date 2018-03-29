@@ -17,8 +17,8 @@ public class QueryParInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request originalRequest = chain.request();
         HttpUrl modifiedUrl = originalRequest.url().newBuilder()
-//                .addQueryParameter("platform", "android")
-//                .addQueryParameter("version", "1.0.0")
+                .addQueryParameter("platform", "android")
+                .addQueryParameter("version", "1.0.0")
                 .build();
         Request request = originalRequest.newBuilder().url(modifiedUrl).build();
         return chain.proceed(request);
