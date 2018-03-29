@@ -32,7 +32,7 @@ android {
             signingConfig signingConfigs.release
         }
         debug {
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
         }
     }
 
@@ -63,8 +63,8 @@ dependencies {
     apt rootProject.ext.dependencies["butterknife-compiler"]
     compile rootProject.ext.dependencies["glide"]
     testCompile rootProject.ext.dependencies["junit"]
-    debugCompile rootProject.ext.dependencies["debug-leakcanary"]
-    releaseCompile rootProject.ext.dependencies["release-leakcanary"]
+//    debugCompile rootProject.ext.dependencies["debug-leakcanary"]
+//    releaseCompile rootProject.ext.dependencies["release-leakcanary"]
     compile project(':srecycleview')
     compile project(':swipeback')
 }
