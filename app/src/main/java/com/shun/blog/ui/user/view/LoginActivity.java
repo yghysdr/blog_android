@@ -8,6 +8,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.shun.blog.App;
 import com.shun.blog.R;
 import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.ui.BaseActivity;
@@ -25,14 +26,14 @@ import butterknife.OnClick;
 /**
  * 登入
  */
-public class LoginActivity extends BaseActivity<LoginPresenterImpl>
-        implements LoginContract.View {
+public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @BindView(R.id.phone)
     AutoCompleteTextView mPhoneView;
     @BindView(R.id.password)
-    EditText mPasswordView;
+    AutoCompleteTextView mPasswordView;
     private User mTempUser;
+    private LoginPresenterImpl mLoginPresenter;
 
     @Override
     public int getLayoutResource() {
@@ -42,7 +43,7 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl>
     @Override
     protected void init() {
         super.init();
-        initToolBar(getString(R.string.title_login));
+        initToolBar(App.getResString(R.string.title_login));
         mPhoneView.setText(UserData.getExitPhone());
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -78,7 +79,7 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl>
             mTempUser = new User();
             mTempUser.phone = phone;
             mTempUser.password = MD5.md5(password);
-            mPresenter.login(mTempUser);
+            mLoginPresenter.login(mTempUser, this);
         }
     }
 

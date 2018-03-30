@@ -11,6 +11,7 @@ import com.shun.blog.R;
 import com.shun.blog.api.ApiStores;
 import com.shun.blog.app.AppManager;
 import com.shun.blog.base.ui.BaseActivity;
+import com.shun.blog.base.ui.BasePresenter;
 import com.shun.blog.event.JumpEvent;
 import com.shun.blog.ui.article.view.ArticleActivity;
 import com.shun.blog.ui.article.view.SortActivity;
@@ -28,7 +29,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity<MainPresenterImpl>
+public class MainActivity extends BaseActivity
         implements MainContract.View {
 
     @BindView(R.id.main_vp)
@@ -37,6 +38,7 @@ public class MainActivity extends BaseActivity<MainPresenterImpl>
     TabLayout mainTb;
 
     private MainPagerAdapter mAdapter;
+    private MainPresenterImpl mMainPresenter;
 
     @Override
     public int getLayoutResource() {
@@ -45,6 +47,12 @@ public class MainActivity extends BaseActivity<MainPresenterImpl>
         } else {
             return R.layout.activity_main;
         }
+    }
+
+    @Override
+    public void addPresenter(List<BasePresenter> basePresenters) {
+        mMainPresenter = new MainPresenterImpl();
+        basePresenters.add(mMainPresenter);
     }
 
     @Override
@@ -82,7 +90,7 @@ public class MainActivity extends BaseActivity<MainPresenterImpl>
     @Override
     protected void doBeforeSetContentView() {
         super.doBeforeSetContentView();
-        mSlidBack = false;
+//        mSlidBack = false;
     }
 
     @Override

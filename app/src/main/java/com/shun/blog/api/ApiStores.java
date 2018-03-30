@@ -21,7 +21,7 @@ import rx.Observable;
 
 public interface ApiStores {
 
-    @POST("login")
+    @POST("auth/login")
     Observable<BaseResponse<User>> login(@Body User user);
 
 

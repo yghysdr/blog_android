@@ -14,7 +14,6 @@ import com.shun.blog.utils.TUtil;
 public abstract class BasePresenter<V, M extends BaseModel> {
     protected V mView;
     protected M mMode;
-    protected Context mContext;
     protected RxManager mRxManage = new RxManager();
 
     /**
@@ -33,5 +32,6 @@ public abstract class BasePresenter<V, M extends BaseModel> {
         mRxManage.clear();
     }
 
-    public void addRxBus(){}
+    public void addRxBus() {
+    }
 }

@@ -1,9 +1,7 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
         applicationId rootProject.ext.android.applicationId
@@ -39,32 +37,31 @@ android {
     lintOptions {
         abortOnError false
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile rootProject.ext.supportDependencies["appcompat-v7"]
-    compile rootProject.ext.supportDependencies["recyclerview-v7"]
-    compile rootProject.ext.supportDependencies["cardview-v7"]
-    compile rootProject.ext.supportDependencies["support-v4"]
-    compile rootProject.ext.supportDependencies["design"]
-    compile rootProject.ext.dependencies["multidex"]
-    compile rootProject.ext.dependencies["rxjava"]
-    compile rootProject.ext.dependencies["rxandroid"]
-    compile rootProject.ext.dependencies["retrofit"]
-    compile rootProject.ext.dependencies["adapter-rxjava"]
-    compile rootProject.ext.dependencies["logging-interceptor"]
-    compile rootProject.ext.dependencies["converter-gson"]
-    compile rootProject.ext.dependencies["klog"]
-    compile rootProject.ext.dependencies["butterknife"]
-    apt rootProject.ext.dependencies["butterknife-compiler"]
-    compile rootProject.ext.dependencies["glide"]
-    testCompile rootProject.ext.dependencies["junit"]
-    debugCompile rootProject.ext.dependencies["debug-leakcanary"]
-    releaseCompile rootProject.ext.dependencies["release-leakcanary"]
-    compile project(':srecycleview')
-    compile project(':swipeback')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation rootProject.ext.supportDependencies["appcompat-v7"]
+    implementation rootProject.ext.supportDependencies["recyclerview-v7"]
+    implementation rootProject.ext.supportDependencies["cardview-v7"]
+    implementation rootProject.ext.supportDependencies["support-v4"]
+    implementation rootProject.ext.supportDependencies["design"]
+    implementation rootProject.ext.dependencies["multidex"]
+    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["rxandroid"]
+    implementation rootProject.ext.dependencies["retrofit"]
+    implementation rootProject.ext.dependencies["adapter-rxjava"]
+    implementation rootProject.ext.dependencies["logging-interceptor"]
+    implementation rootProject.ext.dependencies["converter-gson"]
+    implementation rootProject.ext.dependencies["klog"]
+    implementation rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    implementation rootProject.ext.dependencies["glide"]
+    testImplementation rootProject.ext.dependencies["junit"]
+    debugImplementation rootProject.ext.dependencies["debug-leakcanary"]
+    releaseImplementation rootProject.ext.dependencies["release-leakcanary"]
+    implementation project(':srecycleview')
+    implementation project(':swipeback')
 }

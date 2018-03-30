@@ -3,16 +3,16 @@
  */
 ext {
     android = [
-            compileSdkVersion: 25,
-            buildToolsVersion: "25.0.2",
+            compileSdkVersion: 26,
+            buildToolsVersion: "26.0.2",
             applicationId    : "com.shun.blog",
             minSdkVersion    : 14,
-            targetSdkVersion : 25,
+            targetSdkVersion : 26,
             versionCode      : 1,
             versionName      : "1.0.0"
     ]
 
-    supportLibrary = '25.1.1'
+    supportLibrary = '26.1.0'
     supportDependencies = [
             "support-v4"     : "com.android.support:support-v4:${supportLibrary}",
             "appcompat-v7"   : "com.android.support:appcompat-v7:${supportLibrary}",

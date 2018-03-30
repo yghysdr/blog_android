@@ -1,5 +1,7 @@
 package com.shun.blog.ui.user.contract;
 
+import android.content.Context;
+
 import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.bean.User;
 
@@ -17,7 +19,7 @@ public class LoginContract {
     }
 
     public interface Presenter {
-        void login(User user);
+        void login(User user, Context context);
     }
 
     public interface Model {

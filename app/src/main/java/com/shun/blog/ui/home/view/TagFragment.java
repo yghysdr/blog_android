@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.shun.blog.R;
 import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.ui.BaseFragment;
+import com.shun.blog.base.ui.BasePresenter;
 import com.shun.blog.bean.Tag;
 import com.shun.blog.event.JumpEvent;
 import com.shun.blog.ui.home.contract.TagContract;
@@ -24,13 +25,14 @@ import butterknife.BindView;
 /**
  * 归档
  */
-public class TagFragment extends BaseFragment<TagPresenterImpl>
+public class TagFragment extends BaseFragment
         implements TagContract.View {
 
     @BindView(R.id.tag_tl)
     TagsLayout tagTl;
     @BindView(R.id.tag_root_fl)
     FrameLayout tagRootFl;
+    private TagPresenterImpl mTagPresenter;
 
     public TagFragment() {
         mReUse = true;
@@ -48,7 +50,13 @@ public class TagFragment extends BaseFragment<TagPresenterImpl>
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
-        mPresenter.requestTag();
+        mTagPresenter.requestTag();
+    }
+
+    @Override
+    public void addPresenter(List<BasePresenter> basePresenters) {
+        mTagPresenter = new TagPresenterImpl();
+        basePresenters.add(mTagPresenter);
     }
 
     private List<Tag> mTags;

@@ -17,8 +17,8 @@ import com.squareup.leakcanary.LeakCanary;
  * Created by yghysdr on 16/11/26.
  */
 
-public class BaseApplication extends MultiDexApplication {
-    public static BaseApplication instance;
+public class App extends MultiDexApplication {
+    public static App instance;
 
     @Override
     public void onCreate() {

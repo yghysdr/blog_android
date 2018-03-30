@@ -14,7 +14,6 @@ import rx.Observable;
 public class ArticleListContract {
 
     public interface View {
-
         void refreshTheme();
     }
 

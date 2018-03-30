@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import com.shun.blog.R;
 import com.shun.blog.base.ui.BaseListFragment;
+import com.shun.blog.base.ui.BasePresenter;
 import com.shun.blog.bean.Archive;
 import com.shun.blog.ui.home.contract.ArchiveContract;
 import com.shun.blog.ui.home.presenter.ArchiveListAdapter;
@@ -18,7 +19,7 @@ import java.util.List;
 /**
  * 归档
  */
-public class ArchiveListFragment extends BaseListFragment<ArchiveListPresenterImpl>
+public class ArchiveListFragment extends BaseListFragment
         implements ArchiveContract.View {
 
     public ArchiveListFragment() {
@@ -70,5 +71,11 @@ public class ArchiveListFragment extends BaseListFragment<ArchiveListPresenterIm
             }
         }
         ThemeUtil.dealRecycleView(mBaseRv);
+    }
+
+    @Override
+    public void addPresenter(List<BasePresenter> basePresenters) {
+        super.addPresenter(basePresenters);
+        mBaseListPresenter = new ArchiveListPresenterImpl();
     }
 }

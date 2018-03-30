@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.shun.blog.R;
 import com.shun.blog.base.ui.BaseListFragment;
+import com.shun.blog.base.ui.BasePresenter;
 import com.shun.blog.ui.article.contract.ArticleListContract;
 import com.shun.blog.ui.article.presenter.ArticleListAdapter;
 import com.shun.blog.ui.article.presenter.ArticleListPresenterImpl;
@@ -18,7 +19,7 @@ import java.util.List;
 
 /**
  */
-public class ArticleListFragment extends BaseListFragment<ArticleListPresenterImpl>
+public class ArticleListFragment extends BaseListFragment
         implements ArticleListContract.View, RecycleViewHelper.Helper {
 
     private static final String ARG_PARAM1 = "com.shun.blog.article.list.type";
@@ -44,7 +45,6 @@ public class ArticleListFragment extends BaseListFragment<ArticleListPresenterIm
         return fragment;
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +54,13 @@ public class ArticleListFragment extends BaseListFragment<ArticleListPresenterIm
                 isUIVisible = getArguments().getBoolean(ARG_PARAM2, false);
             }
         }
+    }
+
+    @Override
+    public void addPresenter(List<BasePresenter> basePresenters) {
+        super.addPresenter(basePresenters);
+        mBaseListPresenter = new ArticleListPresenterImpl();
+        basePresenters.add(mBaseListPresenter);
     }
 
     @Override
@@ -69,7 +76,7 @@ public class ArticleListFragment extends BaseListFragment<ArticleListPresenterIm
 
     @Override
     public void requestData(int page, int size) {
-        mPresenter.requestData(mArticleType, page, size);
+        mBaseListPresenter.requestData(mArticleType, page, size);
     }
 
     @Override

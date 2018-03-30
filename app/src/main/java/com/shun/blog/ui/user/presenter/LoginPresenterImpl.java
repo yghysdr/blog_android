@@ -1,5 +1,7 @@
 package com.shun.blog.ui.user.presenter;
 
+import android.content.Context;
+
 import com.shun.blog.base.net.DialogCallback;
 import com.shun.blog.base.rx.RxSchedulers;
 import com.shun.blog.base.ui.BasePresenter;
@@ -16,11 +18,11 @@ public class LoginPresenterImpl extends BasePresenter<LoginContract.View,
         LoginModelImpl> implements LoginContract.Presenter {
 
     @Override
-    public void login(User user) {
+    public void login(User user, Context context) {
         mRxManage.addAsync(mMode
                 .login(user)
                 .compose(RxSchedulers.<BaseResponse<User>>io_main())
-                .subscribe(new DialogCallback<BaseResponse<User>>(mContext) {
+                .subscribe(new DialogCallback<BaseResponse<User>>(context) {
                     @Override
                     public void onSuccess(BaseResponse<User> result) {
                         mView.loginSuccess(result.data);

@@ -12,11 +12,13 @@ import com.shun.blog.weights.multistatelayout.MultiStateLayout;
 import com.yghysdr.srecycleview.BaseRVAdapter;
 import com.yghysdr.srecycleview.RecycleViewHelper;
 
+import java.util.List;
+
 import butterknife.BindView;
 
 /**
  */
-public abstract class BaseListFragment<P extends BaseListPresenter> extends BaseFragment<P>
+public abstract class BaseListFragment extends BaseFragment
         implements RecycleViewHelper.Helper {
 
     @BindView(R.id.base_rv)
@@ -31,6 +33,7 @@ public abstract class BaseListFragment<P extends BaseListPresenter> extends Base
     protected RecycleViewHelper mHelper;
     private boolean mHaveData;
 
+    protected BaseListPresenter mBaseListPresenter;
 
     @Override
     protected int getLayoutResource() {
@@ -73,6 +76,11 @@ public abstract class BaseListFragment<P extends BaseListPresenter> extends Base
 
     public abstract void addDateToList(Object beanList);
 
+    @Override
+    public void addPresenter(List<BasePresenter> basePresenters) {
+
+    }
+
     public void onFailed(int errorNo, String errorMsg) {
         if (!mHaveData) {
             if (errorNo == Error.NO_NET_ERROR) {
@@ -86,12 +94,12 @@ public abstract class BaseListFragment<P extends BaseListPresenter> extends Base
 
     @Override
     public void requestData(int page, int size) {
-        mPresenter.requestData(null, page, size);
+        mBaseListPresenter.requestData(null, page, size);
     }
 
     @Override
     public int haveMoreData() {
-        return mPresenter.haveMore();
+        return mBaseListPresenter.haveMore();
     }
 
 }

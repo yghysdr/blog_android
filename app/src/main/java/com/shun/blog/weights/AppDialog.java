@@ -10,18 +10,18 @@ import android.support.v7.app.AlertDialog;
  * Created by yghysdr on 2017/5/22.
  */
 
-public class MyDialog extends AlertDialog {
+public class AppDialog extends AlertDialog {
 
 
-    protected MyDialog(@NonNull Context context) {
+    protected AppDialog(@NonNull Context context) {
         super(context);
     }
 
-    public MyDialog(@NonNull Context context, @StyleRes int themeResId) {
+    public AppDialog(@NonNull Context context, @StyleRes int themeResId) {
         super(context, themeResId);
     }
 
-    public MyDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
+    public AppDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
     }
 }

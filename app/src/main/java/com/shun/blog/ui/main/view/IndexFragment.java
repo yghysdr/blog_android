@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import com.shun.blog.R;
 import com.shun.blog.api.ApiStores;
 import com.shun.blog.base.ui.BaseFragment;
+import com.shun.blog.base.ui.BasePresenter;
 import com.shun.blog.ui.article.view.ArticleListFragment;
 import com.shun.blog.ui.home.view.ArchiveListFragment;
 import com.shun.blog.ui.home.view.TagFragment;
@@ -20,13 +21,14 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class IndexFragment extends BaseFragment<IndexPresenterImpl> implements
+public class IndexFragment extends BaseFragment implements
         IndexContract.View {
 
     @BindView(R.id.home_vp)
     ViewPager homeVp;
     @BindView(R.id.home_tl)
     TabLayout homeTL;
+    private IndexPresenterImpl indexPresenter;
 
     public IndexFragment() {
         // Required empty public constructor
@@ -51,6 +53,12 @@ public class IndexFragment extends BaseFragment<IndexPresenterImpl> implements
         homeTL.setupWithViewPager(homeVp);
     }
 
+    @Override
+    public void addPresenter(List<BasePresenter> basePresenters) {
+        super.addPresenter(basePresenters);
+        indexPresenter = new IndexPresenterImpl();
+        basePresenters.add(indexPresenter);
+    }
 
     @Override
     protected int getLayoutResource() {

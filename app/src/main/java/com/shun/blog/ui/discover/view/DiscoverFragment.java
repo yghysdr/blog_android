@@ -4,13 +4,16 @@ import android.widget.FrameLayout;
 
 import com.shun.blog.R;
 import com.shun.blog.base.ui.BaseFragment;
+import com.shun.blog.base.ui.BasePresenter;
 import com.shun.blog.ui.discover.contract.DiscoverContract;
 import com.shun.blog.ui.discover.presenter.DiscoverPresenterImpl;
 import com.shun.blog.utils.ThemeUtil;
 
+import java.util.List;
+
 import butterknife.BindView;
 
-public class DiscoverFragment extends BaseFragment<DiscoverPresenterImpl>
+public class DiscoverFragment extends BaseFragment
         implements DiscoverContract.View {
 
     @BindView(R.id.discover_fl)

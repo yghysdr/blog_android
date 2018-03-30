@@ -5,7 +5,7 @@ import android.text.TextUtils;
 
 import com.google.gson.JsonParseException;
 import com.google.gson.stream.MalformedJsonException;
-import com.shun.blog.BaseApplication;
+import com.shun.blog.App;
 import com.shun.blog.R;
 import com.shun.blog.utils.NetUtil;
 
@@ -31,9 +31,9 @@ public class ExceptionHandle {
 
     public static ResponseThrowable handleException(Throwable e) {
         ResponseThrowable ex;
-        if (!NetUtil.isNetworkAvailable(BaseApplication.instance)) {
+        if (!NetUtil.isNetworkAvailable(App.instance)) {
             ex = new ResponseThrowable(e, Error.NO_NET_ERROR);
-            ex.message = BaseApplication.getResString(R.string.action_sign);
+            ex.message = App.getResString(R.string.action_sign);
             return ex;
         }
         if (e instanceof retrofit2.adapter.rxjava.HttpException) {
@@ -90,9 +90,10 @@ public class ExceptionHandle {
             }
             return ex;
         } else {
-            ex = new ResponseThrowable(e, Error.UNKNOWN);
-            ex.message = "未知错误";
-            return ex;
+            throw new RuntimeException(e);
+//            ex = new ResponseThrowable(e, Error.UNKNOWN);
+//            ex.message = "未知错误";
+//            return ex;
         }
     }
 

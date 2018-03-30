@@ -16,20 +16,20 @@ import com.shun.blog.Jump;
 import com.shun.blog.R;
 import com.shun.blog.app.AppConstants;
 import com.shun.blog.base.rx.RxBus;
+import com.shun.blog.base.ui.AppDialogFragment;
 import com.shun.blog.base.ui.BaseFragment;
 import com.shun.blog.bean.User;
 import com.shun.blog.event.ThemeEvent;
-import com.shun.blog.ui.user.presenter.UserPresenterImpl;
 import com.shun.blog.utils.SPUtils;
 import com.shun.blog.utils.ThemeUtil;
 import com.shun.blog.utils.UserData;
-import com.shun.blog.weights.MyDialog;
+import com.shun.blog.weights.AppDialog;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class UserFragment extends BaseFragment<UserPresenterImpl> {
+public class UserFragment extends BaseFragment {
 
     @BindView(R.id.user_avatar_iv)
     ImageView userAvatarIv;
@@ -172,7 +172,7 @@ public class UserFragment extends BaseFragment<UserPresenterImpl> {
     }
 
     public void exit() {
-        new MyDialog.Builder(mActivity)
+        new AppDialogFragment.Builder(getActivity())
                 .setTitle("确定退出？")
                 .setNegativeButton("取消", null)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {

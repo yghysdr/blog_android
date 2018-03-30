@@ -1,12 +1,11 @@
 package com.shun.blog.ui.article.view;
 
-import com.shun.blog.BaseApplication;
+import com.shun.blog.App;
 import com.shun.blog.R;
 import com.shun.blog.base.ui.BaseActivity;
 import com.shun.blog.ui.article.contract.NewContract;
-import com.shun.blog.ui.article.presenter.NewPresenterImpl;
 
-public class NewActivity extends BaseActivity<NewPresenterImpl>
+public class NewActivity extends BaseActivity
         implements NewContract.View {
 
     @Override
@@ -17,6 +16,6 @@ public class NewActivity extends BaseActivity<NewPresenterImpl>
     @Override
     protected void init() {
         super.init();
-        initToolBar(BaseApplication.getResString(R.string.title_article_new));
+        initToolBar(App.getResString(R.string.title_article_new));
     }
 }

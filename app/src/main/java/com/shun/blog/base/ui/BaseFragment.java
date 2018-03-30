@@ -10,8 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.shun.blog.R;
-import com.shun.blog.utils.TUtil;
 import com.shun.blog.utils.ThemeUtil;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 
@@ -21,16 +22,16 @@ import butterknife.ButterKnife;
  * 2 该fragment是否被复用。通常结合FragmentPagerAdapter
  */
 
-public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
+public abstract class BaseFragment extends Fragment
+        implements MvpWrapper.IMvpWrapper {
 
     protected BaseActivity mActivity;
     protected View mRootView;
-    protected P mPresenter;
     protected boolean mReUse = false;
     //懒加载
     protected boolean isViewCreated = false, isUIVisible = false;
     private Toolbar mToolbar;
-
+    private MvpWrapper mMvpWrapper;
 
     /**
      * SetUserVisibleHint(false)-->SetUserVisibleHint(true)
@@ -44,11 +45,8 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
         }
         mRootView = inflater.inflate(getLayoutResource(), container, false);
         ButterKnife.bind(this, mRootView);
-        mPresenter = TUtil.getT(this, 0);
-        if (mPresenter != null) {
-            mPresenter.attachView(this);
-            mPresenter.mContext = getActivity();
-        }
+        mMvpWrapper = new MvpWrapper(this);
+        mMvpWrapper.attach();
         isViewCreated = true;
         isLazyLoad();
         beforeReturn();
@@ -80,6 +78,11 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
         }
     }
 
+    @Override
+    public void addPresenter(List<BasePresenter> basePresenters) {
+
+    }
+
     /**
      * 懒加载
      */
@@ -109,9 +112,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (mPresenter != null) {
-            mPresenter.detachView();
-        }
+        mMvpWrapper.detach();
     }
 
     protected void initToolBar(CharSequence title) {

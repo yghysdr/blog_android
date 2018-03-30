@@ -2,7 +2,7 @@ package com.shun.blog.base.net;
 
 import android.text.TextUtils;
 
-import com.shun.blog.BaseApplication;
+import com.shun.blog.App;
 import com.shun.blog.utils.NetUtil;
 import com.socks.library.KLog;
 
@@ -83,7 +83,7 @@ public class CacheInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
-        if (!NetUtil.isNetworkAvailable(BaseApplication.instance)) {
+        if (!NetUtil.isNetworkAvailable(App.instance)) {
             request = request.newBuilder()
                     .cacheControl(CacheControl.FORCE_CACHE)
                     .build();
@@ -91,7 +91,7 @@ public class CacheInterceptor implements Interceptor {
         }
 
         Response response = chain.proceed(request);
-        if (NetUtil.isNetworkAvailable(BaseApplication.instance)) {
+        if (NetUtil.isNetworkAvailable(App.instance)) {
             //获取请求头的缓存策略，如果没有设置使用默认策略
             //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
             String cacheControl = request.cacheControl().toString();
