@@ -4,7 +4,7 @@
 ext {
     android = [
             compileSdkVersion: 26,
-            buildToolsVersion: "26.0.2",
+            buildToolsVersion: "26.0.3",
             applicationId    : "com.shun.blog",
             minSdkVersion    : 14,
             targetSdkVersion : 26,
@@ -37,8 +37,8 @@ ext {
             //日志
             'klog'                : 'com.github.zhaokaiqiang.klog:library:1.5.0',
             //控件绑定
-            'butterknife'         : 'com.jakewharton:butterknife:8.4.0',
-            'butterknife-compiler': 'com.jakewharton:butterknife-compiler:8.4.0',
+            'butterknife'         : 'com.jakewharton:butterknife:8.8.1',
+            'butterknife-compiler': 'com.jakewharton:butterknife-compiler:8.8.1',
             //图片加载
             'glide'               : 'com.github.bumptech.glide:glide:3.7.0',
             'junit'               : 'junit:junit:4.12',

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
     compileSdkVersion rootProject.ext.android.compileSdkVersion
 
     defaultConfig {
@@ -37,7 +38,6 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion '27.0.3'
 }
 
 dependencies {
