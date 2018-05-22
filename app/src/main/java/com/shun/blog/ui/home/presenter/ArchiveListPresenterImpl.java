@@ -25,7 +25,7 @@ public class ArchiveListPresenterImpl extends BaseListPresenter<ArchiveListFragm
 
     @Override
     public void requestData(Object msg, int page, int pageSize) {
-        mRxManage.addAsync(mMode
+        mRxManage.addSubscription(mMode
                 .requestData(page, pageSize)
                 .compose(RxSchedulers.<BaseResponse<List<Archive>>>io_main())
                 .subscribe(new JsonCallback<BaseResponse<List<Archive>>>() {
@@ -47,7 +47,7 @@ public class ArchiveListPresenterImpl extends BaseListPresenter<ArchiveListFragm
     @Override
     public void addRxBus() {
         super.addRxBus();
-        mRxManage.addAsync(RxBus.getDefault()
+        mRxManage.addSubscription(RxBus.getDefault()
                 .toObservable(ThemeEvent.class)
                 .subscribe(new Action1<ThemeEvent>() {
                     @Override

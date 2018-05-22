@@ -45,9 +45,8 @@ public class App extends MultiDexApplication {
 
     private void init() {
         LeakCanary.install(this);
-        Global.init(this);
         UserData.init(this);
-        KLog.init(Global.DEBUG);
+        KLog.init(BuildConfig.DEBUG);
         BaseUtils.init(this);
         ShareUtils.init(this);
         MultiStateConfiguration.Builder builder = new MultiStateConfiguration.Builder();

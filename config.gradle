@@ -24,8 +24,8 @@ ext {
             //解除64K限制
             'multidex'            : 'com.android.support:multidex:1.+',
             //rx系列
-            'rxjava'              : 'io.reactivex:rxjava:1.1.0',
-            'rxandroid'           : 'io.reactivex:rxandroid:1.0.1',
+            'rxjava'              : 'io.reactivex:rxjava:1.2.0',
+            'rxandroid'           : 'io.reactivex:rxandroid:1.2.0',
             //网络请求
             'retrofit'            : 'com.squareup.retrofit2:retrofit:2.0.2',
             //RxJava与retrofit适配器
@@ -35,7 +35,7 @@ ext {
             //转换器，请求结果转换成Model
             'converter-gson'      : 'com.squareup.retrofit2:converter-gson:2.0.2',
             //日志
-            'klog'                : 'com.github.zhaokaiqiang.klog:library:1.5.0',
+            'klog'                : 'com.github.zhaokaiqiang.klog:library:1.6.0',
             //控件绑定
             'butterknife'         : 'com.jakewharton:butterknife:8.8.1',
             'butterknife-compiler': 'com.jakewharton:butterknife-compiler:8.8.1',

@@ -18,7 +18,7 @@ public class DiscoverPresenterImpl extends BasePresenter<DiscoverFragment, Disco
     @Override
     public void addRxBus() {
         super.addRxBus();
-        mRxManage.addAsync(RxBus.getDefault()
+        mRxManage.addSubscription(RxBus.getDefault()
                 .toObservable(ThemeEvent.class)
                 .subscribe(new Action1<ThemeEvent>() {
                     @Override

@@ -18,7 +18,7 @@ public class IndexPresenterImpl extends BasePresenter<IndexContract.View, IndexM
     @Override
     public void addRxBus() {
         super.addRxBus();
-        mRxManage.addAsync(RxBus.getDefault()
+        mRxManage.addSubscription(RxBus.getDefault()
                 .toObservable(ThemeEvent.class)
                 .subscribe(new Action1<ThemeEvent>() {
                     @Override

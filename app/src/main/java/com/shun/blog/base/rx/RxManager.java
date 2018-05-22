@@ -15,7 +15,7 @@ public class RxManager {
      * Subscription subscribe = observable.subscribe(subscriber);
      * 被观察者订阅观察者会返回一个Subscription对象。
      */
-    public void addAsync(Subscription subscription) {
+    public void addSubscription(Subscription subscription) {
         mCompositeSubscription.add(subscription);
     }
 

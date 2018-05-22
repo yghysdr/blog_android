@@ -2,10 +2,10 @@ package com.shun.blog.api;
 
 import android.util.SparseArray;
 
+import com.shun.blog.BuildConfig;
 import com.shun.blog.base.net.CacheInterceptor;
 import com.shun.blog.base.net.HeaderInterceptor;
 import com.shun.blog.base.net.QueryParInterceptor;
-import com.shun.blog.app.Global;
 
 import java.util.concurrent.TimeUnit;
 
@@ -53,14 +53,14 @@ public class AppWebClient {
                 .connectTimeout(CONN_TIME, TimeUnit.SECONDS)
                 .readTimeout(READ_TIME, TimeUnit.SECONDS)
                 .writeTimeout(WRITE_TIME, TimeUnit.SECONDS);
-        if (Global.DEBUG) {
+        if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             //设置 Debug Log 模式
             builder.addInterceptor(loggingInterceptor);
         }
         //错误重连
-//        builder.retryOnConnectionFailure(true);
+        builder.retryOnConnectionFailure(true);
         OkHttpClient okHttpClient = builder.build();
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(HostType.getHost(type))

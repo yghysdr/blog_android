@@ -19,7 +19,7 @@ public class LoginPresenterImpl extends BasePresenter<LoginContract.View,
 
     @Override
     public void login(User user, Context context) {
-        mRxManage.addAsync(mMode
+        mRxManage.addSubscription(mMode
                 .login(user)
                 .compose(RxSchedulers.<BaseResponse<User>>io_main())
                 .subscribe(new DialogCallback<BaseResponse<User>>(context) {

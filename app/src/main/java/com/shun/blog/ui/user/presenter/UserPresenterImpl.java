@@ -7,7 +7,6 @@ import com.shun.blog.event.LoginEvent;
 import com.shun.blog.ui.user.contract.UserContract;
 import com.shun.blog.ui.user.model.UserModelImpl;
 import com.shun.blog.ui.user.view.UserFragment;
-import com.shun.blog.utils.ToastUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +21,7 @@ public class UserPresenterImpl extends BasePresenter<UserFragment, UserModelImpl
     @Override
     public void addRxBus() {
         super.addRxBus();
-        mRxManage.addAsync(RxBus
+        mRxManage.addSubscription(RxBus
                 .getDefault()
                 .toObservable(LoginEvent.class)
                 .delay(3, TimeUnit.SECONDS)

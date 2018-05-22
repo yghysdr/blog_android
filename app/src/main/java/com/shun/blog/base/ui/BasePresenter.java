@@ -1,7 +1,5 @@
 package com.shun.blog.base.ui;
 
-import android.content.Context;
-
 import com.shun.blog.base.rx.RxManager;
 import com.shun.blog.utils.TUtil;
 

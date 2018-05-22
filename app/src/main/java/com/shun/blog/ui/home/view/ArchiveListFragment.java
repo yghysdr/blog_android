@@ -77,5 +77,6 @@ public class ArchiveListFragment extends BaseListFragment
     public void addPresenter(List<BasePresenter> basePresenters) {
         super.addPresenter(basePresenters);
         mBaseListPresenter = new ArchiveListPresenterImpl();
+        basePresenters.add(mBaseListPresenter);
     }
 }

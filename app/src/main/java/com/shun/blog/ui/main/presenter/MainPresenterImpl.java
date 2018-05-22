@@ -19,7 +19,7 @@ public class MainPresenterImpl extends BasePresenter<MainActivity, MainModelImpl
     @Override
     public void addRxBus() {
         super.addRxBus();
-        mRxManage.addAsync(RxBus.getDefault()
+        mRxManage.addSubscription(RxBus.getDefault()
                 .toObservable(ThemeEvent.class)
                 .subscribe(new Action1<ThemeEvent>() {
                     @Override
@@ -28,7 +28,7 @@ public class MainPresenterImpl extends BasePresenter<MainActivity, MainModelImpl
                     }
                 }));
 
-        mRxManage.addAsync(RxBus.getDefault()
+        mRxManage.addSubscription(RxBus.getDefault()
                 .toObservable(JumpEvent.class)
                 .subscribe(new Action1<JumpEvent>() {
                     @Override

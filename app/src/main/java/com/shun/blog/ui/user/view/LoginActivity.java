@@ -1,5 +1,7 @@
 package com.shun.blog.ui.user.view;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -12,6 +14,7 @@ import com.shun.blog.App;
 import com.shun.blog.R;
 import com.shun.blog.base.rx.RxBus;
 import com.shun.blog.base.ui.BaseActivity;
+import com.shun.blog.base.ui.BasePresenter;
 import com.shun.blog.bean.User;
 import com.shun.blog.event.LoginEvent;
 import com.shun.blog.ui.user.contract.LoginContract;
@@ -19,6 +22,9 @@ import com.shun.blog.ui.user.presenter.LoginPresenterImpl;
 import com.shun.blog.utils.MD5;
 import com.shun.blog.utils.UserData;
 import com.shun.blog.utils.Validation;
+
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -55,6 +61,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void addPresenter(List<BasePresenter> basePresenters) {
+        super.addPresenter(basePresenters);
+        mLoginPresenter = new LoginPresenterImpl();
+        basePresenters.add(mLoginPresenter);
     }
 
     private void attemptLogin() {

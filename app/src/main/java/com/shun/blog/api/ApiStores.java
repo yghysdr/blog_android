@@ -42,6 +42,8 @@ public interface ApiStores {
     @GET("archive")
     Observable<BaseResponse<List<Archive>>> getArchive();
 
+
+
     String BASE_ARTICLE_URL = "http://www.yghysdr.cn/article#/";
 
     @GET("label/list")

@@ -1,7 +1,5 @@
 package com.shun.blog.app;
 
-import android.content.Context;
-
 import com.google.gson.Gson;
 
 /**
@@ -10,14 +8,6 @@ import com.google.gson.Gson;
  */
 
 public class Global {
-    public static boolean DEBUG = true;
-
-    private static Context mContext;
-
-    public static void init(Context context) {
-        mContext = context;
-    }
-
 
     private static final ThreadLocal<Gson> reuseGson = new ThreadLocal<Gson>() {
         @Override

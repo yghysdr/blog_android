@@ -23,20 +23,20 @@ public class TagPresenterImpl extends BasePresenter<TagFragment, TagModelImpl>
 
     @Override
     public void requestTag() {
-        mMode.requestData()
+        mRxManage.addSubscription(mMode.requestData()
                 .compose(RxSchedulers.<BaseResponse<List<Tag>>>io_main())
                 .subscribe(new Action1<BaseResponse<List<Tag>>>() {
                     @Override
                     public void call(BaseResponse<List<Tag>> listBaseResponse) {
                         mView.addTags(listBaseResponse.data);
                     }
-                });
+                }));
     }
 
     @Override
     public void addRxBus() {
         super.addRxBus();
-        mRxManage.addAsync(RxBus.getDefault()
+        mRxManage.addSubscription(RxBus.getDefault()
                 .toObservable(ThemeEvent.class)
                 .subscribe(new Action1<ThemeEvent>() {
                     @Override

@@ -91,9 +91,6 @@ public class ExceptionHandle {
             return ex;
         } else {
             throw new RuntimeException(e);
-//            ex = new ResponseThrowable(e, Error.UNKNOWN);
-//            ex.message = "未知错误";
-//            return ex;
         }
     }
 

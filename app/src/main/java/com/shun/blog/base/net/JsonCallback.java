@@ -2,8 +2,8 @@ package com.shun.blog.base.net;
 
 import com.shun.blog.base.ui.BaseResponse;
 import com.shun.blog.utils.ToastUtils;
-import com.socks.library.KLog;
 
+import rx.Observer;
 import rx.Subscriber;
 
 /**
@@ -12,12 +12,11 @@ import rx.Subscriber;
  * 2，简化网络请求的处理。
  */
 
-public abstract class JsonCallback<R extends BaseResponse> extends Subscriber<R> {
+public abstract class JsonCallback<T> extends Subscriber<T> {
 
-    public abstract void onSuccess(R result);
+    public abstract void onSuccess(T result);
 
     public void onFailure(int code, String msg) {
-        KLog.d("http_error", "code:" + code + "" + "msg:" + msg);
         ToastUtils.showToastLimitTime(msg);
     }
 
@@ -36,11 +35,17 @@ public abstract class JsonCallback<R extends BaseResponse> extends Subscriber<R>
     }
 
     @Override
-    public void onNext(R r) {
-        if (r.code == 0) {
-            onSuccess(r);
+    public void onNext(T r) {
+        if (r instanceof BaseResponse) {
+            BaseResponse baseResponse = (BaseResponse) r;
+            if (baseResponse.code == 0) {
+                onSuccess(r);
+            } else {
+                onFailure(baseResponse.code, baseResponse.msg);
+            }
         } else {
-            onFailure(r.code, r.msg);
+            onSuccess(r);
         }
     }
+
 }
