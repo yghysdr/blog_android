@@ -1,1 +1,11 @@
-include ':app', ':srecycleview', ':swipeback'
+include ':frameworks:kit_ui',
+        ':frameworks:kit_http',
+        ':frameworks:kit_modle'
+
+include ':modules:module_app',
+        ':modules:module_common',
+        ':modules:module_main', ':modules:mediator_main',
+        ':modules:module_user', ':modules:mediator_user',
+        ':modules:module_discover', ':modules:mediator_discover',
+        ':modules:module_article', ':modules:mediator_article',
+        ':modules:module_login', ':modules:mediator_login'

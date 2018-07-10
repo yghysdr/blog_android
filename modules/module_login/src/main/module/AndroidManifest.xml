@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.yghysdr.login">
+
+    <application>
+        <activity android:name="io.yghysdr.login.LoginActivity" />
+    </application>
+</manifest>
