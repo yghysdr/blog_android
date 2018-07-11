@@ -56,8 +56,7 @@ public class ClassUtils {
      * @param <T>     U know
      * @return 对象列表
      */
-    public static <T> List<T>
-    getObjectsWithInterface(Context context, Class<T> clazz, String path) {
+    public static <T> List<T> getObjectsWithInterface(Context context, Class<T> clazz, String path) {
         List<T> objectList = new ArrayList<>();
         try {
             //找出所有路径中的类名，主要用于各个组件根包名一致的情况

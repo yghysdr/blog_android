@@ -3,7 +3,7 @@
     package="io.yghysdr.blog">
 
     <application
-        android:name="io.yghysdr.common.BlogApp"
+        android:name="com.github.yghysdr.base.BaseApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
