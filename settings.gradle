@@ -1,9 +1,17 @@
-include ':frameworks:kit_ui',
+include ':frameworks:kit_base',
+        ':frameworks:kit_widget',
         ':frameworks:kit_http',
-        ':frameworks:kit_modle'
+        ':frameworks:kit_util',
+        ':frameworks:kit_recycleview'
+
+include ':frameworks:wrap_json',
+        ':frameworks:wrap_multistate'
+
+include ':frameworks:app_theme',
+        ':frameworks:app_res',
+        ':frameworks:app_common'
 
 include ':modules:module_app',
-        ':modules:module_common',
         ':modules:module_main', ':modules:mediator_main',
         ':modules:module_user', ':modules:mediator_user',
         ':modules:module_discover', ':modules:mediator_discover',

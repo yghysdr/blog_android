@@ -4,10 +4,11 @@ import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 
-import io.blog.modle.bean.User;
+import io.blog.res.bean.User;
 
 import com.github.yghysdr.base.BaseApp;
-import com.github.yghysdr.base.utils.PreUtils;
+import io.yghysdr.blog.wrap.json.JsonHelper;
+import com.github.yghysdr.util.PreUtils;
 
 import io.yghysdr.mediator.user.IContentUser;
 import io.yghysdr.mediator.user.IUserProvider;
@@ -15,7 +16,7 @@ import io.yghysdr.mediator.user.IUserProvider;
 @Route(path = IContentUser.USER_SERVICE_USER_INFO)
 public class UserProviderImp implements IUserProvider {
 
-    private static final String USER = "login.LoginProviderImp.user";
+    private static final String USER = "login.user.info";
 
     private static User mPostUser;
 
@@ -32,7 +33,7 @@ public class UserProviderImp implements IUserProvider {
     @Override
     public User getUser() {
         if (mPostUser == null) {
-            mPostUser = PreUtils.getObject(USER, User.class);
+            mPostUser = JsonHelper.fromJson(PreUtils.getString(BaseApp.getContext(), USER, ""), User.class);
         }
         return mPostUser;
     }
@@ -41,14 +42,14 @@ public class UserProviderImp implements IUserProvider {
     public void updateUser(User user) {
         if (user != null) {
             mPostUser = user;
-            PreUtils.putObject(USER, mPostUser);
+            PreUtils.putString(BaseApp.getContext(), USER, JsonHelper.toJson(user));
         }
     }
 
     @Override
     public void clearUser() {
         mPostUser = null;
-        PreUtils.putObject(USER, "");
+        PreUtils.putString(BaseApp.getContext(), USER, "");
     }
 
 

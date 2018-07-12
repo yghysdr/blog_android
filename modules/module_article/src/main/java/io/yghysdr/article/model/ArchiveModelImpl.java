@@ -2,8 +2,8 @@ package io.yghysdr.article.model;
 
 import java.util.List;
 
-import io.blog.modle.BaseResponse;
-import io.blog.modle.bean.Archive;
+import io.blog.res.BaseResponse;
+import io.blog.res.bean.Archive;
 import io.reactivex.Observable;
 import io.yghysdr.article.contract.ArchiveContract;
 

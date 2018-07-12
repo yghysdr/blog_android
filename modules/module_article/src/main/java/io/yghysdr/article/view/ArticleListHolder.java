@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import butterknife.BindView;
-import io.blog.modle.bean.Article;
-import com.github.yghysdr.base.rv.BaseRVHolder;
+import io.blog.res.bean.Article;
+import com.github.yghysdr.recycleview.BaseRVHolder;
 import io.yghysdr.article.R;
 import io.yghysdr.article.R2;
-import io.yghysdr.common.common.util.DateUtil;
-import io.yghysdr.common.common.util.StringUtils;
+import com.github.yghysdr.util.DateUtil;
+import io.yghysdr.article.StringUtils;
 import io.yghysdr.mediator.article.MediatorArticle;
 
 /**

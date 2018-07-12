@@ -50,7 +50,11 @@ android {
 }
 
 dependencies {
-    implementation project(":modules:module_common")
+    implementation project(':frameworks:kit_base')
+    implementation project(':frameworks:app_common')
+
+    implementation project(':frameworks:app_theme')
+
     implementation project(":modules:mediator_discover")
     annotationProcessor rootProject.ext.deps.butterknife_compiler
     annotationProcessor rootProject.ext.deps.arouter_compiler

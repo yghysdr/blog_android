@@ -5,7 +5,7 @@ import android.text.TextUtils;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 
-import com.github.yghysdr.base.TokenHelper;
+import io.yghysdr.blog.common.TokenHelper;
 import io.yghysdr.mediator.login.IConstantlogin;
 import io.yghysdr.mediator.login.ILoginProvider;
 import io.yghysdr.mediator.user.MediatorUser;

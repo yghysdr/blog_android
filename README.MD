@@ -12,8 +12,8 @@
 ### 项目结构:
 - frameworks 框架层
     - kit_http 网络请求框架
-    - kit_ui 基础框架
-    - kit_modle 数据模型组件
+    - kit_base 基础框架
+    - kit_res 数据模型组件,颜色表等项目基础资源
     - sdk_jpush 对极光模块的封装
 - modules 业务层
     - app壳
@@ -234,7 +234,7 @@ public class BlogApp implements IApplicationDelegate {
 
 不过当业务模块较多时，可能存在C调用了几乎所有的业务模块。这是方案一明显不可行，方案二，module_app甚至需要的所有的业务模块，也不可行。但是这里认为没必要追求模块的单独运行期间的完整性，只需要保证模块单独编译的完整性即可（保证模块间是相互隔离的，从而实现高内聚低耦合的原则）。
 
-#### ButterKnift
+#### ButterKnife
 在module中使用的时候，需要用R2，点击事件需要用if代替switch。具体参考 [butterknife](http://jakewharton.github.io/butterknife/)
 
 ####  使用脚本生成模块或者中间件

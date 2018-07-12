@@ -15,15 +15,19 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.blog.modle.bean.User;
-import io.blog.modle.event.ThemeEvent;
-import com.github.yghysdr.base.ui.BaseFragment;
+import io.blog.res.bean.User;
+import io.blog.res.event.ThemeEvent;
 
-import com.github.yghysdr.base.utils.PreUtils;
-import io.yghysdr.common.AppConstants;
-import io.yghysdr.common.Jump;
-import io.yghysdr.common.RxBus;
-import io.yghysdr.common.common.util.ThemeUtil;
+import com.github.yghysdr.base.BaseApp;
+import com.github.yghysdr.base.BaseFragment;
+
+import com.github.yghysdr.util.PreUtils;
+
+import com.github.yghysdr.base.RxBus;
+
+import com.github.yghysdr.theme.ThemeUtil;
+
+import io.yghysdr.mediator.login.MediatorLogin;
 import io.yghysdr.mediator.user.IContentUser;
 import io.yghysdr.user.R;
 import io.yghysdr.user.R2;
@@ -83,7 +87,7 @@ public class UserFragment extends BaseFragment {
 
     @Override
     protected int provideContentViewId() {
-        return R.layout.fragment_user;
+        return R.layout.user_fragment_user;
     }
 
 
@@ -95,11 +99,11 @@ public class UserFragment extends BaseFragment {
                     mActivity.setTheme(R.style.AppThemeNight);
                     ThemeUtil.initTheme(mActivity, R.style.AppThemeNight);
                     refreshUI();
-                    PreUtils.putBoolean(AppConstants.THEME_NORMAL, false);
+                    PreUtils.putBoolean(BaseApp.getContext(), ThemeUtil.THEME_NORMAL, false);
                 } else {
                     mActivity.setTheme(R.style.AppTheme);
                     ThemeUtil.initTheme(mActivity, R.style.AppTheme);
-                    PreUtils.putBoolean(AppConstants.THEME_NORMAL, true);
+                    PreUtils.putBoolean(BaseApp.getContext(), ThemeUtil.THEME_NORMAL, true);
                     refreshUI();
                 }
             }
@@ -128,7 +132,7 @@ public class UserFragment extends BaseFragment {
 //                    .load(mCurUser.avatar)
 //                    .into(userAvatarIv);
         }
-        userNightSC.setChecked(PreUtils.getBoolean(AppConstants.THEME_NORMAL, true));
+        userNightSC.setChecked(PreUtils.getBoolean(BaseApp.getContext(), ThemeUtil.THEME_NORMAL, true));
     }
 
     @OnClick({R2.id.user_exit_cv,
@@ -141,10 +145,12 @@ public class UserFragment extends BaseFragment {
             exit();
         } else if (i == R.id.user_info_ll) {
             if (mCurUser == null) {
-                Jump.login(getActivity());
+                MediatorLogin.startLogin();
             }
         } else if (i == R.id.user_edit_cv) {
-            Jump.edit(getActivity());
+            if (mCurUser == null) {
+                MediatorLogin.startLogin();
+            }
         }
     }
 
@@ -158,11 +164,11 @@ public class UserFragment extends BaseFragment {
         userEditCv.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
         userLine1Fl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
         userLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
-        userNick.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
-        userDes.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtContent));
-        userNightTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
-        userExitTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtWarning));
-        userEditTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+        userNick.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
+        userDes.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtContent));
+        userNightTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
+        userExitTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtWarning));
+        userEditTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
         userLine1V.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.lineHov));
         ThemeEvent event = new ThemeEvent();
         RxBus.getDefault().post(event);

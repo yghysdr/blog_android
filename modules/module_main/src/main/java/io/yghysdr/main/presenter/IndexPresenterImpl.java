@@ -1,6 +1,6 @@
 package io.yghysdr.main.presenter;
 
-import com.github.yghysdr.base.ui.BasePresenter;
+import com.github.yghysdr.base.BasePresenter;
 import io.yghysdr.main.contract.IndexContract;
 
 /**

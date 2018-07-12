@@ -2,10 +2,10 @@ package io.yghysdr.article;
 
 import java.util.List;
 
-import io.blog.modle.BaseResponse;
-import io.blog.modle.bean.Archive;
-import io.blog.modle.bean.Article;
-import io.blog.modle.bean.Tag;
+import io.blog.res.BaseResponse;
+import io.blog.res.bean.Archive;
+import io.blog.res.bean.Article;
+import io.blog.res.bean.Tag;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

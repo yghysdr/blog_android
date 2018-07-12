@@ -9,7 +9,7 @@ android {
         targetSdkVersion TARGET_SDK_VERSION as int
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     Properties props = new Properties()
@@ -45,7 +45,7 @@ android {
 }
 
 dependencies {
-    implementation project(':modules:module_common')
+    implementation project(':frameworks:kit_base')
     if (isLibrary.toBoolean()) {
         implementation project(':modules:module_main')
         implementation project(':modules:module_user')

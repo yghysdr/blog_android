@@ -9,11 +9,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.blog.modle.bean.User;
-import io.blog.modle.event.LoginEvent;
-import com.github.yghysdr.base.ui.BaseActivity;
-import io.yghysdr.common.RxBus;
-import io.yghysdr.common.common.util.MD5;
+import io.blog.res.bean.User;
+import io.blog.res.event.LoginEvent;
+import com.github.yghysdr.base.BaseActivity;
+import com.github.yghysdr.base.RxBus;
+import com.github.yghysdr.util.MD5;
+import com.github.yghysdr.util.Validation;
 
 
 /**
@@ -32,7 +33,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     protected int provideContentViewId() {
-        return R.layout.activity_login;
+        return R.layout.login_activity_login;
     }
 
     @Override

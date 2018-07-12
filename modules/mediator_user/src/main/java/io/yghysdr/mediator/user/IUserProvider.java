@@ -2,7 +2,7 @@ package io.yghysdr.mediator.user;
 
 import com.alibaba.android.arouter.facade.template.IProvider;
 
-import io.blog.modle.bean.User;
+import io.blog.res.bean.User;
 
 public interface IUserProvider extends IProvider {
     User getUser();

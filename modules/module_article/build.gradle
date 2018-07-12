@@ -50,8 +50,20 @@ android {
 }
 
 dependencies {
-    implementation project(":modules:module_common")
+    implementation project(':frameworks:kit_base')
+    implementation project(':frameworks:kit_http')
+    implementation project(':frameworks:kit_util')
+    implementation project(':frameworks:kit_widget')
+    implementation project(':frameworks:kit_recycleview')
+
+    implementation project(':frameworks:app_common')
+    implementation project(':frameworks:app_res')
+    implementation project(':frameworks:app_theme')
+
+    implementation project(':frameworks:wrap_multistate')
+
     implementation project(":modules:mediator_article")
+
     annotationProcessor rootProject.ext.deps.butterknife_compiler
     annotationProcessor rootProject.ext.deps.arouter_compiler
 }

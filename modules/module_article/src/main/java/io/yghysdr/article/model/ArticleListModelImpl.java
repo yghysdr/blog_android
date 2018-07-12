@@ -3,8 +3,8 @@ package io.yghysdr.article.model;
 import java.util.List;
 
 import com.github.yghysdr.http.ApiRetrofit;
-import io.blog.modle.BaseResponse;
-import io.blog.modle.bean.Article;
+import io.blog.res.BaseResponse;
+import io.blog.res.bean.Article;
 import io.reactivex.Observable;
 import io.yghysdr.article.IArticleApi;
 import io.yghysdr.article.contract.ArticleListContract;

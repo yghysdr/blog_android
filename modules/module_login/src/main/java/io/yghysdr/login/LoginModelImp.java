@@ -1,8 +1,8 @@
 package io.yghysdr.login;
 
 import com.github.yghysdr.http.ApiRetrofit;
-import io.blog.modle.BaseResponse;
-import io.blog.modle.bean.User;
+import io.blog.res.BaseResponse;
+import io.blog.res.bean.User;
 import io.reactivex.Observable;
 
 /**

@@ -8,12 +8,11 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 
 import butterknife.BindView;
 
-import com.github.yghysdr.base.ui.BaseActivity;
+import com.github.yghysdr.base.BaseActivity;
 
 import io.yghysdr.article.R;
 import io.yghysdr.article.R2;
-import io.yghysdr.common.common.util.ShareUtils;
-import io.yghysdr.common.widget.MyWebView;
+import io.yghysdr.article.ShareUtils;
 import io.yghysdr.mediator.article.IConstantArticle;
 
 @Route(path = IConstantArticle.ARTICLE_ACTIVITY_ARTICLE)
@@ -26,7 +25,7 @@ public class ArticleActivity extends BaseActivity {
 
     @Override
     protected int provideContentViewId() {
-        return R.layout.activity_article;
+        return R.layout.article_activity_article;
     }
 
     @Override

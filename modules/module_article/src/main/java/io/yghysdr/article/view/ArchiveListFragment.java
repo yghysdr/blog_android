@@ -10,16 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.refactor.multistatelayout.MultiStateLayout;
-import io.blog.modle.BaseResponse;
-import io.blog.modle.bean.Archive;
-import com.github.yghysdr.base.rv.BaseRVAdapter;
-import com.github.yghysdr.base.rv.IStatus;
-import io.yghysdr.common.BaseListFragment;
+import io.blog.res.BaseResponse;
+import io.blog.res.bean.Archive;
+
+import com.github.yghysdr.recycleview.BaseRVAdapter;
+import com.github.yghysdr.recycleview.IStatus;
+import com.github.yghysdr.theme.ThemeUtil;
+
+import io.yghysdr.blog.common.BaseListFragment;
 import io.yghysdr.article.R;
 import io.yghysdr.article.contract.ArchiveContract;
 import io.yghysdr.article.presenter.ArchiveListAdapter;
 import io.yghysdr.article.presenter.ArchiveListPresenterImpl;
-import io.yghysdr.common.common.util.ThemeUtil;
 import io.yghysdr.mediator.article.IConstantArticle;
 
 /**
@@ -64,17 +66,17 @@ public class ArchiveListFragment extends BaseListFragment
 
             TextView titleTv = (TextView) childView.findViewById(R.id.archive_title);
             if (titleTv != null) {
-                titleTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+                titleTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
             }
 
             TextView timeTv = (TextView) childView.findViewById(R.id.archive_time);
             if (timeTv != null) {
-                timeTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtDes));
+                timeTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtDes));
             }
 
             TextView yearTv = (TextView) childView.findViewById(R.id.archive_year);
             if (yearTv != null) {
-                yearTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+                yearTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
             }
         }
         ThemeUtil.dealRecycleView(baseRv);

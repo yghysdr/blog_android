@@ -10,11 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import com.github.yghysdr.base.ui.BaseActivity;
-import com.github.yghysdr.base.utils.UIUtils;
-import com.github.yghysdr.base.widget.NoScrollViewPager;
-import io.yghysdr.common.AppManager;
-import io.yghysdr.common.common.util.ThemeUtil;
+
+import com.github.yghysdr.base.BaseApp;
+import com.github.yghysdr.base.BaseActivity;
+import com.github.yghysdr.util.UIUtils;
+import com.github.yghysdr.base.AppManager;
+import com.github.yghysdr.widget.NoScrollViewPager;
+
+import com.github.yghysdr.theme.ThemeUtil;
+
 import io.yghysdr.main.R;
 import io.yghysdr.main.R2;
 import io.yghysdr.main.contract.MainContract;
@@ -44,9 +48,9 @@ public class MainActivity extends BaseActivity
     @Override
     protected int provideContentViewId() {
         if (Build.VERSION.SDK_INT <= 21) {
-            return R.layout.activity_main_k;
+            return R.layout.main_activity_main_k;
         } else {
-            return R.layout.activity_main;
+            return R.layout.mian_activity_main;
         }
     }
 
@@ -87,8 +91,8 @@ public class MainActivity extends BaseActivity
 
     private void changeBotBar() {
         mainTb.setTabTextColors(
-                ThemeUtil.getColorId(ThemeUtil.txtNavBotOff),
-                ThemeUtil.getColorId(ThemeUtil.txtNavBotOn));
+                ThemeUtil.getColorId(this, ThemeUtil.txtNavBotOff),
+                ThemeUtil.getColorId(this, ThemeUtil.txtNavBotOn));
         mainTb.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgNavBot));
     }
 
@@ -108,7 +112,7 @@ public class MainActivity extends BaseActivity
         if (2000 > System.currentTimeMillis() - currentTime) {
             AppManager.getAppManager().AppExit(this, false);
         }
-        UIUtils.showToast(getString(R.string.toast_exit_app));
+        UIUtils.showToast(BaseApp.getContext(), getString(R.string.toast_exit_app));
         currentTime = System.currentTimeMillis();
     }
 

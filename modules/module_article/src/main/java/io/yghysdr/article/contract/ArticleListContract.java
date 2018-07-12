@@ -3,10 +3,10 @@ package io.yghysdr.article.contract;
 
 import java.util.List;
 
-import io.blog.modle.BaseResponse;
-import io.blog.modle.bean.Article;
+import io.blog.res.BaseResponse;
+import io.blog.res.bean.Article;
 import io.reactivex.Observable;
-import io.yghysdr.common.ICommonListView;
+import io.yghysdr.blog.common.ICommonListView;
 
 /**
  * Created by yghysdr on 2017/4/27.

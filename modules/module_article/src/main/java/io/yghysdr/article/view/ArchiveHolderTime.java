@@ -6,10 +6,10 @@ import android.widget.TextView;
 
 
 import butterknife.BindView;
-import com.github.yghysdr.base.rv.BaseRVHolder;
+import com.github.yghysdr.recycleview.BaseRVHolder;
 import io.yghysdr.article.R;
 import io.yghysdr.article.R2;
-import io.yghysdr.common.common.util.DateUtil;
+import com.github.yghysdr.util.DateUtil;
 
 /**
  * Created by yghysdr on 2017/5/8.
@@ -23,7 +23,7 @@ public class ArchiveHolderTime extends BaseRVHolder<Long> {
 
 
     public ArchiveHolderTime(Context context, ViewGroup root) {
-        super(context, root, R.layout.item_archive_year);
+        super(context, root, R.layout.articcle_item_archive_year);
     }
 
     @Override

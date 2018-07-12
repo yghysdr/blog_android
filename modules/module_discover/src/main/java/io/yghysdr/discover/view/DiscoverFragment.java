@@ -5,8 +5,8 @@ import android.widget.FrameLayout;
 import com.alibaba.android.arouter.facade.annotation.Route;
 
 import butterknife.BindView;
-import com.github.yghysdr.base.ui.BaseFragment;
-import io.yghysdr.common.common.util.ThemeUtil;
+import com.github.yghysdr.base.BaseFragment;
+import com.github.yghysdr.theme.ThemeUtil;
 import io.yghysdr.discover.R;
 import io.yghysdr.discover.R2;
 import io.yghysdr.discover.contract.DiscoverContract;
@@ -37,6 +37,6 @@ public class DiscoverFragment extends BaseFragment
 
     @Override
     protected int provideContentViewId() {
-        return R.layout.fragment_discover;
+        return R.layout.discover_fragment_discover;
     }
 }

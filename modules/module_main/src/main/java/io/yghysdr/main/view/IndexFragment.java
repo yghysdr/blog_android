@@ -5,8 +5,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 
-import com.github.yghysdr.base.ui.BaseFragment;
-import io.yghysdr.common.common.util.ThemeUtil;
+import com.github.yghysdr.base.BaseFragment;
+
+import com.github.yghysdr.theme.ThemeUtil;
+
 import io.yghysdr.main.R;
 import io.yghysdr.main.R2;
 import io.yghysdr.main.contract.IndexContract;
@@ -50,7 +52,7 @@ public class IndexFragment extends BaseFragment implements
 
     @Override
     protected int provideContentViewId() {
-        return R.layout.fragment_index;
+        return R.layout.main_fragment_index;
     }
 
 
@@ -65,8 +67,8 @@ public class IndexFragment extends BaseFragment implements
     @Override
     public void refreshTheme() {
         homeTL.setTabTextColors(
-                ThemeUtil.getColorId(ThemeUtil.txtNavOff),
-                ThemeUtil.getColorId(ThemeUtil.txtNavOn));
+                ThemeUtil.getColorId(getContext(), ThemeUtil.txtNavOff),
+                ThemeUtil.getColorId(getContext(), ThemeUtil.txtNavOn));
         homeTL.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
     }
 

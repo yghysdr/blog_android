@@ -4,9 +4,9 @@ package io.yghysdr.article.presenter;
 import com.github.yghysdr.http.ApiRetrofit;
 import com.github.yghysdr.http.HttpException;
 import com.github.yghysdr.http.NetObserver;
-import io.blog.modle.BaseResponse;
-import io.blog.modle.bean.Archive;
-import com.github.yghysdr.base.ui.BasePresenter;
+import io.blog.res.BaseResponse;
+import io.blog.res.bean.Archive;
+import com.github.yghysdr.base.BasePresenter;
 import io.reactivex.disposables.Disposable;
 import io.yghysdr.article.IArticleApi;
 import io.yghysdr.article.contract.ArchiveContract;
@@ -16,7 +16,7 @@ import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import io.yghysdr.common.ICommonListView;
+import io.yghysdr.blog.common.ICommonListView;
 
 
 /**

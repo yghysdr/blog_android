@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--夜间模式-->
+    <attr name="color_line_hov" format="reference|color" />
+    <attr name="color_line_hov_tab" format="reference|color" />
+    <attr name="color_bg" format="reference|color" />
+    <attr name="color_bg_item" format="reference|color" />
+    <attr name="color_bg_nav_bot" format="reference|color" />
+    <attr name="color_txt_nav_bot_on" format="reference|color" />
+    <attr name="color_txt_nav_bot_off" format="reference|color" />
+    <attr name="color_txt_title" format="reference|color" />
+    <attr name="color_txt_nav" format="reference|color" />
+    <attr name="color_txt_content" format="reference|color" />
+    <attr name="color_txt_des" format="reference|color" />
+    <attr name="color_txt_nav_off" format="reference|color" />
+    <attr name="color_txt_nav_on" format="reference|color" />
+    <attr name="color_txt_warning" format="reference|color" />
+</resources>

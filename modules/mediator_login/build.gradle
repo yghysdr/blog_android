@@ -34,7 +34,7 @@ android {
 }
 
 dependencies {
-    implementation project(':frameworks:kit_modle')
+    implementation project(':frameworks:app_res')
     implementation rootProject.ext.deps.arouter
     implementation rootProject.ext.deps.retrofit
     implementation rootProject.ext.deps.rxjava

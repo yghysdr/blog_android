@@ -2,12 +2,13 @@ package io.yghysdr.article.presenter;
 
 import java.util.List;
 
+import com.github.yghysdr.base.RxBus;
 import com.github.yghysdr.http.HttpException;
 import com.github.yghysdr.http.NetObserver;
-import io.blog.modle.BaseResponse;
-import io.blog.modle.bean.Article;
-import io.blog.modle.event.ThemeEvent;
-import com.github.yghysdr.base.ui.BasePresenter;
+import io.blog.res.BaseResponse;
+import io.blog.res.bean.Article;
+import io.blog.res.event.ThemeEvent;
+import com.github.yghysdr.base.BasePresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -15,8 +16,7 @@ import io.reactivex.schedulers.Schedulers;
 
 import io.yghysdr.article.contract.ArticleListContract;
 import io.yghysdr.article.model.ArticleListModelImpl;
-import io.yghysdr.common.ICommonListView;
-import io.yghysdr.common.RxBus;
+import io.yghysdr.blog.common.ICommonListView;
 
 /**
  * Created by yghysdr on 2017/04/27

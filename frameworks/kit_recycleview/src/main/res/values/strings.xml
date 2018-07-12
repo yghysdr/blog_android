@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">kit_recycleview</string>
+    <string name="comm_loading">正在加载...</string>
+    <string name="comm_no_have_more">没有更多了～</string>
+    <string name="comm_error_net">网络出现点小差，点击重试...</string>
+    <string name="comm_empty">没有找到什么东西哦...</string>
+</resources>

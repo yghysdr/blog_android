@@ -9,13 +9,14 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 
 import java.util.List;
 
-import com.github.yghysdr.base.rv.BaseRVAdapter;
+import com.github.yghysdr.recycleview.BaseRVAdapter;
+import com.github.yghysdr.theme.ThemeUtil;
+
 import io.yghysdr.article.R;
 import io.yghysdr.article.contract.ArticleListContract;
 import io.yghysdr.article.presenter.ArticleListAdapter;
 import io.yghysdr.article.presenter.ArticleListPresenterImpl;
-import io.yghysdr.common.BaseListFragment;
-import io.yghysdr.common.common.util.ThemeUtil;
+import io.yghysdr.blog.common.BaseListFragment;
 import io.yghysdr.mediator.article.IConstantArticle;
 
 /**
@@ -76,7 +77,7 @@ public class ArticleListFragment extends BaseListFragment
 
             TextView titleTv = (TextView) childView.findViewById(R.id.article_item_title_tv);
             if (titleTv != null) {
-                titleTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+                titleTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
             }
 
             View desV = childView.findViewById(R.id.article_item_des_v);
@@ -86,17 +87,12 @@ public class ArticleListFragment extends BaseListFragment
 
             TextView desTv = (TextView) childView.findViewById(R.id.article_item_des_tv);
             if (desTv != null) {
-                desTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtContent));
+                desTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtContent));
             }
 
             TextView timeTv = (TextView) childView.findViewById(R.id.article_item_time_tv);
             if (timeTv != null) {
-                timeTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtDes));
-            }
-
-            TextView statusTv = (TextView) childView.findViewById(R.id.item_footer_status_tv);
-            if (statusTv != null) {
-                statusTv.setTextColor(ThemeUtil.getColorId(ThemeUtil.txtTitle));
+                timeTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtDes));
             }
         }
         ThemeUtil.dealRecycleView(baseRv);

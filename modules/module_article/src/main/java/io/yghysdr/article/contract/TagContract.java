@@ -3,8 +3,8 @@ package io.yghysdr.article.contract;
 
 import java.util.List;
 
-import io.blog.modle.BaseResponse;
-import io.blog.modle.bean.Tag;
+import io.blog.res.BaseResponse;
+import io.blog.res.bean.Tag;
 import io.reactivex.Observable;
 
 /**

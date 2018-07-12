@@ -11,17 +11,22 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import java.util.List;
 
 import butterknife.BindView;
-import io.blog.modle.bean.Tag;
-import io.blog.modle.event.JumpEvent;
-import com.github.yghysdr.base.ui.BaseFragment;
-import com.github.yghysdr.base.utils.UIUtils;
+import io.blog.res.bean.Tag;
+import io.blog.res.event.JumpEvent;
+
+import com.github.yghysdr.base.BaseApp;
+import com.github.yghysdr.base.BaseFragment;
+import com.github.yghysdr.base.RxBus;
+import com.github.yghysdr.theme.ThemeUtil;
+import com.github.yghysdr.util.UIUtils;
+
 import io.yghysdr.article.R;
 import io.yghysdr.article.R2;
 import io.yghysdr.article.contract.TagContract;
 import io.yghysdr.article.presenter.TagPresenterImpl;
-import io.yghysdr.common.RxBus;
-import io.yghysdr.common.common.util.ThemeUtil;
-import io.yghysdr.common.widget.TagsLayout;
+
+import com.github.yghysdr.widget.TagsLayout;
+
 import io.yghysdr.mediator.article.IConstantArticle;
 
 /**
@@ -59,7 +64,7 @@ public class TagFragment extends BaseFragment
 
     @Override
     protected int provideContentViewId() {
-        return R.layout.fragment_tag;
+        return R.layout.article_fragment_tag;
     }
 
     private List<Tag> mTags;
@@ -72,14 +77,14 @@ public class TagFragment extends BaseFragment
             final Tag tag = tags.get(i);
             TextView tv = (TextView) LayoutInflater
                     .from(mActivity)
-                    .inflate(R.layout.item_view_tag, null);
+                    .inflate(R.layout.article_item_view_tag, null);
             tv.setText(tag.name + "(" + tag.count + ")");
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(
-                    UIUtils.dip2Px(20),
-                    UIUtils.dip2Px(10),
+                    UIUtils.dip2Px(BaseApp.getContext(), 20),
+                    UIUtils.dip2Px(BaseApp.getContext(), 10),
                     0,
                     0
             );

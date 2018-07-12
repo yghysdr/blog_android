@@ -7,10 +7,9 @@ import android.widget.FrameLayout;
 import com.alibaba.android.arouter.facade.annotation.Route;
 
 import butterknife.BindView;
-import io.blog.modle.bean.Tag;
+import io.blog.res.bean.Tag;
 
-import com.github.yghysdr.base.BaseApp;
-import com.github.yghysdr.base.ui.BaseActivity;
+import com.github.yghysdr.base.BaseActivity;
 
 import io.yghysdr.article.R;
 import io.yghysdr.article.R2;
@@ -42,6 +41,6 @@ public class SortActivity extends BaseActivity {
 
     @Override
     protected int provideContentViewId() {
-        return R.layout.activity_sort;
+        return R.layout.article_activity_sort;
     }
 }
