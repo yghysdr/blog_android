@@ -22,7 +22,6 @@ import io.reactivex.disposables.Disposable;
  */
 
 public abstract class BaseFragment extends LazyLoadFragment {
-    private View rootView;
     protected Activity mActivity;
     protected Unbinder unbind;
     private PresenterManager mPresenterManager;
@@ -33,7 +32,6 @@ public abstract class BaseFragment extends LazyLoadFragment {
         super.onCreate(savedInstanceState);
         afterCreate(savedInstanceState);
         mDisposableManager = new DisposableManager();
-        EventBus.getDefault().register(this);
         mPresenterManager = new PresenterManager();
         addPresenter(mPresenterManager.mPresenterList);
         mPresenterManager.attach();
@@ -47,20 +45,12 @@ public abstract class BaseFragment extends LazyLoadFragment {
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (rootView == null) {
-            rootView = inflater.inflate(provideContentViewId(), container, false);
-            unbind = ButterKnife.bind(this, rootView);
-            initData();
-        } else {
-            ViewGroup parent = (ViewGroup) rootView.getParent();
-            if (parent != null) {
-                parent.removeView(rootView);
-            }
-        }
-        return rootView;
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        unbind = ButterKnife.bind(this, view);
+        EventBus.getDefault().register(this);
+        return view;
     }
 
     /**
@@ -93,9 +83,6 @@ public abstract class BaseFragment extends LazyLoadFragment {
         LazyLoad();
     }
 
-    //得到当前界面的布局文件id(由子类实现)
-    protected abstract int provideContentViewId();
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -105,7 +92,6 @@ public abstract class BaseFragment extends LazyLoadFragment {
         EventBus.getDefault().unregister(this);
         mPresenterManager.detach();
         mDisposableManager.clear();
-        rootView = null;
     }
 
 

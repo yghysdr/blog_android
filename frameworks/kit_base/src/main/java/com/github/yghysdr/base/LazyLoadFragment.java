@@ -3,12 +3,14 @@ package com.github.yghysdr.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+
 
 /**
- *
  * 封装了懒加载的实现
- *
+ * <p>
  * 1、Viewpager + Fragment情况下，fragment的生命周期因Viewpager的缓存机制而失去了具体意义
  * 该抽象类自定义新的回调方法，当fragment可见状态改变时会触发的回调方法，和 Fragment 第一次可见时会回调的方法
  *
@@ -17,10 +19,8 @@ import android.view.View;
  */
 public abstract class LazyLoadFragment extends Fragment {
 
-    private static final String TAG = LazyLoadFragment.class.getSimpleName();
-
     private boolean isFirstEnter = true;//是否是第一次进入,默认是
-    private boolean isReuseView = true ;//是否进行复用，默认复用
+    private boolean isReuseView = true;//是否进行复用，默认复用
     private boolean isFragmentVisible;
     private View rootView;
 
@@ -33,8 +33,8 @@ public abstract class LazyLoadFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         //setUserVisibleHint()有可能在fragment的生命周期外被调用
-        if (rootView == null) {
-            //如果view还未初始化，不进行处理
+        //如果view还未初始化，或者复用的时候，rootView没被使用不进行处理
+        if (rootView == null || rootView.getParent() == null) {
             return;
         }
 
@@ -57,29 +57,45 @@ public abstract class LazyLoadFragment extends Fragment {
         }
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (rootView == null || !isReuseView) {
+            isFirstEnter = true;
+            rootView = inflater.inflate(provideContentViewId(), container, false);
+        }
+        return rootView;
+    }
+
+    protected abstract int provideContentViewId();
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ViewGroup parent = (ViewGroup) rootView.getParent();
+        if (parent != null) {
+            parent.removeView(rootView);
+        }
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         //如果setUserVisibleHint()在rootView创建前调用时，那么
         //就等到rootView创建完后才回调onFragmentVisibleChange(true)
         //保证onFragmentVisibleChange()的回调发生在rootView创建完成之后，以便支持ui操作
-        if (rootView == null) {
-            rootView = view;
-            if (getUserVisibleHint()) {
-                if (isFirstEnter) {
-                    onFragmentFirstVisible();
-                    isFirstEnter = false;
-                }
-                onFragmentVisibleChange(true);
-                isFragmentVisible = true;
+        if (getUserVisibleHint()) {
+            if (isFirstEnter) {
+                onFragmentFirstVisible();
+                isFirstEnter = false;
             }
+            isFragmentVisible = true;
+            onFragmentVisibleChange(isFragmentVisible);
         }
-        super.onViewCreated(isReuseView ? rootView : view, savedInstanceState);
+        super.onViewCreated(view, savedInstanceState);
     }
 
     /**
      * 设置是否使用 view 的复用，默认开启
-     * view 的复用是指，ViewPager 在销毁和重建 Fragment 时会不断调用 onCreateView() -> onDestroyView() 
+     * view 的复用是指，ViewPager 在销毁和重建 Fragment 时会不断调用 onCreateView() -> onDestroyView()
      * 之间的生命函数，这样可能会出现重复创建 view 的情况，导致界面上显示多个相同的 Fragment
      * view 的复用其实就是指保存第一次创建的 view，后面再 onCreateView() 时直接返回第一次创建的 view
      *
@@ -92,7 +108,7 @@ public abstract class LazyLoadFragment extends Fragment {
     /**
      * 去除setUserVisibleHint()多余的回调场景，保证只有当fragment可见状态发生变化时才回调
      * 回调时机在view创建完后，所以支持ui操作，解决在setUserVisibleHint()里进行ui操作有可能报null异常的问题
-     *
+     * <p>
      * 可在该回调方法里进行一些ui显示与隐藏，比如加载框的显示和隐藏
      *
      * @param isVisible true  不可见 -> 可见
@@ -117,16 +133,11 @@ public abstract class LazyLoadFragment extends Fragment {
         return isFragmentVisible;
     }
 
-    /**重置变量*/
-    private void resetVariavle(){
-        isFirstEnter = true;
-        isReuseView = true;
-        isFragmentVisible = false;
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
-        resetVariavle();
+        isFirstEnter = true;
+        isReuseView = true;
+        isFragmentVisible = false;
     }
 }
