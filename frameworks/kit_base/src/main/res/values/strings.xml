@@ -1,4 +1,3 @@
 <resources>
-    <string name="app_name">UiKits</string>
-
+    <string name="app_name">kit_base</string>
 </resources>

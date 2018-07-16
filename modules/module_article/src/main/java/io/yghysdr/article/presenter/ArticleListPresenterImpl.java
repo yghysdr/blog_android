@@ -1,19 +1,16 @@
 package io.yghysdr.article.presenter;
 
-import java.util.List;
-
-import com.github.yghysdr.base.RxBus;
+import com.github.yghysdr.base.BasePresenter;
 import com.github.yghysdr.http.HttpException;
 import com.github.yghysdr.http.NetObserver;
+
+import java.util.List;
+
 import io.blog.res.BaseResponse;
 import io.blog.res.bean.Article;
-import io.blog.res.event.ThemeEvent;
-import com.github.yghysdr.base.BasePresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-
 import io.yghysdr.article.contract.ArticleListContract;
 import io.yghysdr.article.model.ArticleListModelImpl;
 import io.yghysdr.blog.common.ICommonListView;
@@ -47,19 +44,6 @@ public class ArticleListPresenterImpl extends BasePresenter implements
                         commonListView.onListFailed(e);
                     }
                 });
-    }
-
-
-    public void addRxBus() {
-        Disposable subscribe = RxBus.getDefault()
-                .toObservable(ThemeEvent.class)
-                .subscribe(new Consumer<ThemeEvent>() {
-                    @Override
-                    public void accept(ThemeEvent themeEvent) throws Exception {
-//                        mView.refreshTheme();
-                    }
-                });
-        addSubscribe(subscribe);
     }
 
 }

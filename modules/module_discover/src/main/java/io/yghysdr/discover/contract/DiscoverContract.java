@@ -7,7 +7,6 @@ package io.yghysdr.discover.contract;
 public class DiscoverContract {
 
     public interface View {
-        void refreshTheme();
     }
 
     public interface Presenter {

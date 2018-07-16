@@ -10,16 +10,20 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.blog.res.bean.User;
-import io.blog.res.event.LoginEvent;
+import io.yghysdr.mediator.login.IConstantLogin;
+
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.github.yghysdr.base.BaseActivity;
-import com.github.yghysdr.base.RxBus;
+import com.github.yghysdr.http.HttpException;
 import com.github.yghysdr.util.MD5;
+import com.github.yghysdr.util.UIUtils;
 import com.github.yghysdr.util.Validation;
 
 
 /**
  * 登入
  */
+@Route(path = IConstantLogin.LOGIN_ACTIVITY_LOGIN)
 public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @BindView(R2.id.phone)
@@ -86,7 +90,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         int i = view.getId();
         if (i == R.id.email_sign_in_button) {
             attemptLogin();
-
         }
     }
 
@@ -94,15 +97,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     public void loginSuccess(User user) {
         user.phone = mTempUser.phone;
-        LoginEvent event = new LoginEvent();
-        event.succeed = true;
-        RxBus.getDefault().post(event);
         onBackPressed();
     }
 
     @Override
-    public void loginFailed() {
+    public void loginFailed(HttpException exception) {
+        UIUtils.showToast(this, exception.message);
     }
-
 }
 

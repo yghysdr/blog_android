@@ -8,10 +8,15 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import io.blog.res.bean.Article;
+
 import com.github.yghysdr.recycleview.BaseRVHolder;
+
+import io.yghysdr.article.IArticleApi;
 import io.yghysdr.article.R;
 import io.yghysdr.article.R2;
+
 import com.github.yghysdr.util.DateUtil;
+
 import io.yghysdr.article.StringUtils;
 import io.yghysdr.mediator.article.MediatorArticle;
 
@@ -42,7 +47,7 @@ public class ArticleListHolder extends BaseRVHolder<Article> {
         articleItemDesTv.setText(StringUtils.getArticleDes(data.des));
         articleItemTimeTv.setText(DateUtil.long2Str(data.updatedAt, DateUtil.FORMAT_YMD));
         itemView.setOnClickListener(v -> {
-            MediatorArticle.startArticleActivity(data.id, "文章详情");
+            MediatorArticle.startArticleActivity(IArticleApi.BASE_ARTICLE_URL + data.id, "文章详情");
         });
     }
 }

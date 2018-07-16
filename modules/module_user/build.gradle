@@ -59,6 +59,7 @@ dependencies {
     implementation project(':frameworks:app_common')
 
     implementation project(':frameworks:wrap_json')
+    implementation project(':frameworks:wrap_image')
 
 
     implementation project(":modules:mediator_user")

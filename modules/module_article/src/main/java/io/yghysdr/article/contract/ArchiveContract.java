@@ -15,7 +15,6 @@ import io.yghysdr.blog.common.ICommonListView;
 public class ArchiveContract {
 
     public interface View {
-        void refreshTheme();
     }
 
     public interface Presenter {

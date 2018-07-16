@@ -52,6 +52,7 @@ android {
 dependencies {
     implementation project(':frameworks:kit_base')
     implementation project(':frameworks:app_common')
+    implementation project(':frameworks:app_res')
 
     implementation project(':frameworks:app_theme')
 

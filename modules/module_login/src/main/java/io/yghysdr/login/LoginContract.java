@@ -2,6 +2,8 @@ package io.yghysdr.login;
 
 import android.content.Context;
 
+import com.github.yghysdr.http.HttpException;
+
 import io.blog.res.BaseResponse;
 import io.blog.res.bean.User;
 import io.reactivex.Observable;
@@ -14,7 +16,7 @@ public class LoginContract {
     public interface View {
         void loginSuccess(User user);
 
-        void loginFailed();
+        void loginFailed(HttpException exception);
     }
 
     public interface Presenter {

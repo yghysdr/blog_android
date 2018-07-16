@@ -6,7 +6,6 @@ package io.yghysdr.main.contract;
 
 public class MainContract {
     public interface View {
-        void changeTheme();
     }
 
     public interface Presenter {

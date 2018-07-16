@@ -7,7 +7,11 @@ import android.support.v4.view.ViewPager;
 
 import com.github.yghysdr.base.BaseFragment;
 
+import com.github.yghysdr.theme.ThemeEvent;
 import com.github.yghysdr.theme.ThemeUtil;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import io.yghysdr.main.R;
 import io.yghysdr.main.R2;
@@ -64,12 +68,16 @@ public class IndexFragment extends BaseFragment implements
     }
 
 
-    @Override
-    public void refreshTheme() {
-        homeTL.setTabTextColors(
-                ThemeUtil.getColorId(getContext(), ThemeUtil.txtNavOff),
-                ThemeUtil.getColorId(getContext(), ThemeUtil.txtNavOn));
-        homeTL.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void eventTheme(ThemeEvent event) {
+        switch (event.intent) {
+            case ThemeEvent.CHANGE:
+                homeTL.setTabTextColors(
+                        ThemeUtil.getColorId(getContext(), ThemeUtil.txtNavOff),
+                        ThemeUtil.getColorId(getContext(), ThemeUtil.txtNavOn));
+                homeTL.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
+                break;
+        }
     }
 
 }

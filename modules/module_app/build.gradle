@@ -48,6 +48,7 @@ dependencies {
     implementation project(':frameworks:kit_base')
     if (isLibrary.toBoolean()) {
         implementation project(':modules:module_main')
+        implementation project(':modules:module_login')
         implementation project(':modules:module_user')
         implementation project(':modules:module_discover')
         implementation project(':modules:module_article')

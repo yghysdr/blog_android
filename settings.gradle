@@ -5,7 +5,8 @@ include ':frameworks:kit_base',
         ':frameworks:kit_recycleview'
 
 include ':frameworks:wrap_json',
-        ':frameworks:wrap_multistate'
+        ':frameworks:wrap_multistate',
+        ':frameworks:wrap_image'
 
 include ':frameworks:app_theme',
         ':frameworks:app_res',

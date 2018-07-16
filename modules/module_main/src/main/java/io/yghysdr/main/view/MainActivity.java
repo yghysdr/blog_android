@@ -13,11 +13,16 @@ import butterknife.BindView;
 
 import com.github.yghysdr.base.BaseApp;
 import com.github.yghysdr.base.BaseActivity;
+import com.github.yghysdr.theme.ThemeEvent;
+import com.github.yghysdr.util.PreUtils;
 import com.github.yghysdr.util.UIUtils;
 import com.github.yghysdr.base.AppManager;
 import com.github.yghysdr.widget.NoScrollViewPager;
 
 import com.github.yghysdr.theme.ThemeUtil;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import io.yghysdr.main.R;
 import io.yghysdr.main.R2;
@@ -62,6 +67,7 @@ public class MainActivity extends BaseActivity
         fragmentList.add(MediatorDiscover.getDiscoverFragment());
         fragmentList.add(MediatorUser.getUserFragment());
         mAdapter = new MainPagerAdapter(getSupportFragmentManager(), fragmentList);
+        mainVp.setOffscreenPageLimit(fragmentList.size());
         mainTb.setupWithViewPager(mainVp);
         mainTb.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -80,13 +86,23 @@ public class MainActivity extends BaseActivity
             }
         });
         mainVp.setAdapter(mAdapter);
-    }
 
-
-    @Override
-    public void changeTheme() {
+        if (PreUtils.getBoolean(BaseApp.getContext(), ThemeUtil.THEME_NORMAL, true)) {
+            ThemeUtil.initTheme(this, R.style.AppTheme);
+        } else {
+            ThemeUtil.initTheme(this, R.style.AppThemeNight);
+        }
         refreshStatusBar();
         changeBotBar();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void eventTheme(ThemeEvent event) {
+        switch (event.intent) {
+            case ThemeEvent.CHANGE:
+                refreshStatusBar();
+                changeBotBar();
+        }
     }
 
     private void changeBotBar() {

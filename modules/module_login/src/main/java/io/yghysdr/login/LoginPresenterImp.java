@@ -5,9 +5,12 @@ import android.content.Context;
 import com.github.yghysdr.http.ApiRetrofit;
 import com.github.yghysdr.http.DialogObserver;
 import com.github.yghysdr.http.HttpException;
+
 import io.blog.res.BaseResponse;
 import io.blog.res.bean.User;
+
 import com.github.yghysdr.base.BasePresenter;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -39,7 +42,7 @@ public class LoginPresenterImp extends BasePresenter
 
                     @Override
                     public void onError(HttpException e) {
-                        view.loginFailed();
+                        view.loginFailed(e);
                     }
 
                     @Override

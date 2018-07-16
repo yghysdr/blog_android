@@ -15,7 +15,11 @@ import io.blog.res.bean.Archive;
 
 import com.github.yghysdr.recycleview.BaseRVAdapter;
 import com.github.yghysdr.recycleview.IStatus;
+import com.github.yghysdr.theme.ThemeEvent;
 import com.github.yghysdr.theme.ThemeUtil;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import io.yghysdr.blog.common.BaseListFragment;
 import io.yghysdr.article.R;
@@ -55,31 +59,34 @@ public class ArchiveListFragment extends BaseListFragment
         mPresenter.getArchiveList(this, page, size);
     }
 
-    @Override
-    public void refreshTheme() {
-        baseRootLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
-        int childCount = baseRv.getChildCount();
-        for (int childIndex = 0; childIndex < childCount; childIndex++) {
-            ViewGroup childView = (ViewGroup) baseRv.getChildAt(childIndex);
-            childView.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void eventTheme(ThemeEvent event) {
+        switch (event.intent) {
+            case ThemeEvent.CHANGE:
+                baseRootLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
+                int childCount = baseRv.getChildCount();
+                for (int childIndex = 0; childIndex < childCount; childIndex++) {
+                    ViewGroup childView = (ViewGroup) baseRv.getChildAt(childIndex);
+                    childView.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
 
 
-            TextView titleTv = (TextView) childView.findViewById(R.id.archive_title);
-            if (titleTv != null) {
-                titleTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
-            }
+                    TextView titleTv = (TextView) childView.findViewById(R.id.archive_title);
+                    if (titleTv != null) {
+                        titleTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
+                    }
 
-            TextView timeTv = (TextView) childView.findViewById(R.id.archive_time);
-            if (timeTv != null) {
-                timeTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtDes));
-            }
+                    TextView timeTv = (TextView) childView.findViewById(R.id.archive_time);
+                    if (timeTv != null) {
+                        timeTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtDes));
+                    }
 
-            TextView yearTv = (TextView) childView.findViewById(R.id.archive_year);
-            if (yearTv != null) {
-                yearTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
-            }
+                    TextView yearTv = (TextView) childView.findViewById(R.id.archive_year);
+                    if (yearTv != null) {
+                        yearTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
+                    }
+                }
+                ThemeUtil.dealRecycleView(baseRv);
         }
-        ThemeUtil.dealRecycleView(baseRv);
     }
 
 

@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.alibaba.android.arouter.facade.annotation.Route;
 
 import io.yghysdr.blog.common.TokenHelper;
-import io.yghysdr.mediator.login.IConstantlogin;
+import io.yghysdr.mediator.login.IConstantLogin;
 import io.yghysdr.mediator.login.ILoginProvider;
 import io.yghysdr.mediator.user.MediatorUser;
 
@@ -15,13 +15,12 @@ import io.yghysdr.mediator.user.MediatorUser;
  *
  * @description 登录helper类
  */
-@Route(path = IConstantlogin.LOGIN_SERVICE_USER)
+@Route(path = IConstantLogin.LOGIN_SERVICE_USER)
 public class LoginProviderImp implements ILoginProvider {
 
     @Override
     public void exitLogin() {
         TokenHelper.clear();
-        MediatorUser.getUserProvider().clearUser();
     }
 
     @Override

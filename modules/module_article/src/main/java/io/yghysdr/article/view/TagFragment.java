@@ -1,5 +1,6 @@
 package io.yghysdr.article.view;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -12,11 +13,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import io.blog.res.bean.Tag;
-import io.blog.res.event.JumpEvent;
 
 import com.github.yghysdr.base.BaseApp;
 import com.github.yghysdr.base.BaseFragment;
-import com.github.yghysdr.base.RxBus;
+import com.github.yghysdr.theme.ThemeEvent;
 import com.github.yghysdr.theme.ThemeUtil;
 import com.github.yghysdr.util.UIUtils;
 
@@ -26,6 +26,9 @@ import io.yghysdr.article.contract.TagContract;
 import io.yghysdr.article.presenter.TagPresenterImpl;
 
 import com.github.yghysdr.widget.TagsLayout;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import io.yghysdr.mediator.article.IConstantArticle;
 
@@ -93,20 +96,20 @@ public class TagFragment extends BaseFragment
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    JumpEvent jumpEvent = new JumpEvent();
-                    jumpEvent.order = JumpEvent.SORT;
-                    jumpEvent.tag = tag;
-                    RxBus.getDefault().post(jumpEvent);
                 }
             });
         }
     }
 
-    @Override
-    public void refreshTheme() {
-        tagRootFl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
-        if (mTags != null) {
-            addTags(mTags);
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void eventTheme(ThemeEvent event) {
+        switch (event.intent) {
+            case ThemeEvent.CHANGE:
+                tagRootFl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
+                if (mTags != null) {
+                    addTags(mTags);
+                }
         }
     }
+
 }

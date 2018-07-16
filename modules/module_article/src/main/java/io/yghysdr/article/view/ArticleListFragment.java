@@ -10,7 +10,11 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import java.util.List;
 
 import com.github.yghysdr.recycleview.BaseRVAdapter;
+import com.github.yghysdr.theme.ThemeEvent;
 import com.github.yghysdr.theme.ThemeUtil;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import io.yghysdr.article.R;
 import io.yghysdr.article.contract.ArticleListContract;
@@ -64,39 +68,41 @@ public class ArticleListFragment extends BaseListFragment
         mPresenter.requestList(this, page, size, mArticleType);
     }
 
-    @Override
-    public void refreshTheme() {
-        baseRootLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
-        /**
-         * 得到的是在视图中的item条数
-         */
-        int childCount = baseRv.getChildCount();
-        for (int childIndex = 0; childIndex < childCount; childIndex++) {
-            ViewGroup childView = (ViewGroup) baseRv.getChildAt(childIndex);
-            childView.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void eventTheme(ThemeEvent event) {
+        switch (event.intent) {
+            case ThemeEvent.CHANGE:
+                baseRootLl.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bg));
+                /**
+                 * 得到的是在视图中的item条数
+                 */
+                int childCount = baseRv.getChildCount();
+                for (int childIndex = 0; childIndex < childCount; childIndex++) {
+                    ViewGroup childView = (ViewGroup) baseRv.getChildAt(childIndex);
+                    childView.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.bgItem));
 
-            TextView titleTv = (TextView) childView.findViewById(R.id.article_item_title_tv);
-            if (titleTv != null) {
-                titleTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
-            }
+                    TextView titleTv = (TextView) childView.findViewById(R.id.article_item_title_tv);
+                    if (titleTv != null) {
+                        titleTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtTitle));
+                    }
 
-            View desV = childView.findViewById(R.id.article_item_des_v);
-            if (desV != null) {
-                desV.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
-            }
+                    View desV = childView.findViewById(R.id.article_item_des_v);
+                    if (desV != null) {
+                        desV.setBackgroundResource(ThemeUtil.getResId(ThemeUtil.primary));
+                    }
 
-            TextView desTv = (TextView) childView.findViewById(R.id.article_item_des_tv);
-            if (desTv != null) {
-                desTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtContent));
-            }
+                    TextView desTv = (TextView) childView.findViewById(R.id.article_item_des_tv);
+                    if (desTv != null) {
+                        desTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtContent));
+                    }
 
-            TextView timeTv = (TextView) childView.findViewById(R.id.article_item_time_tv);
-            if (timeTv != null) {
-                timeTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtDes));
-            }
+                    TextView timeTv = (TextView) childView.findViewById(R.id.article_item_time_tv);
+                    if (timeTv != null) {
+                        timeTv.setTextColor(ThemeUtil.getColorId(getContext(), ThemeUtil.txtDes));
+                    }
+                }
+                ThemeUtil.dealRecycleView(baseRv);
         }
-        ThemeUtil.dealRecycleView(baseRv);
     }
-
 
 }

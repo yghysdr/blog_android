@@ -15,8 +15,6 @@ public class TagContract {
 
     public interface View {
         void addTags(List<Tag> tags);
-
-        void refreshTheme();
     }
 
     public interface Presenter {

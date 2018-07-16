@@ -6,7 +6,6 @@ package io.yghysdr.main.contract;
 
 public class IndexContract {
     public interface View {
-        void refreshTheme();
     }
 
     public interface Presenter {
