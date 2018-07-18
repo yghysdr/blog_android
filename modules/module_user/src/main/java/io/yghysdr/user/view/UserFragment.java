@@ -94,6 +94,12 @@ public class UserFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        initUserInfo();
+    }
+
+    @Override
     protected int provideContentViewId() {
         return R.layout.user_fragment_user;
     }

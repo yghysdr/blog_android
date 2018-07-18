@@ -16,7 +16,7 @@ public class MediatorUser {
 
     public static IUserProvider getUserProvider() {
         if (iUserProvider == null) {
-            ARouter.getInstance()
+            iUserProvider = (IUserProvider) ARouter.getInstance()
                     .build(IContentUser.USER_SERVICE_USER_INFO)
                     .navigation();
         }

@@ -7,6 +7,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ILoginApi {
-    @POST("api/auth/login")
+    @POST("api/login")
     Observable<BaseResponse<User>> login(@Body User user);
 }

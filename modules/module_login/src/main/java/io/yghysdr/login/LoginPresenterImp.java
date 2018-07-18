@@ -14,6 +14,7 @@ import com.github.yghysdr.base.BasePresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import io.yghysdr.blog.common.TokenHelper;
 import io.yghysdr.mediator.user.MediatorUser;
 
 /**
@@ -33,11 +34,22 @@ public class LoginPresenterImp extends BasePresenter
                 .login(user)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext(userBaseResponse -> MediatorUser.getUserProvider().updateUser(userBaseResponse.data))
+                .doOnNext(userBaseResponse -> {
+                    TokenHelper.saveID(userBaseResponse.data.uid + "");
+                    TokenHelper.saveToken(userBaseResponse.data.token);
+                    MediatorUser.getUserProvider().updateUser(userBaseResponse.data);
+                })
                 .subscribe(new DialogObserver<BaseResponse<User>>(context) {
                     @Override
                     public void onNext(BaseResponse<User> userBaseResponse) {
-                        view.loginSuccess(userBaseResponse.data);
+                        if (userBaseResponse.code == 0) {
+                            view.loginSuccess(userBaseResponse.data);
+                        } else {
+                            HttpException exception = new HttpException(null);
+                            exception.code = 1;
+                            exception.message = userBaseResponse.msg;
+                            view.loginFailed(exception);
+                        }
                     }
 
                     @Override

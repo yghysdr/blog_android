@@ -96,7 +96,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void loginSuccess(User user) {
-        user.phone = mTempUser.phone;
+        UIUtils.showToast(this, "登入成功");
         onBackPressed();
     }
 
